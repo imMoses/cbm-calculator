@@ -18,14 +18,42 @@ android {
     }
 
     buildTypes {
-        release {
+        debug {
             isMinifyEnabled = false
+            isDebuggable = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+        release {
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
         }
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
+    flavorDimensions += "version"
+    productFlavors {
+        create("dev") {
+            applicationId = "id.cbm.main.cbm_calculator.dev"
+            versionNameSuffix = "-Dev"
+            buildConfigField("Boolean", "LOGGING_ENABLED", "true")
+        }
+
+        create("prod") {
+            applicationId = "id.cbm.main.cbm_calculator"
+            versionNameSuffix = ""
+            buildConfigField("Boolean", "LOGGING_ENABLED", "false")
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
@@ -36,11 +64,15 @@ android {
 }
 
 dependencies {
+    val fragment_version = "1.8.5"
 
     implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+
+    // Kotlin
+    implementation("androidx.fragment:fragment-ktx:$fragment_version")
 
     // K-tor
     val ktorVersion = "1.5.0"
