@@ -4,9 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/_12sdp"
-    tools:context=".ui.mainengineer.MainEngineerActivity">
-
-
+    tools:context=".ui.sales.CalculationRoofActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

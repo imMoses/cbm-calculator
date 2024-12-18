@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CustomToolbarTextAlign">
+        <attr name="text" format="string" />
+        <attr name="navigationIcon" />
+        <attr name="navigationIconTint" format="color|reference" />
+        <attr name="textAlignment" format="enum">
+            <enum name="left" value="0" />
+            <enum name="center" value="1" />
+        </attr>
+    </declare-styleable>
+</resources>

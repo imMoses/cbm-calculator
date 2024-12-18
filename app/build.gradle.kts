@@ -1,6 +1,8 @@
 plugins {
+    id("kotlin-android")
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
 }
 
 android {
@@ -36,18 +38,21 @@ android {
     }
 
     buildFeatures {
+        buildConfig = true
         viewBinding = true
     }
 
     flavorDimensions += "version"
     productFlavors {
         create("dev") {
+            dimension = "version"
             applicationId = "id.cbm.main.cbm_calculator.dev"
             versionNameSuffix = "-Dev"
             buildConfigField("Boolean", "LOGGING_ENABLED", "true")
         }
 
         create("prod") {
+            dimension = "version"
             applicationId = "id.cbm.main.cbm_calculator"
             versionNameSuffix = ""
             buildConfigField("Boolean", "LOGGING_ENABLED", "false")
@@ -65,32 +70,56 @@ android {
 
 dependencies {
     val fragment_version = "1.8.5"
+    val coroutine_version = "1.7.3"
+    val lifecycle_version = "2.6.2"
+    val room_version = "2.6.1"
+    val retrofit_version = "2.9.0"
+    val material_android = "1.12.0"
 
     implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
+    implementation("com.google.android.material:material:$material_android")
+
     // Kotlin
     implementation("androidx.fragment:fragment-ktx:$fragment_version")
 
-    // K-tor
-    val ktorVersion = "1.5.0"
-    implementation("io.ktor:ktor-client-android:$ktorVersion")
-    implementation("io.ktor:ktor-client-core:$ktorVersion")
-    implementation("io.ktor:ktor-client-serialization-jvm:$ktorVersion")
-    implementation("io.ktor:ktor-client-logging:$ktorVersion")
-
     // Coroutines
-    val coroutinesVersion = "1.6.3"
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
-    // Coroutines - Deferred adapter
-    implementation("com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_version")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$coroutine_version")
 
     // di
     val koinVersion = "3.5.3"
     implementation("io.insert-koin:koin-android:$koinVersion")
+
+    // Room
+    implementation("androidx.room:room-runtime:$room_version")
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+
+    // Lifecycle
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version")
+    implementation("androidx.lifecycle:lifecycle-extensions:2.2.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
+    implementation("androidx.activity:activity-ktx:1.8.2")
+
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:$retrofit_version")
+    implementation("com.squareup.retrofit2:converter-gson:$retrofit_version")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+    implementation("com.squareup.retrofit2:converter-scalars:$retrofit_version")
+
+    // Reflection
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.9.10")
+
+    // intuit sdp (scalable density pixel) and ssp (scalable pixel for text)
+    implementation("com.intuit.sdp:sdp-android:1.1.1")
+    implementation("com.intuit.ssp:ssp-android:1.1.1")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

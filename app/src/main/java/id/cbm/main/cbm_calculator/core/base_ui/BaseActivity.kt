@@ -1,4 +1,4 @@
-package id.cbm.main.cbm_calculator.ui.base_ui
+package id.cbm.main.cbm_calculator.core.base_ui
 
 import android.content.Context
 import android.os.Build
