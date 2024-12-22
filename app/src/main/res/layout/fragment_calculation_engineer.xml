@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.engineer.form.RequestFormActivity">
-
-    <id.cbm.main.cbm_calculator.core.custom.CustomToolbarTextAlign
-        android:id="@+id/appBar"
-        app:text="Request Form Engineer"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+    android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clResultKoefisien"
@@ -24,7 +15,7 @@
         android:paddingStart="@dimen/_16sdp"
         android:paddingEnd="@dimen/_16sdp"
         android:background="@color/gray_container_result"
-        app:layout_constraintTop_toBottomOf="@+id/appBar"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -94,16 +85,6 @@
                 android:textSize="@dimen/_14ssp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
-
-            <!--            TESTING-->
-<!--            <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation-->
-<!--                android:id="@+id/etTest"-->
-<!--                app:titleSection="This is testing"-->
-<!--                app:unit="@string/unit_mm4m"-->
-<!--                app:leftSymbol="@string/symbol_fy"-->
-<!--                android:layout_marginTop="@dimen/_14sdp"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"/>-->
 
             <!--            METAL DECK YIELD-->
             <TextView

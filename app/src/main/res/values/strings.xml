@@ -8,6 +8,17 @@
     <string name="signin_hint_pass">Password</string>
     <string name="signin_button_sign_in">Sign In</string>
 
+    <!--    MAIN MENU ENGINEER-->
+    <string name="menu_sample">Sample Menu</string>
+    <string name="menu_engineer_request_form">Request Form</string>
+
+    <!--    DATA CUSTOMER FORM ENGINEER-->
+    <string name="form_engineer_perhitungan_no">Perhitungan No</string>
+    <string name="form_engineer_customer">Customer</string>
+    <string name="form_engineer_proyek">Proyek</string>
+    <string name="form_engineer_sales">Sales</string>
+    <string name="form_engineer_as_as">AS-AS</string>
+
     <!--    UNIT-->
     <string name="unit_MPa">MPa</string>
     <string name="unit_mpa">Mpa</string>
@@ -49,7 +60,7 @@
     <string name="form_engineer_panjang_bentang_pelat_arah_x">Panjang bentang pelat arah x</string>
     <string name="form_engineer_tebal_pelat_lantai">Tebal pelat lantai</string>
     <string name="form_engineer_tebal_bersih_selimut_beton">Tebal bersih selimut beton</string>
-    
+
     <string name="form_engineer_koefisien_pelat">Koefisien Pelat</string>
     <string name="form_engineer_koefisien_pelat_err">Mohon diisi</string>
     <string name="form_engineer_koefisien_pelat_calc_correct">OK Pelat Satu Arah</string>

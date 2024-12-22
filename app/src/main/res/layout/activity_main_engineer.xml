@@ -4,9 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/_12sdp"
     tools:context=".ui.mainengineer.MainEngineerActivity">
 
+    <id.cbm.main.cbm_calculator.core.custom.CustomToolbarTextAlign
+        android:id="@+id/appBarMainEngineer"
+        app:text="Menu Engineer"
+        app:hideNavBackButton="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <TextView
+        android:id="@+id/tvWelcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10sdp"
+        android:textStyle="bold"
+        android:textSize="@dimen/_16ssp"
+        app:layout_constraintTop_toBottomOf="@+id/appBarMainEngineer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Hi, John Doe"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMainMenuEngineer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvWelcome"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

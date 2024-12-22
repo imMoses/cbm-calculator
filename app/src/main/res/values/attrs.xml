@@ -5,9 +5,17 @@
         <attr name="text" format="string" />
         <attr name="navigationIcon" />
         <attr name="navigationIconTint" format="color|reference" />
+        <attr name="hideNavBackButton" format="boolean" />
         <attr name="textAlignment" format="enum">
             <enum name="left" value="0" />
             <enum name="center" value="1" />
         </attr>
     </declare-styleable>
+
+    <declare-styleable name="CustomEditTextCalculation">
+        <attr name="titleSection" format="string" />
+        <attr name="unit" format="string" />
+        <attr name="leftSymbol" format="string" />
+    </declare-styleable>
+
 </resources>

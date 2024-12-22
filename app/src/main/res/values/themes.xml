@@ -13,4 +13,17 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.AppCompat.Starting" parent="Theme.SplashScreen">
+        <!-- Set the splash screen background, animated icon, and animation duration. -->
+<!--        <item name="windowSplashScreenBackground">@color/...</item>-->
+
+        <!-- Use windowSplashScreenAnimatedIcon to add a drawable or an animated
+             drawable. One of these is required. -->
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher_round</item>
+        <!-- Required for animated icons. -->
+        <item name="windowSplashScreenAnimationDuration">250</item>
+        <!-- Set the theme of the Activity that directly follows your splashscreen. This is required. -->
+        <item name="postSplashScreenTheme">@style/Theme.CBMcalculator</item>
+    </style>
 </resources>

@@ -8,6 +8,7 @@ import id.cbm.main.cbm_calculator.BuildConfig
 import id.cbm.main.cbm_calculator.core.base_ui.BaseActivity
 import id.cbm.main.cbm_calculator.databinding.ActivitySignInBinding
 import id.cbm.main.cbm_calculator.ui.engineer.form.RequestFormActivity
+import id.cbm.main.cbm_calculator.ui.mainengineer.MainEngineerActivity
 import id.cbm.main.cbm_calculator.utils.setSafeOnClickListener
 
 class SignInActivity : BaseActivity<ActivitySignInBinding>() {
@@ -16,10 +17,10 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        if (BuildConfig.DEBUG) {
-//            binding.tieEmail.setText("hello@gmail.com")
-//            binding.tiePassword.setText("test123")
-//        }
+        if (BuildConfig.DEBUG) {
+            binding.tieEmail.setText("hello@gmail.com")
+            binding.tiePassword.setText("test123")
+        }
         binding.tvAppVersion.text = String.format("v.%s", BuildConfig.VERSION_NAME)
 
         binding.btnSignIn.setSafeOnClickListener {
@@ -46,8 +47,9 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>() {
 
             Toast.makeText(this@SignInActivity, "Success", Toast.LENGTH_SHORT).show()
             startActivity(
-                Intent(this@SignInActivity, RequestFormActivity::class.java)
+                Intent(this@SignInActivity, MainEngineerActivity::class.java)
             )
+            finishAffinity()
         }
     }
 }

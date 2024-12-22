@@ -32,6 +32,11 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
 
         binding.etKuatTarikBeton.setText("2,17")
 
+//        val testFqtext = SpannableString("fq")
+//        testFqtext.setSpan(SubscriptSpan(), 1, 2, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
+//        testFqtext.setSpan(RelativeSizeSpan(0.8f), 1,2, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
+//        binding.etTest.setTextCustomSpannebleSymbol(testFqtext)
+
         val textFy = SpannableString("fy")
         textFy.setSpan(SubscriptSpan(), 1, 2, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
         textFy.setSpan(RelativeSizeSpan(0.8f), 1,2, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
@@ -124,17 +129,6 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
         if (bentangPlatY > 0.0 && bentangPlayX > 0.0) {
             val result = bentangPlatY / bentangPlayX
 
-//            val textKoefisien = SpannableString(
-//                String.format(
-//                    "%s/%s = %.1f",
-//                    resources.getString(R.string.symbol_Ly),
-//                    resources.getString(R.string.symbol_Lx),
-//                    result,
-//                ),
-//            )
-//            textKoefisien.setSpan(SubscriptSpan(), 1, 2, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
-//            textKoefisien.setSpan(RelativeSizeSpan(0.8f), 1,2, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
-//            binding.tvResultCalculation.text = textKoefisien
             setTextKoefisien(result)
 
             val koefisienThreshold = 2.0

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lyParent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvTitleColumn"
+        android:text="@string/form_engineer_metal_deck_yield_strength"
+        android:textSize="@dimen/_14ssp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvSymbol"
+            tools:text="@string/symbol_fy"
+            android:textSize="@dimen/_12ssp"
+            android:paddingBottom="@dimen/_4sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/etNumberInput"
+            app:layout_constraintBottom_toBottomOf="@+id/etNumberInput" />
+
+        <EditText
+            android:id="@+id/etNumberInput"
+            android:inputType="numberDecimal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_6sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvSymbol"
+            app:layout_constraintEnd_toStartOf="@+id/tvUnit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:imeOptions="actionNext"
+            tools:text="123092" />
+
+        <TextView
+            android:id="@+id/tvUnit"
+            android:textSize="@dimen/_12ssp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/etNumberInput"
+            app:layout_constraintBottom_toBottomOf="@+id/etNumberInput"
+            tools:text="@string/unit_mpa" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
