@@ -11,6 +11,7 @@ import id.cbm.main.cbm_calculator.databinding.ActivityMainEngineerBinding
 import id.cbm.main.cbm_calculator.ui.engineer.adapter.MainMenuGridAdapter
 import id.cbm.main.cbm_calculator.ui.engineer.adapter.MenuEngineerItem
 import id.cbm.main.cbm_calculator.ui.engineer.form.RequestFormActivity
+import id.cbm.main.cbm_calculator.ui.engineer.form.customer.DataCustomerActivity
 
 class MainEngineerActivity : BaseActivity<ActivityMainEngineerBinding>() {
 
@@ -47,7 +48,7 @@ class MainEngineerActivity : BaseActivity<ActivityMainEngineerBinding>() {
                             startActivity(
                                 Intent(
                                     this@MainEngineerActivity,
-                                    RequestFormActivity::class.java,
+                                    DataCustomerActivity::class.java,
                                 ),
                             )
                         }

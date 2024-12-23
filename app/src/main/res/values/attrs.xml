@@ -18,4 +18,9 @@
         <attr name="leftSymbol" format="string" />
     </declare-styleable>
 
+    <declare-styleable name="CustomTextViewLabelValue">
+        <attr name="labelText" format="string" />
+        <attr name="valueText" format="string" />
+    </declare-styleable>
+
 </resources>

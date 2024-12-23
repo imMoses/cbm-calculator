@@ -88,6 +88,71 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_14sdp"
+                app:strokeColor="@color/blue_grey_300"
+                app:strokeWidth="@dimen/_1sdp"
+                app:cardCornerRadius="@dimen/_4sdp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/_6sdp"
+                    android:paddingBottom="@dimen/_6sdp"
+                    android:paddingStart="@dimen/_12sdp"
+                    android:paddingEnd="@dimen/_12sdp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:text="Customer Data"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/_16ssp"
+                        android:layout_marginBottom="@dimen/_6sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <id.cbm.main.cbm_calculator.core.custom.CustomTextViewLabelValue
+                        android:id="@+id/ctvNoPerhitungan"
+                        app:labelText="Perhitungan No:"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <id.cbm.main.cbm_calculator.core.custom.CustomTextViewLabelValue
+                        android:id="@+id/ctvCustomer"
+                        app:labelText="Customer:"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <id.cbm.main.cbm_calculator.core.custom.CustomTextViewLabelValue
+                        android:id="@+id/ctvProyek"
+                        app:labelText="Proyek:"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <id.cbm.main.cbm_calculator.core.custom.CustomTextViewLabelValue
+                        android:id="@+id/ctvSales"
+                        app:labelText="Sales:"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <id.cbm.main.cbm_calculator.core.custom.CustomTextViewLabelValue
+                        android:id="@+id/ctvAsAs"
+                        app:labelText="As As:"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
             <TextView
                 android:text="@string/form_engineer_title_spesifikasi_produk"
                 android:textStyle="bold"

@@ -13,11 +13,13 @@
     <string name="menu_engineer_request_form">Request Form</string>
 
     <!--    DATA CUSTOMER FORM ENGINEER-->
+    <string name="form_engineer_info">Mohon untuk menyertakan dengan lengkap data customer</string>
     <string name="form_engineer_perhitungan_no">Perhitungan No</string>
     <string name="form_engineer_customer">Customer</string>
     <string name="form_engineer_proyek">Proyek</string>
     <string name="form_engineer_sales">Sales</string>
     <string name="form_engineer_as_as">AS-AS</string>
+    <string name="form_engineer_title_customer_data">Customer Data</string>
 
     <!--    UNIT-->
     <string name="unit_MPa">MPa</string>

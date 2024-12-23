@@ -11,6 +11,7 @@ import android.view.View
 import id.cbm.main.cbm_calculator.R
 import id.cbm.main.cbm_calculator.core.base_ui.BaseActivity
 import id.cbm.main.cbm_calculator.databinding.ActivityRequestFormBinding
+import id.cbm.main.cbm_calculator.ui.engineer.form.customer.DataCustomerActivity
 import id.cbm.main.cbm_calculator.utils.CustomRegex
 
 class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
@@ -18,13 +19,38 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
     private var bentangPlatY = 0.0
     private var bentangPlayX = 0.0
 
+    private var dataPerhitunganNo = "-"
+    private var dataCust = "-"
+    private var dataProyek = "-"
+    private var dataSales = "-"
+    private var dataAsas = "-"
+
     override fun getViewBinding() = ActivityRequestFormBinding.inflate(layoutInflater)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initIntentExtras(savedInstanceState)
         initUI()
         initListener()
         resetKoefisienResult()
+    }
+
+    private fun initIntentExtras(savedInstanceState: Bundle?) {
+        intent?.let {
+            dataPerhitunganNo = intent.getStringExtra(DataCustomerActivity.DC_PERHITUNGAN) ?: "-"
+            dataCust = intent.getStringExtra(DataCustomerActivity.DC_CUSTOMER) ?: "-"
+            dataProyek = intent.getStringExtra(DataCustomerActivity.DC_PROYEK) ?: "-"
+            dataSales = intent.getStringExtra(DataCustomerActivity.DC_SALES) ?: "-"
+            dataAsas = intent.getStringExtra(DataCustomerActivity.DC_ASAS) ?: "-"
+
+            binding.apply {
+                ctvNoPerhitungan.setValueText(dataPerhitunganNo)
+                ctvCustomer.setValueText(dataCust)
+                ctvProyek.setValueText(dataProyek)
+                ctvSales.setValueText(dataSales)
+                ctvAsAs.setValueText(dataAsas)
+            }
+        }
     }
 
     private fun initUI() {
