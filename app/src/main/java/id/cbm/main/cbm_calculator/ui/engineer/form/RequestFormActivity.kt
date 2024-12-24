@@ -8,11 +8,13 @@ import android.text.TextWatcher
 import android.text.style.RelativeSizeSpan
 import android.text.style.SubscriptSpan
 import android.view.View
+import android.widget.Toast
 import id.cbm.main.cbm_calculator.R
 import id.cbm.main.cbm_calculator.core.base_ui.BaseActivity
 import id.cbm.main.cbm_calculator.databinding.ActivityRequestFormBinding
 import id.cbm.main.cbm_calculator.ui.engineer.form.customer.DataCustomerActivity
 import id.cbm.main.cbm_calculator.utils.CustomRegex
+import id.cbm.main.cbm_calculator.utils.setSafeOnClickListener
 
 class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
 
@@ -148,6 +150,10 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                     }
                 }
             })
+
+            btnSave.setSafeOnClickListener {
+                Toast.makeText(this@RequestFormActivity, "Tersimpan!", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

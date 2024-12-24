@@ -17,10 +17,10 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (BuildConfig.DEBUG) {
-            binding.tieEmail.setText("hello@gmail.com")
-            binding.tiePassword.setText("test123")
-        }
+//        if (BuildConfig.DEBUG) {
+//            binding.tieEmail.setText("hello@gmail.com")
+//            binding.tiePassword.setText("test123")
+//        }
         binding.tvAppVersion.text = String.format("v.%s", BuildConfig.VERSION_NAME)
 
         binding.btnSignIn.setSafeOnClickListener {
