@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,7 +19,6 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/_4sdp"
         app:layout_constraintTop_toBottomOf="@+id/appBar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,8 +28,6 @@
             android:id="@+id/lyParent"
             android:paddingTop="@dimen/_10sdp"
             android:paddingBottom="@dimen/_10sdp"
-            android:paddingStart="@dimen/_16sdp"
-            android:paddingEnd="@dimen/_16sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -38,6 +36,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/_14sdp"
+                android:layout_marginStart="@dimen/_14sdp"
+                android:layout_marginEnd="@dimen/_14sdp"
                 app:strokeColor="@color/blue_grey_300"
                 app:strokeWidth="@dimen/_1sdp"
                 app:cardCornerRadius="@dimen/_4sdp"
@@ -99,587 +99,160 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <TextView
-                android:text="@string/form_engineer_title_spesifikasi_produk"
-                android:textStyle="bold"
-                android:textSize="@dimen/_14ssp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <!--            TESTING-->
-<!--            <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation-->
-<!--                android:id="@+id/etTest"-->
-<!--                app:titleSection="This is testing"-->
-<!--                app:unit="@string/unit_mm4m"-->
-<!--                app:leftSymbol="@string/symbol_fy"-->
-<!--                android:layout_marginTop="@dimen/_14sdp"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"/>-->
-
-            <!--            METAL DECK YIELD-->
-            <TextView
-                android:text="@string/form_engineer_metal_deck_yield_strength"
-                android:layout_marginTop="@dimen/_14sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
+                android:id="@+id/lyFormSection1"
+                android:layout_marginStart="@dimen/_14sdp"
+                android:layout_marginEnd="@dimen/_14sdp"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/tvSymbol1"
-                    tools:text="@string/symbol_fy"
-                    android:paddingBottom="@dimen/_4sdp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/etMetalYield"
-                    app:layout_constraintBottom_toBottomOf="@+id/etMetalYield" />
+                    android:text="@string/form_engineer_title_spesifikasi_produk"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_14ssp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-                <EditText
+
+                <!--            METAL DECK YIELD-->
+                <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
                     android:id="@+id/etMetalYield"
-                    android:inputType="numberDecimal"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_6sdp"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tvSymbol1"
-                    app:layout_constraintEnd_toStartOf="@+id/tvUnit1"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:imeOptions="actionNext"
-                    tools:text="123092" />
-
-                <TextView
-                    android:id="@+id/tvUnit1"
-                    android:text="@string/unit_mpa"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/etMetalYield"
-                    app:layout_constraintBottom_toBottomOf="@+id/etMetalYield" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    app:titleSection="@string/form_engineer_metal_deck_yield_strength"
+                    app:unit="@string/unit_mpa"
+                    app:leftSymbol="@string/symbol_fy"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
 
-            <!--            METAL DECK UTIMATE-->
-            <TextView
-                android:text="@string/form_engineer_metal_deck_ultimate_strength"
-                android:layout_marginTop="@dimen/_14sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tvSymbol2"
-                    android:text="@string/symbol_fu"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/etMetalUltimate"
-                    app:layout_constraintBottom_toBottomOf="@+id/etMetalUltimate" />
-
-                <EditText
+                <!--            METAL DECK UTIMATE-->
+                <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
                     android:id="@+id/etMetalUltimate"
-                    android:inputType="numberDecimal"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_6sdp"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tvSymbol2"
-                    app:layout_constraintEnd_toStartOf="@+id/tvUnit2"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:imeOptions="actionNext"
-                    tools:text="123092" />
+                    app:titleSection="@string/form_engineer_metal_deck_ultimate_strength"
+                    app:unit="@string/unit_mpa"
+                    app:leftSymbol="@string/symbol_fu"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-                <TextView
-                    android:id="@+id/tvUnit2"
-                    android:text="@string/unit_mpa"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/etMetalUltimate"
-                    app:layout_constraintBottom_toBottomOf="@+id/etMetalUltimate" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            <!--            METAL DECK MODULUS-->
-            <TextView
-                android:text="@string/form_engineer_metal_deck_modulus_elasticity"
-                android:layout_marginTop="@dimen/_14sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tvSymbol3"
-                    android:text="@string/symbol_E"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/etMetalModulus"
-                    app:layout_constraintBottom_toBottomOf="@+id/etMetalModulus" />
-
-                <EditText
+                <!--            METAL DECK MODULUS-->
+                <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
                     android:id="@+id/etMetalModulus"
-                    android:inputType="numberDecimal"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_6sdp"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tvSymbol3"
-                    app:layout_constraintEnd_toStartOf="@+id/tvUnit3"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:imeOptions="actionNext"
-                    tools:text="123092" />
+                    app:titleSection="@string/form_engineer_metal_deck_modulus_elasticity"
+                    app:unit="@string/unit_mm"
+                    app:leftSymbol="@string/symbol_E"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-                <TextView
-                    android:id="@+id/tvUnit3"
-                    android:text="@string/unit_mm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/etMetalModulus"
-                    app:layout_constraintBottom_toBottomOf="@+id/etMetalModulus" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <!--            METAL DECK THICKNESS-->
-            <TextView
-                android:text="@string/form_engineer_metal_deck_thickness"
-                android:layout_marginTop="@dimen/_14sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tvSymbol4"
-                    android:text="@string/symbol_t"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/etMetalThickness"
-                    app:layout_constraintBottom_toBottomOf="@+id/etMetalThickness" />
-
-                <EditText
+                <!--            METAL DECK THICKNESS-->
+                <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
                     android:id="@+id/etMetalThickness"
-                    android:inputType="numberDecimal"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_6sdp"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tvSymbol4"
-                    app:layout_constraintEnd_toStartOf="@+id/tvUnit4"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:imeOptions="actionNext"
-                    tools:text="123092" />
+                    app:titleSection="@string/form_engineer_metal_deck_thickness"
+                    app:unit="@string/symbol_t"
+                    app:leftSymbol="@string/symbol_E"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-                <TextView
-                    android:id="@+id/tvUnit4"
-                    android:text="@string/unit_mm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/etMetalThickness"
-                    app:layout_constraintBottom_toBottomOf="@+id/etMetalThickness" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <!--            INERTIAL MOMENT-->
-            <TextView
-                android:text="@string/form_engineer_intertial_moment"
-                android:layout_marginTop="@dimen/_14sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tvSymbol5"
-                    android:text="@string/symbol_lx"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/etInertialMoment"
-                    app:layout_constraintBottom_toBottomOf="@+id/etInertialMoment" />
-
-                <EditText
+                <!--            INERTIAL MOMENT-->
+                <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
                     android:id="@+id/etInertialMoment"
-                    android:inputType="numberDecimal"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_6sdp"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tvSymbol5"
-                    app:layout_constraintEnd_toStartOf="@+id/tvUnit5"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:imeOptions="actionDone"
-                    tools:text="123092" />
+                    app:titleSection="@string/form_engineer_intertial_moment"
+                    app:unit="@string/unit_mm4m"
+                    app:leftSymbol="@string/symbol_lx"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
                 <TextView
-                    android:id="@+id/tvUnit5"
-                    android:text="@string/unit_mm4m"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/etInertialMoment"
-                    app:layout_constraintBottom_toBottomOf="@+id/etInertialMoment" />
+                    android:text="@string/form_engineer_title_data_bahan_struktur"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_14ssp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            <TextView
-                android:text="@string/form_engineer_title_data_bahan_struktur"
-                android:textStyle="bold"
-                android:textSize="@dimen/_14ssp"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <!--            KUAT TEKAN BETON-->
-            <TextView
-                android:text="@string/form_engineer_kuat_tekan_beton"
-                android:layout_marginTop="@dimen/_14sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tvSymbol6"
-                    android:text="@string/symbol_fc1"
-                    android:paddingBottom="@dimen/_4sdp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/etKuatTekanBeton"
-                    app:layout_constraintBottom_toBottomOf="@+id/etKuatTekanBeton" />
-
-                <EditText
+                <!--            KUAT TEKAN BETON-->
+                <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
                     android:id="@+id/etKuatTekanBeton"
-                    android:inputType="numberDecimal"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_6sdp"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tvSymbol6"
-                    app:layout_constraintEnd_toStartOf="@+id/tvUnit6"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:imeOptions="actionDone"
-                    tools:text="21,7" />
+                    app:titleSection="@string/form_engineer_kuat_tekan_beton"
+                    app:unit="@string/unit_MPa"
+                    app:leftSymbol="@string/symbol_fc1"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-                <TextView
-                    android:id="@+id/tvUnit6"
-                    android:text="@string/unit_MPa"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/etKuatTekanBeton"
-                    app:layout_constraintBottom_toBottomOf="@+id/etKuatTekanBeton" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <!--            KUAT TARIK BETON-->
-            <TextView
-                android:text="@string/form_engineer_kuat_tarik_beton"
-                android:layout_marginTop="@dimen/_14sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tvSymbol7"
-                    android:text="@string/symbol_fct"
-                    android:paddingBottom="@dimen/_4sdp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/etKuatTarikBeton"
-                    app:layout_constraintBottom_toBottomOf="@+id/etKuatTarikBeton" />
-
-                <EditText
+                <!--            KUAT TARIK BETON-->
+                <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
                     android:id="@+id/etKuatTarikBeton"
-                    android:inputType="numberDecimal"
-                    android:layout_width="0dp"
-                    android:enabled="false"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_6sdp"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tvSymbol7"
-                    app:layout_constraintEnd_toStartOf="@+id/tvUnit7"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:imeOptions="actionNext"
-                    tools:text="21,7" />
+                    app:titleSection="@string/form_engineer_kuat_tarik_beton"
+                    app:unit="@string/unit_MPa"
+                    app:leftSymbol="@string/symbol_fct"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-                <TextView
-                    android:id="@+id/tvUnit7"
-                    android:text="@string/unit_MPa"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/etKuatTarikBeton"
-                    app:layout_constraintBottom_toBottomOf="@+id/etKuatTarikBeton" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <!--            TEGANGAN LELEH BAJA-->
-            <TextView
-                android:text="@string/form_engineer_tegangan_leleh_baja_tulangan"
-                android:layout_marginTop="@dimen/_14sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tvSymbol8"
-                    android:text="@string/symbol_fst"
-                    android:paddingBottom="@dimen/_4sdp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/etTeganganLeleh"
-                    app:layout_constraintBottom_toBottomOf="@+id/etTeganganLeleh" />
-
-                <EditText
+                <!--            TEGANGAN LELEH BAJA-->
+                <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
                     android:id="@+id/etTeganganLeleh"
-                    android:inputType="numberDecimal"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_6sdp"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tvSymbol8"
-                    app:layout_constraintEnd_toStartOf="@+id/tvUnit8"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:imeOptions="actionDone"
-                    tools:text="21,7" />
+                    app:titleSection="@string/form_engineer_tegangan_leleh_baja_tulangan"
+                    app:unit="@string/unit_MPa"
+                    app:leftSymbol="@string/symbol_fst"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
                 <TextView
-                    android:id="@+id/tvUnit8"
-                    android:text="@string/unit_MPa"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/etTeganganLeleh"
-                    app:layout_constraintBottom_toBottomOf="@+id/etTeganganLeleh" />
+                    android:text="@string/form_engineer_title_data_pelat_lantai"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_14ssp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <TextView
-                android:text="@string/form_engineer_title_data_pelat_lantai"
-                android:textStyle="bold"
-                android:textSize="@dimen/_14ssp"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <!--            PANJANG BENTANG PELAT Y-->
-            <TextView
-                android:text="@string/form_engineer_panjang_bentang_pelat_arah_y"
-                android:layout_marginTop="@dimen/_14sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tvSymbol9"
-                    android:text="@string/symbol_Ly"
-                    android:paddingBottom="@dimen/_4sdp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/etPanjangBentangPlatY"
-                    app:layout_constraintBottom_toBottomOf="@+id/etPanjangBentangPlatY" />
-
-                <EditText
+                <!--            PANJANG BENTANG PELAT Y-->
+                <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
                     android:id="@+id/etPanjangBentangPlatY"
-                    android:inputType="numberDecimal"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_6sdp"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tvSymbol9"
-                    app:layout_constraintEnd_toStartOf="@+id/tvUnit9"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:imeOptions="actionDone"
-                    tools:text="21,7" />
+                    app:titleSection="@string/form_engineer_panjang_bentang_pelat_arah_y"
+                    app:unit="@string/unit_m"
+                    app:leftSymbol="@string/symbol_Ly"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-                <TextView
-                    android:id="@+id/tvUnit9"
-                    android:text="@string/unit_m"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/etPanjangBentangPlatY"
-                    app:layout_constraintBottom_toBottomOf="@+id/etPanjangBentangPlatY" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <!--            PANJANG BENTANG PELAT X-->
-            <TextView
-                android:text="@string/form_engineer_panjang_bentang_pelat_arah_x"
-                android:layout_marginTop="@dimen/_14sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tvSymbol10"
-                    android:text="@string/symbol_Lx"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/etPanjangBentangPlatX"
-                    app:layout_constraintBottom_toBottomOf="@+id/etPanjangBentangPlatX" />
-
-                <EditText
+                <!--            PANJANG BENTANG PELAT X-->
+                <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
                     android:id="@+id/etPanjangBentangPlatX"
-                    android:inputType="numberDecimal"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_6sdp"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tvSymbol10"
-                    app:layout_constraintEnd_toStartOf="@+id/tvUnit10"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:imeOptions="actionDone"
-                    tools:text="21,7" />
+                    app:titleSection="@string/form_engineer_panjang_bentang_pelat_arah_x"
+                    app:unit="@string/unit_m"
+                    app:leftSymbol="@string/symbol_Lx"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-                <TextView
-                    android:id="@+id/tvUnit10"
-                    android:text="@string/unit_m"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/etPanjangBentangPlatX"
-                    app:layout_constraintBottom_toBottomOf="@+id/etPanjangBentangPlatX" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <!--            TEBAL PLAT LANTAI-->
-            <TextView
-                android:text="@string/form_engineer_tebal_pelat_lantai"
-                android:layout_marginTop="@dimen/_14sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tvSymbol11"
-                    android:text="@string/symbol_h"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/etTebalPelatLantai"
-                    app:layout_constraintBottom_toBottomOf="@+id/etTebalPelatLantai" />
-
-                <EditText
+                <!--            TEBAL PLAT LANTAI-->
+                <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
                     android:id="@+id/etTebalPelatLantai"
-                    android:inputType="numberDecimal"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_6sdp"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tvSymbol11"
-                    app:layout_constraintEnd_toStartOf="@+id/tvUnit11"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:imeOptions="actionNext"
-                    tools:text="21,7" />
+                    app:titleSection="@string/form_engineer_tebal_pelat_lantai"
+                    app:unit="@string/unit_mm"
+                    app:leftSymbol="@string/symbol_h"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-                <TextView
-                    android:id="@+id/tvUnit11"
-                    android:text="@string/unit_mm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/etTebalPelatLantai"
-                    app:layout_constraintBottom_toBottomOf="@+id/etTebalPelatLantai" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <!--            TEBAL PLAY LANTAI-->
-            <TextView
-                android:text="@string/form_engineer_tebal_bersih_selimut_beton"
-                android:layout_marginTop="@dimen/_14sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tvSymbol12"
-                    android:text="@string/symbol_ts"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/etTebalBersihSelimut"
-                    app:layout_constraintBottom_toBottomOf="@+id/etTebalBersihSelimut" />
-
-                <EditText
+                <!--            TEBAL PLAY LANTAI-->
+                <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
                     android:id="@+id/etTebalBersihSelimut"
-                    android:inputType="numberDecimal"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/_6sdp"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/tvSymbol12"
-                    app:layout_constraintEnd_toStartOf="@+id/tvUnit12"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:imeOptions="actionDone"
-                    tools:text="21,7" />
+                    app:titleSection="@string/form_engineer_tebal_bersih_selimut_beton"
+                    app:unit="@string/unit_mm"
+                    app:leftSymbol="@string/symbol_ts"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-                <TextView
-                    android:id="@+id/tvUnit12"
-                    android:text="@string/unit_mm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/etTebalBersihSelimut"
-                    app:layout_constraintBottom_toBottomOf="@+id/etTebalBersihSelimut" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/clResultKoefisien"
@@ -737,6 +310,8 @@
                 android:id="@+id/btnSave"
                 android:layout_marginTop="@dimen/_18sdp"
                 android:layout_marginBottom="@dimen/_12sdp"
+                android:layout_marginStart="@dimen/_14sdp"
+                android:layout_marginEnd="@dimen/_14sdp"
                 android:text="Simpan Data"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>

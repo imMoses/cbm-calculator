@@ -2,12 +2,10 @@ package id.cbm.main.cbm_calculator.ui.engineer.form
 
 import android.os.Bundle
 import android.text.Editable
-import android.text.Html
 import android.text.SpannableString
 import android.text.TextWatcher
 import android.text.style.RelativeSizeSpan
 import android.text.style.SubscriptSpan
-import android.view.View
 import android.widget.Toast
 import id.cbm.main.cbm_calculator.R
 import id.cbm.main.cbm_calculator.core.base_ui.BaseActivity
@@ -56,45 +54,42 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
     }
 
     private fun initUI() {
-        binding.appBar.setNavBackListener { onCustomBackPressed() }
+        binding.apply {
+            appBar.setNavBackListener { onCustomBackPressed() }
 
-        binding.etKuatTarikBeton.setText("2,17")
+            etKuatTarikBeton.setValueText("2,17")
 
-//        val testFqtext = SpannableString("fq")
-//        testFqtext.setSpan(SubscriptSpan(), 1, 2, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
-//        testFqtext.setSpan(RelativeSizeSpan(0.8f), 1,2, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
-//        binding.etTest.setTextCustomSpannebleSymbol(testFqtext)
+            val textFy = SpannableString("fy")
+            textFy.setSpan(SubscriptSpan(), 1, 2, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
+            textFy.setSpan(RelativeSizeSpan(0.8f), 1,2, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
+            etMetalYield.setSymbolTextSpanneble(textFy)
+            etPanjangBentangPlatX.setSymbolTextSpanneble(textFy)
 
-        val textFy = SpannableString("fy")
-        textFy.setSpan(SubscriptSpan(), 1, 2, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
-        textFy.setSpan(RelativeSizeSpan(0.8f), 1,2, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
-        binding.tvSymbol1.text = textFy
+            val textFc1 = SpannableString(resources.getString(R.string.symbol_fc1))
+            textFc1.setSpan(SubscriptSpan(), 1, 2, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
+            textFc1.setSpan(RelativeSizeSpan(0.8f), 1,2, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
+            etKuatTekanBeton.setSymbolTextSpanneble(textFc1)
 
-        val textFc1 = SpannableString(resources.getString(R.string.symbol_fc1))
-        textFc1.setSpan(SubscriptSpan(), 1, 2, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
-        textFc1.setSpan(RelativeSizeSpan(0.8f), 1,2, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
-        binding.tvSymbol6.text = textFc1
+            val textFct = SpannableString("fct")
+            textFct.setSpan(SubscriptSpan(), 1, 3, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
+            textFct.setSpan(RelativeSizeSpan(0.8f), 1,3, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
+            etKuatTarikBeton.setSymbolTextSpanneble(textFc1)
 
-        val textFct = SpannableString("fct")
-        textFct.setSpan(SubscriptSpan(), 1, 3, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
-        textFct.setSpan(RelativeSizeSpan(0.8f), 1,3, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
-        binding.tvSymbol7.text = textFct
+            val textFst = SpannableString("fst")
+            textFst.setSpan(SubscriptSpan(), 1, 3, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
+            textFst.setSpan(RelativeSizeSpan(0.8f), 1,3, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
+            etTeganganLeleh.setSymbolTextSpanneble(textFst)
 
-        val textFst = SpannableString("fst")
-        textFst.setSpan(SubscriptSpan(), 1, 3, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
-        textFst.setSpan(RelativeSizeSpan(0.8f), 1,3, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
-        binding.tvSymbol8.text = textFst
-
-        val textLy = SpannableString("Ly")
-        textLy.setSpan(SubscriptSpan(), 1, 2, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
-        textLy.setSpan(RelativeSizeSpan(0.8f), 1,2, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
-        binding.tvSymbol9.text = textLy
-
+            val textLy = SpannableString("Ly")
+            textLy.setSpan(SubscriptSpan(), 1, 2, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
+            textLy.setSpan(RelativeSizeSpan(0.8f), 1,2, SpannableString.SPAN_EXCLUSIVE_EXCLUSIVE)
+            etPanjangBentangPlatY.setSymbolTextSpanneble(textLy)
+        }
     }
 
     private fun initListener() {
         binding.apply {
-            etPanjangBentangPlatY.addTextChangedListener(object : TextWatcher {
+            etPanjangBentangPlatY.addTextChangeListener(object : TextWatcher {
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 }
                 override fun onTextChanged(text: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -103,7 +98,7 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                             val regex = CustomRegex.ZERO_FIRST_NOT_ALLOWED.toRegex()
                             if (it.contains(regex)) {
                                 val cleanText = it.replace(regex, "")
-                                etPanjangBentangPlatY.setText(cleanText)
+                                etPanjangBentangPlatY.setValueText(cleanText)
                                 etPanjangBentangPlatY.setSelection(cleanText.length)
                             }
                         }
@@ -122,7 +117,7 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                 }
             })
 
-            etPanjangBentangPlatX.addTextChangedListener(object : TextWatcher {
+            etPanjangBentangPlatX.addTextChangeListener(object : TextWatcher {
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 }
 
@@ -132,7 +127,7 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                             val regex = CustomRegex.ZERO_FIRST_NOT_ALLOWED.toRegex()
                             if (it.contains(regex)) {
                                 val cleanText = it.replace(regex, "")
-                                etPanjangBentangPlatX.setText(cleanText)
+                                etPanjangBentangPlatX.setValueText(cleanText)
                                 etPanjangBentangPlatX.setSelection(cleanText.length)
                             }
                         }

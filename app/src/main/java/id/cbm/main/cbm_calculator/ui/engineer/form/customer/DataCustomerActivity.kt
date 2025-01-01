@@ -43,12 +43,12 @@ class DataCustomerActivity : BaseActivity<ActivityDataCustomerBinding>() {
                 }
 
                 if (etCustomer.text.isNullOrBlank()) {
-                    etPerhitunganNo.error = "Mohon dilengkapi nama Customer"
+                    etCustomer.error = "Mohon dilengkapi nama Customer"
                     return@setSafeOnClickListener
                 }
 
                 if (etProyek.text.isNullOrBlank()) {
-                    etPerhitunganNo.error = "Mohon dilengkapi nama Proyek"
+                    etProyek.error = "Mohon dilengkapi nama Proyek"
                     return@setSafeOnClickListener
                 }
 

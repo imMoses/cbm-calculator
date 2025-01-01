@@ -23,7 +23,7 @@ class CustomTextViewLabelValue @JvmOverloads constructor(
         val typeArray = context.obtainStyledAttributes(attrs, R.styleable.CustomTextViewLabelValue)
 
         val labelText = typeArray.getString(R.styleable.CustomTextViewLabelValue_labelText)
-        val valueText  = typeArray.getString(R.styleable.CustomTextViewLabelValue_valueText)
+        val valueText = typeArray.getString(R.styleable.CustomTextViewLabelValue_valueText)
 
         binding.tvLabel.text = labelText
         binding.tvValue.text = valueText

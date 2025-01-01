@@ -2,9 +2,11 @@ package id.cbm.main.cbm_calculator.core.custom
 
 import android.content.Context
 import android.text.SpannableString
+import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
+import androidx.core.widget.addTextChangedListener
 import id.cbm.main.cbm_calculator.R
 import id.cbm.main.cbm_calculator.databinding.CustomEdittextFormulaUnitBinding
 
@@ -30,8 +32,24 @@ class CustomEditTextCalculation @JvmOverloads constructor(
         typeArray.recycle()
     }
 
-    fun setTextCustomSpannebleSymbol(span: SpannableString) {
+    fun setSymbolTextSpanneble(span: SpannableString) {
         binding.tvSymbol.text = span
+    }
+
+    fun setUnitTextSpannable(span: SpannableString) {
+        binding.tvUnit.text = span
+    }
+
+    fun addTextChangeListener(listener: TextWatcher) {
+        binding.etNumberInput.addTextChangedListener(listener)
+    }
+
+    fun setSelection(index: Int) {
+        binding.etNumberInput.setSelection(index)
+    }
+
+    fun setValueText(text: String) {
+        binding.etNumberInput.setText(text)
     }
 
     fun isEnableEditText(isEnable: Boolean) {
