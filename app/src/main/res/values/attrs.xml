@@ -31,6 +31,9 @@
 
     <declare-styleable name="CustomEditTextThreeColumns">
         <attr name="itemRowsLabel" format="string" />
+        <attr name="enableBeratSatuan" format="boolean" />
+        <attr name="enableTebal" format="boolean" />
+        <attr name="enableQ" format="boolean" />
     </declare-styleable>
 
 </resources>

@@ -88,7 +88,7 @@
     <string name="form_engineer_column_tebal">Tebal (m)</string>
     <string name="form_engineer_column_Q">Q(kg/m\u00B2)</string>
     <string name="form_engineer_row_berat_sendiri_pelat_lantai">1. Berat sendiri pelat lantai (kg/m\u00B3)</string>
-    <string name="form_engineer_row_berat_finishing_lantai">2. Berat sendiri pelat lantai (kg/m\u00B3)</string>
+    <string name="form_engineer_row_berat_finishing_lantai">2. Berat finishing lantai (kg/m\u00B3)</string>
     <string name="form_engineer_row_berat_plafond_dan_rangka">3. Berat plafond dan rangka (kg/m\u00B2)</string>
     <string name="form_engineer_row_berat_instalasi_ME">4. Berat instalasi ME (kg/m\u00B2)</string>
     <string name="form_engineer_row_total_beban_mati">Total beban mati</string>
@@ -122,9 +122,9 @@
     <string name="form_engineer_kapasitas_momen_positif_karena_tulangan_tambahan">Kapasitas momen positif karena tulangan tambahan (kapasitas 75%)</string>
     <string name="form_engineer_sub_title_kapasitas_momen_negatif_metal_deck_rencana_untuk_pelat_menerus">d. Kapasitas Momen Negatif Metal Deck Rencana Untuk Pelat Menerus</string>
     <string name="form_engineer_momen_negatif_ultimate">Momen negatif ultimate</string>
-    <string name="form_engineer_lebar_fiktif">Lebar fiktif ; </string>
+    <string name="form_engineer_lebar_fiktif">Lebar fiktif</string>
     <string name="form_engineer_lengan_momen_gaya_tarik_tulangan">Lengan momen gaya tarik tulangan</string>
-    <string name="form_engineer_momen_relatif_m">Momen relatif m</string>
+    <string name="form_engineer_momen_relatif_m">Momen relatif</string>
     <string name="form_engineer_mechanical_reinforcement">Mechanical Reinforcement</string>
     <string name="form_engineer_kebutuhan_tulangan_negatif">Kebutuhan tulangan negatif </string>
     <string name="form_engineer_tegangan_leleh_tulangan_tambahan">Tegangan leleh tulangan tambahan</string>

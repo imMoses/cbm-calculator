@@ -18,6 +18,7 @@
         app:unit="@string/unit_kNm"
         app:titleSection="@string/form_engineer_momen_negatif_ultimate"
         app:valueTextAligment="right"
+        app:addFormulaInfo="true"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -27,6 +28,7 @@
         app:titleSection="@string/form_engineer_lebar_fiktif"
         app:unit="@string/unit_mm"
         app:valueTextAligment="right"
+        app:addFormulaInfo="true"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -64,6 +66,7 @@
         app:unit="@string/unit_mm"
         app:leftSymbol="X"
         app:valueTextAligment="right"
+        app:addFormulaInfo="true"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -71,7 +74,6 @@
     <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
         android:id="@+id/etMechanicalReinforcement_3"
         android:layout_marginTop="@dimen/_10sdp"
-        app:valueTextAligment="right"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -101,7 +103,7 @@
 
         <TextView
             android:id="@+id/tvResult"
-            android:text="Hasil perhitungan: "
+            android:text="OK"
             android:textStyle="bold|italic"
             android:textSize="@dimen/_14ssp"
             android:layout_width="wrap_content"

@@ -52,7 +52,7 @@
             app:layout_constraintStart_toEndOf="@+id/tvSymbol"
             app:layout_constraintEnd_toStartOf="@+id/tvUnit"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:imeOptions="actionNext"
+            android:imeOptions="actionDone"
             tools:text="123092" />
 
         <TextView

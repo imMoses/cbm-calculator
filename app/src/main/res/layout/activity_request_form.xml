@@ -189,6 +189,7 @@
                     app:titleSection="@string/form_engineer_kuat_tarik_beton"
                     app:unit="@string/unit_MPa"
                     app:leftSymbol="@string/symbol_fct"
+                    app:disabledInputText="true"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -259,11 +260,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_14sdp"
+                android:layout_marginEnd="@dimen/_14sdp"
                 android:paddingTop="@dimen/_12sdp"
                 android:paddingBottom="@dimen/_12sdp"
                 android:paddingStart="@dimen/_16sdp"
                 android:paddingEnd="@dimen/_16sdp"
-                android:background="@color/gray_container_result" >
+                android:background="@drawable/bg_line_corner_rounded">
 
                 <TextView
                     android:id="@+id/tvTitleKoefisien"

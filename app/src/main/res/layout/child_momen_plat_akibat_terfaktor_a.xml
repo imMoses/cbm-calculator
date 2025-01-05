@@ -25,6 +25,7 @@
         android:id="@+id/etLuasPenampangNominalMetalDeck"
         app:titleSection="@string/form_engineer_luas_penampang_nominal_metal"
         app:unit="@string/unit_mm2_m"
+        app:disabledInputText="true"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -33,6 +34,7 @@
         android:id="@+id/etTegangnLelehMetalDeck"
         app:titleSection="@string/form_engineer_tegangan_leleh_metal_deck"
         app:unit="@string/unit_MPa"
+        app:disabledInputText="true"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -41,6 +43,7 @@
         android:id="@+id/etLenganMomengayaTarik"
         app:titleSection="@string/form_engineer_lengan_momen_gaya_tarik"
         app:unit="@string/unit_mm"
+        app:disabledInputText="true"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -49,6 +52,7 @@
         android:id="@+id/etPhi"
         app:titleSection="@string/form_engineer_phi_as"
         app:leftSymbol="@string/symbol_phi"
+        app:disabledInputText="true"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -57,6 +61,7 @@
         android:id="@+id/etFccKuatTekanBeton"
         app:titleSection="@string/form_engineer_fcc"
         app:unit="@string/unit_MPa"
+        app:disabledInputText="true"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -64,6 +69,7 @@
     <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
         android:id="@+id/etFormulaMcap"
         app:unit="@string/unit_kNm"
+        app:disabledInputText="true"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -71,6 +77,7 @@
     <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
         android:id="@+id/etFormulaMact"
         app:unit="@string/unit_kNm"
+        app:disabledInputText="true"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

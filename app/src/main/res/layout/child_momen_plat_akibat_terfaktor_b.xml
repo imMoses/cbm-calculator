@@ -17,6 +17,7 @@
         android:id="@+id/etTeganganLelehBajaTulangan"
         app:titleSection="@string/form_engineer_tegangan_leleh_baja_tulangan"
         app:unit="@string/unit_MPa"
+        app:disabledInputText="true"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -30,7 +31,7 @@
         android:layout_height="wrap_content" />
 
     <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
-        android:id="@+id/etjarakTulangan"
+        android:id="@+id/etJarakTulangan"
         app:titleSection="@string/form_engineer_jarak_tulangan"
         app:unit="@string/unit_mm"
         app:leftSymbol="S"
@@ -50,6 +51,7 @@
         android:id="@+id/etLenganMomenGayaTarik"
         app:titleSection="@string/form_engineer_lengan_momen_gaya_tarik"
         app:unit="@string/unit_mm"
+        app:disabledInputText="true"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -65,6 +67,7 @@
     <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
         android:id="@+id/etFormulaMadd"
         app:unit="@string/unit_kNm"
+        app:disabledInputText="true"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -72,6 +75,7 @@
     <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
         android:id="@+id/etFormulaMcaptotal"
         app:unit="@string/unit_kNm"
+        app:disabledInputText="true"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

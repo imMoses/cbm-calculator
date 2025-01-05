@@ -1,12 +1,15 @@
 package id.cbm.main.cbm_calculator.ui.engineer.form
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.SpannableString
 import android.text.TextWatcher
 import android.text.style.RelativeSizeSpan
 import android.text.style.SubscriptSpan
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import id.cbm.main.cbm_calculator.R
 import id.cbm.main.cbm_calculator.core.base_ui.BaseActivity
 import id.cbm.main.cbm_calculator.databinding.ActivityRequestFormBinding
@@ -16,6 +19,10 @@ import id.cbm.main.cbm_calculator.utils.CustomRegex
 import id.cbm.main.cbm_calculator.utils.HelperTextSpannable
 import id.cbm.main.cbm_calculator.utils.LetterModel
 import id.cbm.main.cbm_calculator.utils.setSafeOnClickListener
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import org.w3c.dom.Text
+import java.util.Locale
 
 class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
 
@@ -60,7 +67,60 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
         binding.apply {
             appBar.setNavBackListener { onCustomBackPressed() }
 
-            etKuatTarikBeton.setValueText("2,17")
+            etMetalYield.addTextChangeListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+                    val text = p0.toString()
+                    if (text.isNotEmpty()) {
+                        lyKapasitasMomenLapangan.etTegangnLelehMetalDeck.setValueText(
+                            text
+                        )
+                    }
+                }
+            })
+
+            etMetalThickness.addTextChangeListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+                    val text = p0.toString()
+                    if (text.isNotEmpty()) {
+                        val calculate = 1219.0 * text.toDouble()
+                        lyKapasitasMomenLapangan.etLuasPenampangNominalMetalDeck.setValueText(
+                            String.format(Locale.US, "%.2f", calculate)
+                        )
+                    }
+                }
+            })
+            etKuatTekanBeton.addTextChangeListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+                    val text = p0.toString()
+                    if (text.isNotEmpty()) {
+                        val calculate = 0.1 * (text.toDoubleOrNull() ?: 0.0)
+                        etKuatTarikBeton.setValueText(calculate.toString())
+                        lyKapasitasMomenLapangan.etFccKuatTekanBeton.setValueText(text)
+                    } else {
+                        etKuatTarikBeton.setValueText("0.0")
+                        lyKapasitasMomenLapangan.etFccKuatTekanBeton.setValueText("0")
+                    }
+                }
+            })
+            etKuatTekanBeton.setValueText("21.7")
 
             val textFy = HelperTextSpannable.subscriptText(
                 rawText = "fy",
@@ -114,6 +174,64 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
 
     private fun init_IV_BebanPelatLantai() {
         binding.apply {
+            // a Beban Mati (DEAD LOAD) table
+            lyBebanPlatLantai.cettBeratSendiri.setBeratSatuan("2400")
+
+            lyBebanPlatLantai.cettBeratFinishingLantai.setBeratSatuan("2200")
+            lyBebanPlatLantai.cettBeratFinishingLantai.setTebalSatuan("0.025")
+
+            lyBebanPlatLantai.cettBeratPlafondRangka.setTebalSatuan("-")
+            lyBebanPlatLantai.cettBeratPlafondRangka.getBeratSatuanEditText().addTextChangedListener(object : TextWatcher{
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun afterTextChanged(text: Editable?) {
+                    lyBebanPlatLantai.cettBeratPlafondRangka.setValueQ(text.toString())
+                    updateTotalBebanMatiQD()
+                }
+            })
+
+
+            lyBebanPlatLantai.cettBeratInstalasiME.setTebalSatuan("-")
+            lyBebanPlatLantai.cettBeratInstalasiME.getBeratSatuanEditText().addTextChangedListener(object : TextWatcher{
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun afterTextChanged(text: Editable?) {
+                    lyBebanPlatLantai.cettBeratInstalasiME.setValueQ(text.toString())
+                    updateTotalBebanMatiQD()
+
+                }
+            })
+
+            etTebalPelatLantai.addTextChangeListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+                override fun afterTextChanged(text: Editable?) {
+                    val tebalPelatLantai = text.toString()
+                    if (tebalPelatLantai.isEmpty().not()) {
+                        val tebal = tebalPelatLantai.toDouble()
+                        val resultTebal = (tebal / 1000.00) - 0.02
+                        lyBebanPlatLantai.cettBeratSendiri.setTebalSatuan(String.format("%.3f", resultTebal))
+
+                        val resultLenganMomenGayaTarik = tebal - 20
+                        lyKapasitasMomenLapangan.etLenganMomengayaTarik.setValueText(String.format(
+                            Locale.US, "%.2f", resultLenganMomenGayaTarik))
+                    } else {
+                        lyBebanPlatLantai.cettBeratSendiri.setTebalSatuan("0.0")
+                        lyKapasitasMomenLapangan.etLenganMomengayaTarik.setValueText("0.0")
+                    }
+                }
+            })
+
             val symbolQl = HelperTextSpannable.subscriptText(
                 rawText = "QL",
                 startIndex = 1,
@@ -121,6 +239,51 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
             )
             lyBebanPlatLantai.etBebanHidupLantaiBangunan.setSymbolTextSpanneble(symbolQl)
             lyBebanPlatLantai.etBebanHidupLantaiBangunanFinal.setSymbolTextSpanneble(symbolQl)
+            lyBebanPlatLantai.etBebanHidupLantaiBangunan.addTextChangeListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun afterTextChanged(p: Editable?) {
+                    val text = p.toString()
+                    if (text.isNotEmpty()) {
+                        val bebanHidupLantaiBangunan = text.toDoubleOrNull() ?: 0.0
+                        val calculate = bebanHidupLantaiBangunan * 0.01
+                        lyBebanPlatLantai.etBebanHidupLantaiBangunanFinal.setValueText(calculate.toString())
+                    } else {
+                        lyBebanPlatLantai.etBebanHidupLantaiBangunanFinal.setValueText("0")
+                    }
+                }
+            })
+            lyBebanPlatLantai.etBebanHidupLantaiBangunanFinal.addTextChangeListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+                    val text = p0.toString()
+                    if (text.isNotEmpty()) {
+                        val totalBebanMati = lyBebanPlatLantai.cetTotalBebanPelatLantai.getEtFinalTotalQ().text.toString().toDoubleOrNull() ?: 0.0
+                        val totalBebanHidupLantai = text.toDoubleOrNull() ?: 0.0
+                        val calculate = (1.2 * totalBebanMati) + (1.6 * totalBebanHidupLantai)
+
+                        lyBebanPlatLantai.etBebanRencanaTerfaktor.setValueText(String.format(Locale.US, "%.2f", calculate))
+
+                        // result M+act in Kapasitas Moment Lapangan Metal
+                        val bebanRencanaTerfaktor = lyBebanPlatLantai.etBebanRencanaTerfaktor.getText().toDoubleOrNull() ?: 0.0
+                        val panjangBentangPelat = etPanjangBentangPlatX.getText().toDoubleOrNull() ?: 0.0
+                        val resultFormulaMact = (bebanRencanaTerfaktor * Math.pow(panjangBentangPelat, 2.0)) / 16
+                        lyKapasitasMomenLapangan.etFormulaMact.setValueText(String.format(Locale.US, "%.2f", resultFormulaMact))
+                    } else {
+                        lyBebanPlatLantai.etBebanRencanaTerfaktor.setValueText("0.0")
+                        lyKapasitasMomenLapangan.etFormulaMact.setValueText("0.0")
+                    }
+                }
+            })
 
             val listLetter = listOf(
                 // QU
@@ -147,6 +310,19 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
         }
     }
 
+    private fun updateTotalBebanMatiQD() {
+        binding.apply {
+            val QBeratSendiri = lyBebanPlatLantai.cettBeratSendiri.getQValue().toDoubleOrNull() ?: 0.0
+            val QBeratFinishing = lyBebanPlatLantai.cettBeratFinishingLantai.getQValue().toDoubleOrNull() ?: 0.0
+            val QBeratPlafond = lyBebanPlatLantai.cettBeratPlafondRangka.getQValue().toDoubleOrNull() ?: 0.0
+            val QBeratInstalasi = lyBebanPlatLantai.cettBeratInstalasiME.getQValue().toDoubleOrNull() ?: 0.0
+            val summary = QBeratSendiri + QBeratFinishing + QBeratPlafond + QBeratInstalasi
+
+            lyBebanPlatLantai.cetTotalBebanPelatLantai.getEtTotalQ().setText(summary.toString())
+            lyBebanPlatLantai.cetTotalBebanPelatLantai.getEtFinalTotalQ().setText((summary / 100.0).toString())
+        }
+    }
+
     private fun init_V_a_KapasitasMomentLapanganMetalDeckRencana() {
         binding.apply {
             lyKapasitasMomenLapangan.etLuasPenampangNominalMetalDeck.setSymbolTextSpanneble(
@@ -156,6 +332,35 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                     endIndex = 2,
                 ),
             )
+            lyKapasitasMomenLapangan.etLuasPenampangNominalMetalDeck.addTextChangeListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+                    val text = p0.toString()
+                    if (text.isNotEmpty()) {
+                        val luasPenampangNominalMetalDeck = lyKapasitasMomenLapangan.etLuasPenampangNominalMetalDeck.getText().toString().toDoubleOrNull() ?: 0.0
+                        val calculate = luasPenampangNominalMetalDeck / (1000 * text.toDouble())
+
+                        lyKapasitasMomenLapangan.etPhi.setValueText(String.format(Locale.US, "%.5f", calculate))
+
+                        val luasPenampang = text.toDoubleOrNull() ?: 0.0
+                        val teganganLeleh = lyKapasitasMomenLapangan.etTegangnLelehMetalDeck.getText().toDoubleOrNull() ?: 0.0
+                        val lenganMomen = lyKapasitasMomenLapangan.etLenganMomengayaTarik.getText().toDoubleOrNull() ?: 0.0
+                        val phi = lyKapasitasMomenLapangan.etPhi.getText().toDoubleOrNull() ?: 0.0
+                        val fcc = lyKapasitasMomenLapangan.etFccKuatTekanBeton.getText().toDoubleOrNull() ?: 0.0
+                        val tenPow = Math.pow(10.0, 6.0)
+                        val summary = luasPenampang * teganganLeleh * lenganMomen * (1 - (phi * teganganLeleh/(2*fcc))) * 0.3 / tenPow
+
+                        lyKapasitasMomenLapangan.etFormulaMcap.setValueText(String.format(Locale.US, String.format("%.2f", summary)))
+                    } else {
+                        lyKapasitasMomenLapangan.etPhi.setValueText("0.0")
+                    }
+                }
+            })
+
 
             lyKapasitasMomenLapangan.etTegangnLelehMetalDeck.setSymbolTextSpanneble(
                 HelperTextSpannable.subscriptText(
@@ -172,6 +377,61 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                     endIndex = 3,
                 ),
             )
+            lyKapasitasMomenLapangan.etLenganMomengayaTarik.addTextChangeListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+                    val text = p0.toString()
+                    if (text.isNotEmpty()) {
+                        val luasPenampangNominalMetalDeck = lyKapasitasMomenLapangan.etLuasPenampangNominalMetalDeck.getText().toDoubleOrNull() ?: 0.0
+                        val calculate = luasPenampangNominalMetalDeck / (1000 * text.toDouble())
+
+                        lyKapasitasMomenLapangan.etPhi.setValueText(String.format(Locale.US, "%.5f", calculate))
+
+                        val luasPenampang = lyKapasitasMomenLapangan.etLuasPenampangNominalMetalDeck.getText().toDoubleOrNull() ?: 0.0
+                        val teganganLeleh = lyKapasitasMomenLapangan.etTegangnLelehMetalDeck.getText().toDoubleOrNull() ?: 0.0
+                        val lenganMomen = text.toDoubleOrNull() ?: 0.0
+                        val phi = lyKapasitasMomenLapangan.etPhi.getText().toDoubleOrNull() ?: 0.0
+                        val fcc = lyKapasitasMomenLapangan.etFccKuatTekanBeton.getText().toDoubleOrNull() ?: 0.0
+                        val tenPow = Math.pow(10.0, 6.0)
+                        val summary = luasPenampang * teganganLeleh * lenganMomen * (1 - (phi * teganganLeleh/(2*fcc))) * 0.3 / tenPow
+
+                        lyKapasitasMomenLapangan.etFormulaMcap.setValueText(String.format(Locale.US, String.format("%.2f", summary)))
+                    } else {
+                        lyKapasitasMomenLapangan.etPhi.setValueText("0.0")
+                        lyKapasitasMomenLapangan.etFormulaMcap.setValueText("0.0")
+                    }
+                }
+            })
+
+            lyKapasitasMomenLapangan.etPhi.addTextChangeListener(object : TextWatcher{
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+                    val text = p0.toString()
+                    if (text.isNotEmpty()) {
+                        val luasPenampang = lyKapasitasMomenLapangan.etLuasPenampangNominalMetalDeck.getText().toDoubleOrNull() ?: 0.0
+                        val teganganLeleh = lyKapasitasMomenLapangan.etTegangnLelehMetalDeck.getText().toDoubleOrNull() ?: 0.0
+                        val lenganMomen = lyKapasitasMomenLapangan.etLenganMomengayaTarik.getText().toDoubleOrNull() ?: 0.0
+                        val phi = text.toDoubleOrNull() ?: 0.0
+                        val fcc = lyKapasitasMomenLapangan.etFccKuatTekanBeton.getText().toDoubleOrNull() ?: 0.0
+                        val tenPow = Math.pow(10.0, 6.0)
+                        val summary = luasPenampang * teganganLeleh * lenganMomen * (1 - (phi * teganganLeleh/(2*fcc))) * 0.3 / tenPow
+
+                        lyKapasitasMomenLapangan.etFormulaMcap.setValueText(String.format(Locale.US, String.format("%.2f", summary)))
+                    } else {
+                        lyKapasitasMomenLapangan.etFormulaMcap.setValueText("0.0")
+                    }
+                }
+            })
 
             lyKapasitasMomenLapangan.etFccKuatTekanBeton.setSymbolTextSpanneble(
                 HelperTextSpannable.subscriptText(
@@ -180,8 +440,32 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                     endIndex = 3,
                 ),
             )
+            lyKapasitasMomenLapangan.etFccKuatTekanBeton.addTextChangeListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
 
-            // Title: M+cap = As*fym*dmd*(1-(ρ*fym/(2*fcc))
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+                    val text = p0.toString()
+                    if (text.isNotEmpty()) {
+                        val luasPenampang = lyKapasitasMomenLapangan.etLuasPenampangNominalMetalDeck.getText().toDoubleOrNull() ?: 0.0
+                        val teganganLeleh = lyKapasitasMomenLapangan.etTegangnLelehMetalDeck.getText().toDoubleOrNull() ?: 0.0
+                        val lenganMomen = lyKapasitasMomenLapangan.etLenganMomengayaTarik.getText().toDoubleOrNull() ?: 0.0
+                        val phi = lyKapasitasMomenLapangan.etPhi.getText().toDoubleOrNull() ?: 0.0
+                        val fcc = text.toDoubleOrNull() ?: 0.0
+                        val tenPow = Math.pow(10.0, 6.0)
+                        val summary = luasPenampang * teganganLeleh * lenganMomen * (1 - (phi * teganganLeleh/(2*fcc))) * 0.3 / tenPow
+
+                        lyKapasitasMomenLapangan.etFormulaMcap.setValueText(String.format(Locale.US, String.format("%.2f", summary)))
+                    } else {
+                        lyKapasitasMomenLapangan.etFormulaMcap.setValueText("0.0")
+                    }
+                }
+            })
+
+
             lyKapasitasMomenLapangan.etFormulaMcap.setTitleText(
                 HelperTextSpannable.combineSubscriptSuperscriptLetter(
                     rawText = resources.getString(R.string.form_engineer_mcap_formula_v_a),
@@ -309,7 +593,6 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
             lyKapasitasMomenLapangan.etFormulaMact.setSymbolTextSpanneble(mactFormula)
 
             val syaratResult = String.format("Syarat %s", resources.getString(R.string.form_engineer_syarat_mcap_mact))
-            // M+cap ≥ M+act
             lyKapasitasMomenLapangan.tvSyaratFormula.text = HelperTextSpannable.combineSubscriptSuperscriptLetter(
                 rawText = syaratResult,
                 listLetter = listOf(
@@ -340,6 +623,14 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
 
                 ),
             )
+
+            val mCap = lyKapasitasMomenLapangan.etFormulaMcap.getText().toDoubleOrNull() ?: 0.0
+            val mAct = lyKapasitasMomenLapangan.etFormulaMact.getText().toDoubleOrNull() ?: 0.0
+            lyKapasitasMomenLapangan.tvResult.text = if (mCap >= mAct) {
+                "OK, Tidak Butuh Tulangan Positif pada suhu kamar"
+            } else {
+                "NOT OK, Butuh Tulangan Positif Tambahan"
+            }
         }
     }
 
@@ -352,6 +643,7 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                     endIndex = 3,
                 ),
             )
+            lyPerhitunganTulanganPositifTambahan.etTeganganLelehBajaTulangan.setValueText("490")
 
             lyPerhitunganTulanganPositifTambahan.etDiameterTulangan.setSymbolTextSpanneble(
                 HelperTextSpannable.subscriptText(
@@ -360,6 +652,54 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                     endIndex = 5,
                 ),
             )
+            lyPerhitunganTulanganPositifTambahan.etDiameterTulangan.addTextChangeListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+                    val text = p0.toString()
+                    if (text.isNotEmpty()) {
+                        val diameterTulangan = text.toDoubleOrNull() ?: 0.0
+                        val jarakTulangan = lyPerhitunganTulanganPositifTambahan.etJarakTulangan.getText().toDoubleOrNull() ?: 0.0
+                        if (diameterTulangan == 0.0 || jarakTulangan == 0.0) {
+                            lyPerhitunganTulanganPositifTambahan.etLuasTulangan.setValueText("0")
+                        } else {
+                            val resultCalc = (0.25 * (22/7) * Math.pow((diameterTulangan-0.3), 2.0)) * 1000 / jarakTulangan
+                            lyPerhitunganTulanganPositifTambahan.etLuasTulangan.setValueText(String.format(
+                                Locale.US, "%.3f", resultCalc))
+                        }
+                    } else {
+                        lyPerhitunganTulanganPositifTambahan.etLuasTulangan.setValueText("0")
+                    }
+                }
+            })
+            lyPerhitunganTulanganPositifTambahan.etJarakTulangan.addTextChangeListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+                    val text = p0.toString()
+                    if (text.isNotEmpty()) {
+                        val diameterTulangan = lyPerhitunganTulanganPositifTambahan.etDiameterTulangan.getText().toDoubleOrNull() ?: 0.0
+                        val jarakTulangan = text.toDoubleOrNull() ?: 0.0
+                        if (diameterTulangan == 0.0 || jarakTulangan == 0.0) {
+                            lyPerhitunganTulanganPositifTambahan.etLuasTulangan.setValueText("0")
+                        } else {
+                            val resultCalc = (0.25 * (22/7) * Math.pow((diameterTulangan-0.3), 2.0)) * 1000 / jarakTulangan
+                            lyPerhitunganTulanganPositifTambahan.etLuasTulangan.setValueText(String.format(
+                                Locale.US, "%.3f", resultCalc))
+                        }
+                    } else {
+                        lyPerhitunganTulanganPositifTambahan.etLuasTulangan.setValueText("0")
+                    }
+                }
+            })
 
             lyPerhitunganTulanganPositifTambahan.etLuasTulangan.setSymbolTextSpanneble(
                 HelperTextSpannable.subscriptText(
@@ -765,7 +1105,198 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
     }
 
     private fun init_V_d_KapasitasMomenNegatifMetalDeckrencanaUntukPelatMenerus() {
+        binding.apply {
+            lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus.etMomenNegatifUltimate.setFormulaTextInfoSpannable(
+                HelperTextSpannable.combineSubscriptSuperscriptLetter(
+                    rawText = "M-act = Qu*Lx2/10",
+                    listLetter = listOf(
+                        // -
+                        LetterModel(
+                            startIndex = 1,
+                            endIndex = 2,
+                            type = Constants.SUPERSCRIPT_LETTER,
+                        ),
+                        // act
+                        LetterModel(
+                            startIndex = 2,
+                            endIndex = 5,
+                        ),
+                        // Qu
+                        LetterModel(
+                            startIndex = 9,
+                            endIndex = 10,
+                        ),
+                        // Lx
+                        LetterModel(
+                            startIndex = 12,
+                            endIndex = 13,
+                        ),
+                        // 2
+                        LetterModel(
+                            startIndex = 13,
+                            endIndex = 14,
+                            type = Constants.SUPERSCRIPT_LETTER,
+                        ),
+                    ),
+                ),
+            )
+            lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus.etMomenNegatifUltimate.setSymbolTextSpanneble(
+                HelperTextSpannable.combineSubscriptSuperscriptLetter(
+                    rawText = "M-act",
+                    listLetter = listOf(
+                        // -
+                        LetterModel(
+                            startIndex = 1,
+                            endIndex = 2,
+                            type = Constants.SUPERSCRIPT_LETTER,
+                        ),
+                        // act
+                        LetterModel(
+                            startIndex = 2,
+                            endIndex = 5,
+                        ),
+                    ),
+                ),
+            )
 
+            lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus.etLebarFiktif.setFormulaTextInfoSpannable(
+                HelperTextSpannable.subscriptMultipleTextSingleLine(
+                    rawText = "bfict = (bu/bd)*1000",
+                    listLetter = listOf(
+                        // fict
+                        LetterModel(
+                            startIndex = 1,
+                            endIndex = 5,
+                        ),
+                        // bu
+                        LetterModel(
+                            startIndex = 10,
+                            endIndex = 11,
+                        ),
+                        // bd
+                        LetterModel(
+                            startIndex = 13,
+                            endIndex = 14,
+                        ),
+                    ),
+                ),
+            )
+            lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus.etLebarFiktif.setSymbolTextSpanneble(
+                HelperTextSpannable.subscriptMultipleTextSingleLine(
+                    rawText = "bfict",
+                    listLetter = listOf(
+                        // fict
+                        LetterModel(
+                            startIndex = 1,
+                            endIndex = 5,
+                        ),
+                    ),
+                ),
+            )
+
+            lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus.etLenganMomenGayaTarikTulangan.setSymbolTextSpanneble(
+                HelperTextSpannable.subscriptText(
+                    rawText = "dmd",
+                    startIndex = 1,
+                    endIndex = 3,
+                ),
+            )
+
+            lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus.etMomenRelatifM.setFormulaTextInfoSpannable(
+                HelperTextSpannable.combineSubscriptSuperscriptLetter(
+                    rawText = "m = M-act/(bfict*d2*fcc)",
+                    listLetter = listOf(
+                        // -
+                        LetterModel(
+                            startIndex = 5,
+                            endIndex = 6,
+                            type = Constants.SUPERSCRIPT_LETTER,
+                        ),
+                        // act
+                        LetterModel(
+                            startIndex = 6,
+                            endIndex = 9,
+                        ),
+                        // fict
+                        LetterModel(
+                            startIndex = 12,
+                            endIndex = 16,
+                        ),
+                        // 2
+                        LetterModel(
+                            startIndex = 18,
+                            endIndex = 19,
+                            type = Constants.SUPERSCRIPT_LETTER,
+                        ),
+                        // fcc
+                        LetterModel(
+                            startIndex = 21,
+                            endIndex = 23,
+                        ),
+                    ),
+                ),
+            )
+
+            lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus.etMechanicalReinforcement.setFormulaTextInfoSpannable(
+                HelperTextSpannable.subscriptMultipleTextSingleLine(
+                    rawText = "ω = 1-√(1-2*m)",
+                    null,
+                ),
+            )
+
+            lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus.etMechanicalReinforcement2.setTitleText(
+                HelperTextSpannable.subscriptMultipleTextSingleLine(
+                    rawText = "0.8X < hw",
+                    listOf(
+                        LetterModel(
+                            startIndex = 8,
+                            endIndex = 9,
+                        ),
+                    ),
+                ),
+            )
+            lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus.etMechanicalReinforcement2.setFormulaTextInfoSpannable(
+                HelperTextSpannable.subscriptMultipleTextSingleLine(
+                    rawText = "0.8X=ω*d",
+                    listLetter = null,
+                ),
+            )
+
+            lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus.etMechanicalReinforcement3.setTitleText(
+                HelperTextSpannable.combineSubscriptSuperscriptLetter(
+                    rawText = "ωbd = 0.8/(fy/733.3+1)",
+                    listLetter = listOf(
+                        // bd
+                        LetterModel(
+                            startIndex = 1,
+                            endIndex = 3,
+                        ),
+                        // fy
+                        LetterModel(
+                            startIndex = 12,
+                            endIndex = 13,
+                        ),
+                    ),
+                ),
+            )
+            lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus.etMechanicalReinforcement3.setSymbolTextSpanneble(
+                HelperTextSpannable.subscriptText(
+                    rawText = "ωbd",
+                    startIndex = 1,
+                    endIndex = 3,
+                ),
+            )
+
+            lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus.tvSyaratFormula.text = HelperTextSpannable.subscriptMultipleTextSingleLine(
+                rawText = "ωbd > ω",
+                listLetter = listOf(
+                    LetterModel(
+                        startIndex = 1,
+                        endIndex = 3,
+                    ),
+                ),
+            )
+        }
     }
 
     private fun initListener() {
