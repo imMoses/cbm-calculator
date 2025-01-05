@@ -533,6 +533,28 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                 ),
             )
             lyKapasitasMomenLapangan.etFormulaMcap.setSymbolTextSpanneble(mcapFormula)
+            lyKapasitasMomenLapangan.etFormulaMcap.addTextChangeListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+                    val text = p0.toString()
+                    if (text.isNotEmpty()) {
+                        val mCap = text.toDoubleOrNull() ?: 0.0
+                        val mAct = lyKapasitasMomenLapangan.etFormulaMact.getText().toDoubleOrNull() ?: 0.0
+                        lyKapasitasMomenLapangan.tvResult.text = if (mCap >= mAct) {
+                            "OK, Tidak Butuh Tulangan Positif pada suhu kamar"
+                        } else {
+                            "NOT OK, Butuh Tulangan Positif Tambahan"
+                        }
+                    } else {
+                        lyKapasitasMomenLapangan.tvResult.text = "-"
+                    }
+                }
+            })
 
             // Title: M+act = Qu*Lx2/16
             lyKapasitasMomenLapangan.etFormulaMact.setTitleText(
@@ -591,7 +613,30 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                 ),
             )
             lyKapasitasMomenLapangan.etFormulaMact.setSymbolTextSpanneble(mactFormula)
+            lyKapasitasMomenLapangan.etFormulaMact.addTextChangeListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
 
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                }
+
+                override fun afterTextChanged(p0: Editable?) {
+                    val text = p0.toString()
+                    if (text.isNotEmpty()) {
+                        val mCap = lyKapasitasMomenLapangan.etFormulaMcap.getText().toDoubleOrNull() ?: 0.0
+                        val mAct = text.toDoubleOrNull() ?: 0.0
+                        lyKapasitasMomenLapangan.tvResult.text = if (mCap >= mAct) {
+                            "OK, Tidak Butuh Tulangan Positif pada suhu kamar"
+                        } else {
+                            "NOT OK, Butuh Tulangan Positif Tambahan"
+                        }
+                    } else {
+                        lyKapasitasMomenLapangan.tvResult.text = "-"
+                    }
+                }
+            })
+
+            lyKapasitasMomenLapangan.tvResult.text = "-"
             val syaratResult = String.format("Syarat %s", resources.getString(R.string.form_engineer_syarat_mcap_mact))
             lyKapasitasMomenLapangan.tvSyaratFormula.text = HelperTextSpannable.combineSubscriptSuperscriptLetter(
                 rawText = syaratResult,
@@ -623,14 +668,6 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
 
                 ),
             )
-
-            val mCap = lyKapasitasMomenLapangan.etFormulaMcap.getText().toDoubleOrNull() ?: 0.0
-            val mAct = lyKapasitasMomenLapangan.etFormulaMact.getText().toDoubleOrNull() ?: 0.0
-            lyKapasitasMomenLapangan.tvResult.text = if (mCap >= mAct) {
-                "OK, Tidak Butuh Tulangan Positif pada suhu kamar"
-            } else {
-                "NOT OK, Butuh Tulangan Positif Tambahan"
-            }
         }
     }
 
