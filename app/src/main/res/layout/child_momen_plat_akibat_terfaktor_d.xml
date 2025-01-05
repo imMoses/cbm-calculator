@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:text="@string/form_engineer_sub_title_kapasitas_momen_negatif_metal_deck_rencana_untuk_pelat_menerus"
+        android:textStyle="bold"
+        android:textSize="@dimen/_14ssp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etMomenNegatifUltimate"
+        app:unit="@string/unit_kNm"
+        app:titleSection="@string/form_engineer_momen_negatif_ultimate"
+        app:valueTextAligment="right"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etLebarFiktif"
+        app:titleSection="@string/form_engineer_lebar_fiktif"
+        app:unit="@string/unit_mm"
+        app:valueTextAligment="right"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etLenganMomenGayaTarikTulangan"
+        app:titleSection="@string/form_engineer_lengan_momen_gaya_tarik_tulangan"
+        app:unit="@string/unit_mm"
+        app:valueTextAligment="right"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etMomenRelatifM"
+        app:titleSection="@string/form_engineer_momen_relatif_m"
+        app:unit="@string/unit_m"
+        app:valueTextAligment="right"
+        app:addFormulaInfo="true"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etMechanicalReinforcement"
+        app:titleSection="@string/form_engineer_mechanical_reinforcement"
+        app:valueTextAligment="right"
+        app:addFormulaInfo="true"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etMechanicalReinforcement_2"
+        app:unit="@string/unit_mm"
+        app:leftSymbol="X"
+        app:valueTextAligment="right"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etMechanicalReinforcement_3"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:valueTextAligment="right"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_line_corner_rounded"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:padding="@dimen/_12sdp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvSyaratFormula"
+            android:textSize="@dimen/_12ssp"
+            android:paddingTop="@dimen/_4sdp"
+            android:paddingBottom="@dimen/_4sdp"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Syarat: X > Y"/>
+
+        <TextView
+            android:text="Hasil perhitungan: "
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tvResult"
+            android:text="Hasil perhitungan: "
+            android:textStyle="bold|italic"
+            android:textSize="@dimen/_14ssp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="OK, hoooraaayy"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

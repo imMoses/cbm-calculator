@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/clGuide1"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.66"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp" />
+
+        <TextView
+            android:id="@+id/tvTotalBebanMatiQ"
+            android:text="@string/form_engineer_row_total_beban_mati"
+            android:paddingBottom="@dimen/_4sdp"
+            android:paddingTop="@dimen/_4sdp"
+            app:layout_constraintTop_toTopOf="@+id/etFinalTotalQ"
+            app:layout_constraintBottom_toBottomOf="@+id/etFinalTotalQ"
+            app:layout_constraintEnd_toStartOf="@+id/clGuide1"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tvUnitTotalKg"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/etTotalQ"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/unit_kgm2"
+            android:textSize="@dimen/_8ssp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            tools:text="10000.23901"
+            android:id="@+id/etTotalQ"
+            android:enabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvUnitTotalKg"
+            app:layout_constraintStart_toEndOf="@+id/clGuide1"
+            android:layout_marginEnd="@dimen/_3sdp"
+            android:maxLength="16"
+            android:inputType="numberDecimal"
+            android:background="@drawable/bg_line_corner_rounded"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:importantForAutofill="no" />
+
+        <TextView
+            android:id="@+id/tvUniTotalKm"
+            app:layout_constraintTop_toBottomOf="@+id/etTotalQ"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/etFinalTotalQ"
+            android:text="@string/unit_kN_m2"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textSize="@dimen/_8ssp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            tools:text="10000.23901"
+            android:id="@+id/etFinalTotalQ"
+            android:enabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvUniTotalKm"
+            app:layout_constraintStart_toEndOf="@+id/clGuide1"
+            android:layout_marginEnd="@dimen/_3sdp"
+            android:maxLength="16"
+            android:inputType="numberDecimal"
+            android:background="@drawable/bg_line_corner_rounded"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:importantForAutofill="no" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

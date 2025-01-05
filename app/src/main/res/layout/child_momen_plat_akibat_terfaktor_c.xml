@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:text="@string/form_engineer_sub_title_cek_tulangan_positif_tambahan_terhadap_perhitungan"
+        android:textStyle="bold"
+        android:textSize="@dimen/_14ssp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="@string/form_engineer_skenario_2_jam"
+        android:textSize="@dimen/_12ssp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etbebanAkibatApi"
+        app:unit="@string/unit_kN_m2"
+        app:titleSection="@string/form_engineer_beban_akibat_api"
+        app:valueTextAligment="right"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etMomentAkibatApiPadaTengahBentang"
+        app:titleSection="@string/form_engineer_momen_akibat_api_pada_tengah_bentang"
+        app:unit="@string/unit_kNm_m"
+        app:valueTextAligment="right"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etKapasistasMomenPositif"
+        app:titleSection="@string/form_engineer_kapasitas_momen_positif_floordeck"
+        app:unit="@string/unit_kNm_m"
+        app:valueTextAligment="right"
+        app:addFormulaInfo="true"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etKapasistasMomenPositifTulanganTambahan"
+        app:titleSection="@string/form_engineer_kapasitas_momen_positif_karena_tulangan_tambahan"
+        app:unit="@string/unit_mm2_m"
+        app:valueTextAligment="right"
+        app:addFormulaInfo="true"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_line_corner_rounded"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:padding="@dimen/_12sdp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvSyaratFormula"
+            android:textSize="@dimen/_12ssp"
+            android:paddingTop="@dimen/_4sdp"
+            android:paddingBottom="@dimen/_4sdp"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Syarat: X > Y"/>
+
+        <TextView
+            android:text="Hasil perhitungan: "
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tvResult"
+            android:text="Hasil perhitungan: "
+            android:textStyle="bold|italic"
+            android:textSize="@dimen/_14ssp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="OK, hoooraaayy"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

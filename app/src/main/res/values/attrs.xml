@@ -16,11 +16,21 @@
         <attr name="titleSection" format="string" />
         <attr name="unit" format="string" />
         <attr name="leftSymbol" format="string" />
+        <attr name="valueTextAligment" format="enum">
+            <enum name="left" value="0" />
+            <enum name="right" value="1" />
+        </attr>
+        <attr name="disabledInputText" format="boolean" />
+        <attr name="addFormulaInfo" format="boolean" />
     </declare-styleable>
 
     <declare-styleable name="CustomTextViewLabelValue">
         <attr name="labelText" format="string" />
         <attr name="valueText" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomEditTextThreeColumns">
+        <attr name="itemRowsLabel" format="string" />
     </declare-styleable>
 
 </resources>

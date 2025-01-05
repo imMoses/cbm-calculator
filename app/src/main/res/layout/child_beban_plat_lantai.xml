@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:text="@string/form_engineer_title_beban_pelat_lantai"
+        android:textStyle="bold"
+        android:textSize="@dimen/_16ssp"
+        android:layout_marginBottom="@dimen/_6sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="@string/form_engineer_sub_title_beban_mati"
+        android:textStyle="bold"
+        android:textSize="@dimen/_14ssp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextThreeColumns
+        android:id="@+id/cettBeratSendiri"
+        app:itemRowsLabel="@string/form_engineer_row_berat_sendiri_pelat_lantai"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextThreeColumns
+        android:id="@+id/cettBeratFinishingLantai"
+        app:itemRowsLabel="@string/form_engineer_row_berat_finishing_lantai"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextThreeColumns
+        android:id="@+id/cettPlafondRangka"
+        app:itemRowsLabel="@string/form_engineer_row_berat_plafond_dan_rangka"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextColumnTotal
+        android:id="@+id/cetTotalBebanPelatLantai"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="@string/form_engineer_sub_title_beban_hidup"
+        android:textStyle="bold"
+        android:textSize="@dimen/_14ssp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etBebanHidupLantaiBangunan"
+        app:titleSection="@string/form_engineer_beban_hidup_lantai_bangunan"
+        app:unit="@string/unit_kgm2"
+        app:leftSymbol="@string/form_engineer_beban_hidup_lantai_bangunan_formula"
+        app:valueTextAligment="right"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etBebanHidupLantaiBangunanFinal"
+        app:unit="@string/unit_kN_m2"
+        app:leftSymbol="@string/form_engineer_beban_hidup_lantai_bangunan_formula"
+        app:valueTextAligment="right"
+        app:disabledInputText="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="@string/form_engineer_sub_title_beban_rencana_terfaktor"
+        android:textStyle="bold"
+        android:textSize="@dimen/_14ssp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etBebanRencanaTerfaktor"
+        app:titleSection="@string/form_engineer_beban_rencana_terfaktor"
+        app:unit="@string/unit_kN_m2"
+        app:leftSymbol="@string/form_engineer_beban_rencana_terfaktor_formula"
+        app:valueTextAligment="right"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

@@ -114,7 +114,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-
                 <!--            METAL DECK YIELD-->
                 <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
                     android:id="@+id/etMetalYield"
@@ -254,6 +253,7 @@
 
             </LinearLayout>
 
+            <!--            KOEFISIEN PLAT RESULT-->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/clResultKoefisien"
                 android:layout_width="match_parent"
@@ -305,6 +305,54 @@
                 </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <include
+                android:id="@+id/lyBebanPlatLantai"
+                layout="@layout/child_beban_plat_lantai"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_14sdp"
+                android:layout_marginEnd="@dimen/_14sdp"
+                />
+
+            <include
+                android:id="@+id/lyKapasitasMomenLapangan"
+                layout="@layout/child_momen_plat_akibat_terfaktor_a"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_14sdp"
+                android:layout_marginEnd="@dimen/_14sdp"
+                />
+
+            <include
+                android:id="@+id/lyPerhitunganTulanganPositifTambahan"
+                layout="@layout/child_momen_plat_akibat_terfaktor_b"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_14sdp"
+                android:layout_marginEnd="@dimen/_14sdp"
+                />
+
+            <include
+                android:id="@+id/lyCekTulanganPositifTambahan"
+                layout="@layout/child_momen_plat_akibat_terfaktor_c"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_14sdp"
+                android:layout_marginEnd="@dimen/_14sdp" />
+
+            <include
+                android:id="@+id/lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus"
+                layout="@layout/child_momen_plat_akibat_terfaktor_d"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_14sdp"
+                android:layout_marginEnd="@dimen/_14sdp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnSave"

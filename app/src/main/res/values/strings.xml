@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">CBM-calculator</string>
 
     <!--    SIGN IN-->
@@ -26,8 +26,18 @@
     <string name="unit_mpa">Mpa</string>
     <string name="unit_m">m</string>
     <string name="unit_mm">mm</string>
+    <string name="unit_mm2">mm\u00B2</string>
     <string name="unit_kgm2">kg/m\u00B2</string>
     <string name="unit_mm4m">mm\u2074/m</string>
+    <string name="unit_m3">m\u00B3</string>
+    <string name="unit_m2">\u00B2</string>
+    <string name="unit_kg">kg</string>
+    <string name="unit_kN">kN</string>
+    <string name="unit_kNm">kNm</string>
+    <string name="unit_kN_m2">kN/m\u00B2</string>
+    <string name="unit_kNm_m">kNm/m</string>
+    <string name="unit_kNmm2_m">kNmm\u00B2/m</string>
+    <string name="unit_mm2_m">mm\u00B2/m</string>
 
     <!--    Symbol-->
     <string name="symbol_fy">f<sub>y</sub></string>
@@ -36,12 +46,14 @@
     <string name="symbol_t">t</string>
     <string name="symbol_lx">l\u2093</string>
     <string name="symbol_fc1">fc\u2081</string>
-    <string name="symbol_fct">f<sub>ct</sub></string>
-    <string name="symbol_fst">f<sub>st</sub></string>
+    <string name="symbol_fct">fct</string>
+    <string name="symbol_fst">fst</string>
     <string name="symbol_Lx">L\u2093</string>
-    <string name="symbol_Ly">L<sub>y</sub></string>
+    <string name="symbol_Ly">Ly</string>
     <string name="symbol_h">h</string>
     <string name="symbol_ts">t\u209B</string>
+    <string name="symbol_phi" tools:ignore="ExtraTranslation">ρ</string>
+    <string name="symbol_diameter_tulangan">Ø tul</string>
 
     <!--    REQUEST FORM ENGINEER-->
     <string name="form_engineer_title_spesifikasi_produk">I. SPESIFIKASI PRODUK</string>
@@ -67,6 +79,75 @@
     <string name="form_engineer_koefisien_pelat_err">Mohon diisi</string>
     <string name="form_engineer_koefisien_pelat_calc_correct">OK Pelat Satu Arah</string>
     <string name="form_engineer_koefisien_pelat_calc_incorrect">Pelat Dua Arah Perhitungan ini TIDAK BERLAKU</string>
+
+    <string name="form_engineer_title_beban_pelat_lantai">IV. BEBAN PELAT LANTAI</string>
+    <string name="form_engineer_sub_title_beban_mati">a. Beban Mati (DEAD LOAD)</string>
+    <string name="form_engineer_column_no">No</string>
+    <string name="form_engineer_column_jenis_beban_mati">Jenis Beban Mati</string>
+    <string name="form_engineer_column_berat_satuan">Berat Satuan</string>
+    <string name="form_engineer_column_tebal">Tebal (m)</string>
+    <string name="form_engineer_column_Q">Q(kg/m\u00B2)</string>
+    <string name="form_engineer_row_berat_sendiri_pelat_lantai">1. Berat sendiri pelat lantai (kg/m\u00B3)</string>
+    <string name="form_engineer_row_berat_finishing_lantai">2. Berat sendiri pelat lantai (kg/m\u00B3)</string>
+    <string name="form_engineer_row_berat_plafond_dan_rangka">3. Berat plafond dan rangka (kg/m\u00B2)</string>
+    <string name="form_engineer_row_berat_instalasi_ME">4. Berat instalasi ME (kg/m\u00B2)</string>
+    <string name="form_engineer_row_total_beban_mati">Total beban mati</string>
+    <string name="form_engineer_sub_title_beban_hidup">b. Beban Hidup (LIVE LOAD)</string>
+    <string name="form_engineer_beban_hidup_lantai_bangunan">Beban hidup lantai bangunan </string>
+    <string name="form_engineer_beban_hidup_lantai_bangunan_formula">QL</string>
+    <string name="form_engineer_sub_title_beban_rencana_terfaktor">c. Beban Rencana Terfaktor</string>
+    <string name="form_engineer_beban_rencana_terfaktor_formula">QU = 1.2*QD + 1.6*QL</string>
+    <string name="form_engineer_beban_rencana_terfaktor">Beban rencana terfaktor</string>
+
+    <string name="form_engineer_title_momen_plat_akibat_beban_terfaktor">V. MOMEN PLAT AKIBAT BEBAN TERFAKTOR</string>
+    <string name="form_engineer_sub_title_kapasitas_momen_lapangan_metal">a. Kapasitas Momen Lapangan Metal Deck Rencana (MOMEN POSITIF)</string>
+    <string name="form_engineer_luas_penampang_nominal_metal">Luas penampang nominal metal deck</string>
+    <string name="form_engineer_tegangan_leleh_metal_deck">Tegangan leleh  metal deck</string>
+    <string name="form_engineer_lengan_momen_gaya_tarik">Lengan momen gaya tarik</string>
+    <string name="form_engineer_phi_as">ρ = As/(1000*d)</string>
+    <string name="form_engineer_fcc">Kuat tekan beton</string>
+    <string name="form_engineer_mcap_formula_v_a">M+cap = As*fym*dmd*(1-(ρ*fym/(2*fcc))</string>
+    <string name="form_engineer_mact_formula_v_a">M+act = Qu*Lx2/16</string>
+    <string name="form_engineer_syarat_mcap_mact">M+cap ≥ M+act</string>
+    <string name="form_engineer_sub_title_perhitungan_tulangan_positif_tambahan">b. Perhitungan Tulangan Positif Tambahan</string>
+    <string name="form_engineer_teganan_leleh_baja_tulangan">Tegangan leleh baja Tulangan</string>
+    <string name="form_engineer_diameter_tulangan">Diameter tulangan</string>
+    <string name="form_engineer_jarak_tulangan">Jarak Tulangan</string>
+    <string name="form_engineer_luas_tulangan">Luas tulangan</string>
+    <string name="form_engineer_sub_title_cek_tulangan_positif_tambahan_terhadap_perhitungan">c. Cek Tulangan Positif Tambahan Terhadap Perhitungan Tulangan Api</string>
+    <string name="form_engineer_skenario_2_jam">Skenario 2 jam ISO 834 fire </string>
+    <string name="form_engineer_beban_akibat_api">Beban akibat Api</string>
+    <string name="form_engineer_momen_akibat_api_pada_tengah_bentang">Momen akibat api pada tengah bentang</string>
+    <string name="form_engineer_kapasitas_momen_positif_floordeck">Kapasitas momen positif floordeck (kapasitas hanya 7%)</string>
+    <string name="form_engineer_kapasitas_momen_positif_karena_tulangan_tambahan">Kapasitas momen positif karena tulangan tambahan (kapasitas 75%)</string>
+    <string name="form_engineer_sub_title_kapasitas_momen_negatif_metal_deck_rencana_untuk_pelat_menerus">d. Kapasitas Momen Negatif Metal Deck Rencana Untuk Pelat Menerus</string>
+    <string name="form_engineer_momen_negatif_ultimate">Momen negatif ultimate</string>
+    <string name="form_engineer_lebar_fiktif">Lebar fiktif ; </string>
+    <string name="form_engineer_lengan_momen_gaya_tarik_tulangan">Lengan momen gaya tarik tulangan</string>
+    <string name="form_engineer_momen_relatif_m">Momen relatif m</string>
+    <string name="form_engineer_mechanical_reinforcement">Mechanical Reinforcement</string>
+    <string name="form_engineer_kebutuhan_tulangan_negatif">Kebutuhan tulangan negatif </string>
+    <string name="form_engineer_tegangan_leleh_tulangan_tambahan">Tegangan leleh tulangan tambahan</string>
+    <string name="form_engineer_konversi_lias_tulangan_tambahan_ke">Konversi luas tulangan tambahan ke</string>
+    <string name="form_engineer_maka_luas_tulangan_tambahan">Maka luas tulangan tambahan</string>
+
+    <string name="form_engineer_title_gaya_geser_plat_akibat_beban_terfaktor">VI. GAYA GESER PLAT AKIBAT BEBAN TERFAKTOR</string>
+    <string name="form_engineer_lebar_rata_rata_dari_profil">Lebar rata-rata dari profil</string>
+    <string name="form_engineer_title_defleksi">VII. DEFLEKSI</string>
+    <string name="form_engineer_title_defleksi_kondisi_saat_pengecoran_beton">VII.1 Defleksi Kondisi Saat Pengecoran Beton</string>
+    <string name="form_engineer_massa_jenis_beton">Massa jenis beton</string>
+    <string name="form_engineer_garis_netral_floordeck">Garis netral floordeck</string>
+    <string name="form_engineer_berat_lantai">Berat lantai</string>
+    <string name="form_engineer_sub_title_kondisi_simple_span">a. Kondisi Simple Span</string>
+    <string name="form_engineer_bentang_pelat_arah_x">Bentang pelat arah - X</string>
+    <string name="form_engineer_syarat_defleksi">Syarat defleksi</string>
+    <string name="form_engineer_jumlah_tumpuan_sementara">Jumlah Tumpuan Sementara</string>
+    <string name="form_engineer_jarak_bentang_pertumpuan_sementara">Jarak Bentang Pertumpuan Sementara</string>
+    <string name="form_engineer_title_deflesi_kondisi_beton_sudah_komposit">VII.2 Defleksi Kondisi Beton Sudah Komposit</string>
+    <string name="form_engineer_momen_inersia_komposit">a. Momen Inersia Komposit</string>
+    <string name="form_engineer_momen_inersia_penampang_uncrack">b. Momen Inersia Penampang Uncrack</string>
+    <string name="form_engineer_momen_inersia_penampang_crack">c. Momen Inersia Penampang Crack</string>
+    <string name="form_engineer_defleksi">d. Defleksi</string>
 
 
 </resources>

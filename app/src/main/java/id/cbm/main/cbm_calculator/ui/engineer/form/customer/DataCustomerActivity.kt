@@ -1,8 +1,10 @@
 package id.cbm.main.cbm_calculator.ui.engineer.form.customer // ktlint-disable package-name
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.View
+import id.cbm.main.cbm_calculator.BuildConfig
 import id.cbm.main.cbm_calculator.core.base_ui.BaseActivity
 import id.cbm.main.cbm_calculator.databinding.ActivityDataCustomerBinding
 import id.cbm.main.cbm_calculator.ui.engineer.form.RequestFormActivity
@@ -22,6 +24,14 @@ class DataCustomerActivity : BaseActivity<ActivityDataCustomerBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (BuildConfig.DEBUG) {
+            binding.apply {
+                etPerhitunganNo.setText("1233123")
+                etCustomer.setText("Customer A")
+                etProyek.setText("Project Asgard")
+                etAsas.setText("Test A S A S")
+            }
+        }
         initUI()
         initListener()
     }

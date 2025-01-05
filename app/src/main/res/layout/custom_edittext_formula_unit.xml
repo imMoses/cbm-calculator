@@ -9,10 +9,22 @@
 
     <TextView
         android:id="@+id/tvTitleColumn"
-        android:text="@string/form_engineer_metal_deck_yield_strength"
-        android:textSize="@dimen/_14ssp"
+        android:textSize="@dimen/_12ssp"
+        android:paddingBottom="@dimen/_4sdp"
+        android:paddingTop="@dimen/_3sdp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        tools:text="Title from item"/>
+
+    <TextView
+        android:id="@+id/tvFormulaInfo"
+        android:textSize="@dimen/_12ssp"
+        android:paddingBottom="@dimen/_4sdp"
+        android:paddingTop="@dimen/_3sdp"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="FormulaInfo (additional)"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -35,7 +47,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/_6sdp"
-            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_6sdp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvSymbol"
             app:layout_constraintEnd_toStartOf="@+id/tvUnit"
