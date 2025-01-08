@@ -5,82 +5,217 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_login_rev_1"
     android:padding="@dimen/_14sdp"
     tools:context=".ui.signin.SignInActivity">
 
-    <TextView
-        android:id="@+id/tvTitle"
-        android:text="@string/signin_title"
-        android:textSize="@dimen/_20ssp"
-        android:textStyle="bold"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:id="@+id/ivLogoCBM"
+        android:src="@drawable/new_logo_cbm_smart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/lyLogin"
+        android:layout_width="146dp"
+        android:layout_height="146dp" />
+
+    <LinearLayout
+        android:id="@+id/lyLogin"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilEmail"
-        android:layout_width="0dp"
+        android:layout_marginTop="170dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20sdp"
-        app:startIconDrawable="@drawable/ic_sign_email"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:padding="18dp"
+        android:orientation="vertical">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tieEmail"
-            android:inputType="textEmailAddress"
-            android:hint="@string/signin_hint_email"
-            android:background="@android:color/transparent"
-            android:paddingStart="@dimen/_36sdp"
-            android:paddingEnd="@dimen/_36sdp"
-            android:imeOptions="actionNext"
+        <TextView
+            android:text="@string/signin_title"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="26sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-    </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilPass"
-        android:background="@android:color/transparent"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20sdp"
-        app:startIconDrawable="@drawable/ic_sign_password"
-        app:passwordToggleEnabled="true"
-        app:layout_constraintTop_toBottomOf="@+id/tilEmail"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tiePassword"
-            android:background="@android:color/transparent"
-            android:inputType="textPassword"
-            android:paddingStart="@dimen/_36sdp"
-            android:paddingEnd="@dimen/_36sdp"
-            android:maxLength="18"
-            android:hint="@string/signin_hint_pass"
-            android:imeOptions="actionDone"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilEmail"
+            style="@style/edittext_style_grey"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:boxStrokeWidth="0dp"
+            app:startIconDrawable="@drawable/ic_sign_email" >
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnSignIn"
-        android:text="@string/signin_button_sign_in"
-        android:layout_marginBottom="@dimen/_6sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/tvAppVersion"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tieEmail"
+                android:inputType="textEmailAddress"
+                android:hint="@string/signin_hint_email"
+                android:background="@android:color/transparent"
+                android:paddingStart="@dimen/_36sdp"
+                android:paddingEnd="@dimen/_36sdp"
+                android:imeOptions="actionNext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilPass"
+            style="@style/edittext_style_grey"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            app:boxStrokeWidth="0dp"
+            app:startIconDrawable="@drawable/ic_sign_password"
+            app:passwordToggleEnabled="true" >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tiePassword"
+                android:background="@android:color/transparent"
+                android:inputType="textPassword"
+                android:paddingStart="@dimen/_36sdp"
+                android:paddingEnd="@dimen/_36sdp"
+                android:maxLength="18"
+                android:hint="@string/signin_hint_pass"
+                android:imeOptions="actionDone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+<!--        <EditText-->
+<!--            style="@style/edittext_style_grey"-->
+<!--            android:id="@+id/etEmail"-->
+<!--            android:drawableStart="@drawable/ic_account"-->
+<!--            android:drawableTint="@color/black"-->
+<!--            android:drawablePadding="14dp"-->
+<!--            android:hint="@string/cust_id"-->
+<!--            android:inputType="textEmailAddress"-->
+<!--            android:importantForAutofill="no"-->
+<!--            tools:ignore="UnusedAttribute" />-->
+
+<!--        <EditText-->
+<!--            style="@style/edittext_style_grey"-->
+<!--            android:id="@+id/etPassword"-->
+<!--            android:drawableStart="@drawable/ic_lock"-->
+<!--            android:drawablePadding="14dp"-->
+<!--            android:drawableTint="@color/black"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:hint="@string/login_password"-->
+<!--            android:inputType="textPassword"-->
+<!--            android:importantForAutofill="no"-->
+<!--            tools:ignore="UnusedAttribute" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/textForgotPassword"-->
+<!--            android:text="@string/login_forgot_password"-->
+<!--            android:textColor="@android:color/white"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:layout_marginBottom="16dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"/>-->
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSignIn"
+            android:text="@string/signin_button_sign_in"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:paddingBottom="14dp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:paddingTop="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:backgroundTint="@color/yellowTurbo"
+            app:cornerRadius="10dp"/>
+
+<!--        <TextView-->
+<!--            android:id="@+id/termsCondition"-->
+<!--            android:text="@string/terms_condition"-->
+<!--            android:textColor="@android:color/white"-->
+<!--            android:textStyle="bold"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:background="?attr/selectableItemBackground"-->
+<!--            android:padding="10dp"-->
+<!--            android:layout_marginTop="14dp"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"/>-->
+
+    </LinearLayout>
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvTitle"-->
+<!--        android:text="@string/signin_title"-->
+<!--        android:textSize="@dimen/_20ssp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        />-->
+
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:id="@+id/tilEmail"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="@dimen/_20sdp"-->
+<!--        app:startIconDrawable="@drawable/ic_sign_email"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvTitle"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent">-->
+
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/tieEmail"-->
+<!--            android:inputType="textEmailAddress"-->
+<!--            android:hint="@string/signin_hint_email"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            android:paddingStart="@dimen/_36sdp"-->
+<!--            android:paddingEnd="@dimen/_36sdp"-->
+<!--            android:imeOptions="actionNext"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"/>-->
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--    <com.google.android.material.textfield.TextInputLayout-->
+<!--        android:id="@+id/tilPass"-->
+<!--        android:background="@android:color/transparent"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="@dimen/_20sdp"-->
+<!--        app:startIconDrawable="@drawable/ic_sign_password"-->
+<!--        app:passwordToggleEnabled="true"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tilEmail"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent">-->
+
+<!--        <com.google.android.material.textfield.TextInputEditText-->
+<!--            android:id="@+id/tiePassword"-->
+<!--            android:background="@android:color/transparent"-->
+<!--            android:inputType="textPassword"-->
+<!--            android:paddingStart="@dimen/_36sdp"-->
+<!--            android:paddingEnd="@dimen/_36sdp"-->
+<!--            android:maxLength="18"-->
+<!--            android:hint="@string/signin_hint_pass"-->
+<!--            android:imeOptions="actionDone"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"/>-->
+<!--    </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--    <com.google.android.material.button.MaterialButton-->
+<!--        android:id="@+id/btnSignIn"-->
+<!--        android:text="@string/signin_button_sign_in"-->
+<!--        android:layout_marginBottom="@dimen/_6sdp"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/tvAppVersion"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        />-->
 
     <TextView
         android:id="@+id/tvAppVersion"
         android:textSize="@dimen/_10ssp"
+        android:textColor="@android:color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

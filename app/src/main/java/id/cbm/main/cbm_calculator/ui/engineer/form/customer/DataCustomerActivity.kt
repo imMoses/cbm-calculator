@@ -26,10 +26,10 @@ class DataCustomerActivity : BaseActivity<ActivityDataCustomerBinding>() {
         super.onCreate(savedInstanceState)
         if (BuildConfig.DEBUG) {
             binding.apply {
-                etPerhitunganNo.setText("1233123")
+                etPerhitunganNo.setText("111223")
                 etCustomer.setText("Customer A")
                 etProyek.setText("Project Asgard")
-                etAsas.setText("Test A S A S")
+                etAsas.setText("Test asas")
             }
         }
         initUI()

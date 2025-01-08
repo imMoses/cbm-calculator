@@ -26,4 +26,27 @@
         <!-- Set the theme of the Activity that directly follows your splashscreen. This is required. -->
         <item name="postSplashScreenTheme">@style/Theme.CBMcalculator</item>
     </style>
+
+    <style name="edittext_style">
+        <item name="android:background">@drawable/bg_edittext</item>
+        <item name="android:paddingTop">@dimen/_6sdp</item>
+        <item name="android:paddingStart">@dimen/_6sdp</item>
+        <item name="android:paddingEnd">@dimen/_6sdp</item>
+        <item name="android:paddingBottom">@dimen/_6sdp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+    </style>
+
+    <style name="edittext_style_grey">
+        <item name="android:background">@drawable/bg_edittext_grey</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
 </resources>

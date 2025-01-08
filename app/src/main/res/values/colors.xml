@@ -7,8 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="bgBasic">#ecf0f1</color>
 
     <color name="gray_container_result">#e8e8e8</color>
     <color name="grey_100">#F5F5F5</color>
     <color name="blue_grey_300">#90A4AE</color>
+    <color name="yellowTurbo">#f9ca24</color>
+    <color name="yellowTurboDarker">#A17F09</color>
 </resources>

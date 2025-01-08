@@ -1,27 +1,47 @@
-package id.cbm.main.cbm_calculator.ui.engineer.form
+package id.cbm.main.cbm_calculator.ui.engineer.form // ktlint-disable package-name
 
+import android.app.Activity
+import android.app.DownloadManager
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
+import android.os.Environment
 import android.text.Editable
 import android.text.SpannableString
 import android.text.TextWatcher
 import android.text.style.RelativeSizeSpan
 import android.text.style.SubscriptSpan
+import android.util.Log
 import android.widget.Toast
+import androidx.core.content.FileProvider
 import androidx.lifecycle.lifecycleScope
+import com.google.gson.Gson
 import id.cbm.main.cbm_calculator.R
 import id.cbm.main.cbm_calculator.core.base_ui.BaseActivity
+import id.cbm.main.cbm_calculator.core.listener.IPermissionListener
+import id.cbm.main.cbm_calculator.data.remote.ApiResultHandler
+import id.cbm.main.cbm_calculator.data.remote.dto.BaseApiResponse
+import id.cbm.main.cbm_calculator.data.remote.dto.LinkPDFResponse
+import id.cbm.main.cbm_calculator.data.remote.dto.request.RequestEngineerParam
 import id.cbm.main.cbm_calculator.databinding.ActivityRequestFormBinding
 import id.cbm.main.cbm_calculator.ui.engineer.form.customer.DataCustomerActivity
 import id.cbm.main.cbm_calculator.utils.Constants
 import id.cbm.main.cbm_calculator.utils.CustomRegex
+import id.cbm.main.cbm_calculator.utils.DialogAlertHelper
 import id.cbm.main.cbm_calculator.utils.HelperTextSpannable
 import id.cbm.main.cbm_calculator.utils.LetterModel
+import id.cbm.main.cbm_calculator.utils.PermissionHelper
+import id.cbm.main.cbm_calculator.utils.SavingFileHelper
 import id.cbm.main.cbm_calculator.utils.setSafeOnClickListener
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.w3c.dom.Text
+import kotlinx.coroutines.withContext
+import okhttp3.ResponseBody
+import org.koin.android.ext.android.inject
+import java.io.File
+import java.io.FileOutputStream
+import java.lang.Exception
 import java.util.Locale
 
 class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
@@ -35,12 +55,16 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
     private var dataSales = "-"
     private var dataAsas = "-"
 
+    private val viewModel: RequestFormViewModel by inject()
+
     override fun getViewBinding() = ActivityRequestFormBinding.inflate(layoutInflater)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initIntentExtras(savedInstanceState)
         initUI()
+        observeDownlaodingPDF()
+//        observeDownloadingFilePDFAndSaveIt()
         initListener()
         resetKoefisienResult()
     }
@@ -78,7 +102,7 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                     val text = p0.toString()
                     if (text.isNotEmpty()) {
                         lyKapasitasMomenLapangan.etTegangnLelehMetalDeck.setValueText(
-                            text
+                            text,
                         )
                     }
                 }
@@ -96,7 +120,7 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                     if (text.isNotEmpty()) {
                         val calculate = 1219.0 * text.toDouble()
                         lyKapasitasMomenLapangan.etLuasPenampangNominalMetalDeck.setValueText(
-                            String.format(Locale.US, "%.2f", calculate)
+                            String.format(Locale.US, "%.2f", calculate),
                         )
                     }
                 }
@@ -170,6 +194,7 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
         init_V_b_KapasitasMomentLapanganMetalDeckRencana()
         init_V_c_KapasitasMomenLapanganMetalDeckRencana()
         init_V_d_KapasitasMomenNegatifMetalDeckrencanaUntukPelatMenerus()
+        init_V_d_2_KapasitasMomenNegatifMetalDeckrencanaUntukPelatMenerus()
     }
 
     private fun init_IV_BebanPelatLantai() {
@@ -181,7 +206,7 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
             lyBebanPlatLantai.cettBeratFinishingLantai.setTebalSatuan("0.025")
 
             lyBebanPlatLantai.cettBeratPlafondRangka.setTebalSatuan("-")
-            lyBebanPlatLantai.cettBeratPlafondRangka.getBeratSatuanEditText().addTextChangedListener(object : TextWatcher{
+            lyBebanPlatLantai.cettBeratPlafondRangka.getBeratSatuanEditText().addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 }
 
@@ -194,9 +219,8 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                 }
             })
 
-
             lyBebanPlatLantai.cettBeratInstalasiME.setTebalSatuan("-")
-            lyBebanPlatLantai.cettBeratInstalasiME.getBeratSatuanEditText().addTextChangedListener(object : TextWatcher{
+            lyBebanPlatLantai.cettBeratInstalasiME.getBeratSatuanEditText().addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 }
 
@@ -206,7 +230,6 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                 override fun afterTextChanged(text: Editable?) {
                     lyBebanPlatLantai.cettBeratInstalasiME.setValueQ(text.toString())
                     updateTotalBebanMatiQD()
-
                 }
             })
 
@@ -223,8 +246,13 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                         lyBebanPlatLantai.cettBeratSendiri.setTebalSatuan(String.format("%.3f", resultTebal))
 
                         val resultLenganMomenGayaTarik = tebal - 20
-                        lyKapasitasMomenLapangan.etLenganMomengayaTarik.setValueText(String.format(
-                            Locale.US, "%.2f", resultLenganMomenGayaTarik))
+                        lyKapasitasMomenLapangan.etLenganMomengayaTarik.setValueText(
+                            String.format(
+                                Locale.US,
+                                "%.2f",
+                                resultLenganMomenGayaTarik,
+                            ),
+                        )
                     } else {
                         lyBebanPlatLantai.cettBeratSendiri.setTebalSatuan("0.0")
                         lyKapasitasMomenLapangan.etLenganMomengayaTarik.setValueText("0.0")
@@ -352,7 +380,7 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                         val phi = lyKapasitasMomenLapangan.etPhi.getText().toDoubleOrNull() ?: 0.0
                         val fcc = lyKapasitasMomenLapangan.etFccKuatTekanBeton.getText().toDoubleOrNull() ?: 0.0
                         val tenPow = Math.pow(10.0, 6.0)
-                        val summary = luasPenampang * teganganLeleh * lenganMomen * (1 - (phi * teganganLeleh/(2*fcc))) * 0.3 / tenPow
+                        val summary = luasPenampang * teganganLeleh * lenganMomen * (1 - (phi * teganganLeleh / (2 * fcc))) * 0.3 / tenPow
 
                         lyKapasitasMomenLapangan.etFormulaMcap.setValueText(String.format(Locale.US, String.format("%.2f", summary)))
                     } else {
@@ -360,7 +388,6 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                     }
                 }
             })
-
 
             lyKapasitasMomenLapangan.etTegangnLelehMetalDeck.setSymbolTextSpanneble(
                 HelperTextSpannable.subscriptText(
@@ -398,7 +425,7 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                         val phi = lyKapasitasMomenLapangan.etPhi.getText().toDoubleOrNull() ?: 0.0
                         val fcc = lyKapasitasMomenLapangan.etFccKuatTekanBeton.getText().toDoubleOrNull() ?: 0.0
                         val tenPow = Math.pow(10.0, 6.0)
-                        val summary = luasPenampang * teganganLeleh * lenganMomen * (1 - (phi * teganganLeleh/(2*fcc))) * 0.3 / tenPow
+                        val summary = luasPenampang * teganganLeleh * lenganMomen * (1 - (phi * teganganLeleh / (2 * fcc))) * 0.3 / tenPow
 
                         lyKapasitasMomenLapangan.etFormulaMcap.setValueText(String.format(Locale.US, String.format("%.2f", summary)))
                     } else {
@@ -408,7 +435,7 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                 }
             })
 
-            lyKapasitasMomenLapangan.etPhi.addTextChangeListener(object : TextWatcher{
+            lyKapasitasMomenLapangan.etPhi.addTextChangeListener(object : TextWatcher {
                 override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 }
 
@@ -424,7 +451,7 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                         val phi = text.toDoubleOrNull() ?: 0.0
                         val fcc = lyKapasitasMomenLapangan.etFccKuatTekanBeton.getText().toDoubleOrNull() ?: 0.0
                         val tenPow = Math.pow(10.0, 6.0)
-                        val summary = luasPenampang * teganganLeleh * lenganMomen * (1 - (phi * teganganLeleh/(2*fcc))) * 0.3 / tenPow
+                        val summary = luasPenampang * teganganLeleh * lenganMomen * (1 - (phi * teganganLeleh / (2 * fcc))) * 0.3 / tenPow
 
                         lyKapasitasMomenLapangan.etFormulaMcap.setValueText(String.format(Locale.US, String.format("%.2f", summary)))
                     } else {
@@ -456,7 +483,7 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                         val phi = lyKapasitasMomenLapangan.etPhi.getText().toDoubleOrNull() ?: 0.0
                         val fcc = text.toDoubleOrNull() ?: 0.0
                         val tenPow = Math.pow(10.0, 6.0)
-                        val summary = luasPenampang * teganganLeleh * lenganMomen * (1 - (phi * teganganLeleh/(2*fcc))) * 0.3 / tenPow
+                        val summary = luasPenampang * teganganLeleh * lenganMomen * (1 - (phi * teganganLeleh / (2 * fcc))) * 0.3 / tenPow
 
                         lyKapasitasMomenLapangan.etFormulaMcap.setValueText(String.format(Locale.US, String.format("%.2f", summary)))
                     } else {
@@ -464,7 +491,6 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                     }
                 }
             })
-
 
             lyKapasitasMomenLapangan.etFormulaMcap.setTitleText(
                 HelperTextSpannable.combineSubscriptSuperscriptLetter(
@@ -704,9 +730,14 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                         if (diameterTulangan == 0.0 || jarakTulangan == 0.0) {
                             lyPerhitunganTulanganPositifTambahan.etLuasTulangan.setValueText("0")
                         } else {
-                            val resultCalc = (0.25 * (22/7) * Math.pow((diameterTulangan-0.3), 2.0)) * 1000 / jarakTulangan
-                            lyPerhitunganTulanganPositifTambahan.etLuasTulangan.setValueText(String.format(
-                                Locale.US, "%.3f", resultCalc))
+                            val resultCalc = (0.25 * (22 / 7) * Math.pow((diameterTulangan - 0.3), 2.0)) * 1000 / jarakTulangan
+                            lyPerhitunganTulanganPositifTambahan.etLuasTulangan.setValueText(
+                                String.format(
+                                    Locale.US,
+                                    "%.3f",
+                                    resultCalc,
+                                ),
+                            )
                         }
                     } else {
                         lyPerhitunganTulanganPositifTambahan.etLuasTulangan.setValueText("0")
@@ -728,9 +759,14 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                         if (diameterTulangan == 0.0 || jarakTulangan == 0.0) {
                             lyPerhitunganTulanganPositifTambahan.etLuasTulangan.setValueText("0")
                         } else {
-                            val resultCalc = (0.25 * (22/7) * Math.pow((diameterTulangan-0.3), 2.0)) * 1000 / jarakTulangan
-                            lyPerhitunganTulanganPositifTambahan.etLuasTulangan.setValueText(String.format(
-                                Locale.US, "%.3f", resultCalc))
+                            val resultCalc = (0.25 * (22 / 7) * Math.pow((diameterTulangan - 0.3), 2.0)) * 1000 / jarakTulangan
+                            lyPerhitunganTulanganPositifTambahan.etLuasTulangan.setValueText(
+                                String.format(
+                                    Locale.US,
+                                    "%.3f",
+                                    resultCalc,
+                                ),
+                            )
                         }
                     } else {
                         lyPerhitunganTulanganPositifTambahan.etLuasTulangan.setValueText("0")
@@ -1336,6 +1372,47 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
         }
     }
 
+    private fun init_V_d_2_KapasitasMomenNegatifMetalDeckrencanaUntukPelatMenerus() {
+        binding.apply {
+            lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus.etKebutuhanTulanganNegatif.setFormulaTextInfoSpannable(
+                HelperTextSpannable.combineSubscriptSuperscriptLetter(
+                    rawText = "As- = ω*bfict*dmd*fcc/fst",
+                    listLetter = listOf(
+                        // s
+                        LetterModel(
+                            startIndex = 1,
+                            endIndex = 2,
+                        ),
+                        // fict
+                        LetterModel(
+                            startIndex = 9,
+                            endIndex = 13,
+                        ),
+                        // md
+                        LetterModel(
+                            startIndex = 15,
+                            endIndex = 17,
+                        ),
+                        // cc
+                        LetterModel(
+                            startIndex = 19,
+                            endIndex = 21,
+                        ),
+                        // st
+                        LetterModel(
+                            startIndex = 23,
+                            endIndex = 25,
+                        ),
+                    ),
+                ),
+            )
+
+            lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus.etButuhTulangan.setSymbolTextSpanneble(
+                SpannableString("Ø"),
+            )
+        }
+    }
+
     private fun initListener() {
         binding.apply {
             etPanjangBentangPlatY.addTextChangeListener(object : TextWatcher {
@@ -1396,7 +1473,48 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
             })
 
             btnSave.setSafeOnClickListener {
-                Toast.makeText(this@RequestFormActivity, "Tersimpan!", Toast.LENGTH_SHORT).show()
+                Log.e(RequestFormActivity::class.simpleName, "click btnSave")
+                loadingDialog()
+                val dataRequest = RequestEngineerParam(
+                    perhitunganNo = dataPerhitunganNo,
+                    customerName = dataCust,
+                    project = dataProyek,
+                    sales = dataSales,
+                    asName = dataAsas,
+                )
+                Log.e(RequestFormActivity::class.simpleName, "request body : ${Gson().toJson(dataRequest)}")
+                viewModel.retrieveDownloadPdfRequestEngineer(
+                    param = dataRequest,
+                )
+//                PermissionHelper.checkGrantedPermission(
+//                    context = this@RequestFormActivity,
+//                    perms = listOf(PermissionHelper.permissionMediaAccess()),
+//                    requestCode = 122,
+//                    listener = object : IPermissionListener {
+//                        override fun onPermissionGranted() {
+//                            val filename = "roof_calc_engineer_${System.currentTimeMillis()}"
+//                            SavingFileHelper.downloadManagerAndSaveFile(
+//                                this@RequestFormActivity,
+//                                "https://roof.deratech.id/printpdf/detail/36",
+//                                "$filename.pdf",
+//                            ) { downloadID, downloadManager ->
+//                                lifecycleScope.launch {
+//                                    val filePdf = withContext(Dispatchers.IO) {
+//                                        waitForDownloadCompletion(downloadID, downloadManager, filename)
+//                                    }
+//
+//                                    openPdf(filePdf)
+//                                }
+//                            }
+//                        }
+//
+//                        override fun onFailed(requestCode: Int, perms: MutableList<String>) {
+//                            Toast.makeText(this@RequestFormActivity, "Permission WRITE EXTERNAL STORAGE not GRANTED!", Toast.LENGTH_SHORT).show()
+//                        }
+//                    },
+//                )
+
+//                viewModel.downloadingPDFFile("https://roof.deratech.id/printpdf/detail/36")
             }
         }
     }
@@ -1449,4 +1567,206 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
         setTextKoefisien(null)
         binding.tvResultPossibility.text = "-"
     }
+
+    private fun observeDownlaodingPDF() {
+        try {
+            viewModel.responseDownlaodPdfEngineer.observe(this) { response ->
+                val apiResulthandler = ApiResultHandler<BaseApiResponse<LinkPDFResponse>>(
+                    this@RequestFormActivity,
+                    onLoading = {
+                        loadingDialog()
+                    },
+                    onSuccess = {
+                        dismissLoading()
+                        Log.e(RequestFormActivity::class.simpleName, "response raw: ${Gson().toJson(it)}")
+                        it?.let { resultResponse ->
+                            if (resultResponse.code != 200) {
+                                DialogAlertHelper.showDialogMessage(
+                                    context = this,
+                                    title = "Error Service",
+                                    message = it.message ?: "-",
+                                    listener = object : DialogAlertHelper.DialogInfoListener {
+                                        override fun onClickOk() {
+                                            Toast.makeText(this@RequestFormActivity, "Silahkan dicoba lagi dengan data penomoran berbeda", Toast.LENGTH_SHORT).show()
+                                        }
+                                    },
+                                )
+                            } else {
+                                it.data?.let { dataUrlDownlaod ->
+                                    Log.w(RequestFormActivity::class.simpleName, "response API url_pdf: ${dataUrlDownlaod.urlPdf}")
+                                    dataUrlDownlaod.urlPdf?.let { safeUrLLink ->
+//                                        viewModel.downloadingPDFFile(safeUrLLink)
+
+                                        PermissionHelper.checkGrantedPermission(
+                                            context = this@RequestFormActivity,
+                                            perms = listOf(PermissionHelper.permissionMediaAccess()),
+                                            requestCode = 122,
+                                            listener = object : IPermissionListener {
+                                                override fun onPermissionGranted() {
+                                                    // set filename pdf
+                                                    val filename = "roof_calc_engineer_${System.currentTimeMillis()}"
+
+                                                    SavingFileHelper.downloadManagerAndSaveFile(
+                                                        this@RequestFormActivity,
+                                                        safeUrLLink,
+                                                        "$filename.pdf",
+                                                    ) { downloadID, downloadManager ->
+                                                        lifecycleScope.launch {
+                                                            val filePdf = withContext(Dispatchers.IO) {
+                                                                waitForDownloadCompletion(downloadID, downloadManager, filename)
+                                                            }
+
+                                                            openPdf(filePdf)
+                                                        }
+                                                    }
+                                                }
+
+                                                override fun onFailed(requestCode: Int, perms: MutableList<String>) {
+                                                    Toast.makeText(this@RequestFormActivity, "Permission WRITE EXTERNAL STORAGE not GRANTED!", Toast.LENGTH_SHORT).show()
+                                                }
+                                            },
+                                        )
+                                    }
+
+                                }
+                            }
+                        }
+                    },
+                    onFailure = { messageFailure ->
+                        dismissLoading()
+                        Toast.makeText(this, messageFailure ?: "-", Toast.LENGTH_SHORT).show()
+                    },
+                )
+                apiResulthandler.handleApiResult(response)
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Log.e(RequestFormActivity::class.simpleName, "Something wrong with observerDownlaodingPDF: ${e.message}")
+        }
+    }
+
+//    private fun observeDownloadingFilePDFAndSaveIt() {
+//        viewModel.responseBodyFilePdf.observe(this) { response ->
+//            try {
+//                val apiResulthandler = ApiResultHandler<ResponseBody>(
+//                    this@RequestFormActivity,
+//                    onLoading = {
+//                        loadingDialog()
+//                    },
+//                    onSuccess = {
+//                        Log.e(RequestFormActivity::class.simpleName, "response raw: ${Gson().toJson(it)}")
+//                        it?.let { responseBody ->
+//                            // set path file
+//                            val pdfFolder = File(cacheDir, "cbm_pdf")
+//                            if (!pdfFolder.mkdir()) {
+//                                pdfFolder.mkdir()
+//                            }
+//                            val fileName = File(pdfFolder, "cbm_file_pdf_${System.currentTimeMillis()}.pdf")
+//                            Log.w(RequestFormActivity::class.simpleName, "file: ${fileName.name} | path: ${fileName.path}")
+//                            val pathSavedDownloads = fileName.path
+//
+//                            val inputStream = responseBody.byteStream()
+//                            val fos = FileOutputStream(pathSavedDownloads)
+//                            fos.use { output ->
+////                                val buffer = ByteArray(4 * 1024)
+//                                val buffer = ByteArray(1024 * 1024)
+//                                var read: Int
+//                                while (inputStream.read(buffer).also { x -> read = x } != -1) {
+//                                    output.write(buffer, 0, read)
+//                                }
+//                                output.flush()
+//
+//                                SavingFileHelper.savePdfToDownloads(
+//                                    context = this,
+//                                    sourceFile = fileName,
+//                                    fileName = fileName.name,
+//                                )
+//                            }
+//                        }
+//                    },
+//                    onFailure = { it ->
+//                        dismissLoading()
+//                        Toast.makeText(this, it ?: "", Toast.LENGTH_SHORT).show()
+//                    },
+//                )
+//                apiResulthandler.handleApiResult(response)
+//            } catch (e: Exception) {
+//                e.printStackTrace()
+//                Log.e(RequestFormActivity::class.simpleName, "observeDownloadingFilePDFAndSaveIt err: ${e.message}")
+//            }
+//        }
+//    }
+
+    private suspend fun waitForDownloadCompletion(downloadID: Long, downloadManager: DownloadManager, filename: String): File {
+        return withContext(Dispatchers.IO) {
+            var downloading = true
+            var filePath: File? = null
+
+            while (downloading) {
+                val query = DownloadManager.Query().setFilterById(downloadID)
+                val cursor = downloadManager.query(query)
+
+                if (cursor != null && cursor.moveToFirst()) {
+                    val status = cursor.getInt(cursor.getColumnIndexOrThrow(DownloadManager.COLUMN_STATUS))
+                    when (status) {
+                        DownloadManager.STATUS_SUCCESSFUL -> {
+                            downloading = false
+                            dismissLoading()
+
+                            filePath = File(
+                                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
+                                "$filename.pdf",
+                            )
+                        }
+                        DownloadManager.STATUS_FAILED -> {
+                            downloading = false
+                            throw Exception("Download failed")
+                        }
+                    }
+                }
+                cursor?.close()
+            }
+
+            filePath ?: throw Exception("Download did not complete")
+        }
+    }
+
+    fun openPdf(file: File) {
+        val uri: Uri = FileProvider.getUriForFile(this, "$packageName.provider", file)
+
+        val intent = Intent(Intent.ACTION_VIEW).apply {
+            setDataAndType(uri, "application/pdf")
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        }
+
+        // Check if there is an app to handle the intent
+        if (intent.resolveActivity(packageManager) != null) {
+            startActivity(intent)
+        } else {
+            // Show a message if no app is available
+//            android.widget.Toast.makeText(context, "No app found to open this file", android.widget.Toast.LENGTH_SHORT).show()
+            DialogAlertHelper.showDialogMessage(
+                context = this,
+                title = "File Terdownload!",
+                message = "Mohon buka File Manager di Direktori Download untuk open file",
+                listener = object : DialogAlertHelper.DialogInfoListener {
+                    override fun onClickOk() {
+                        try {
+                            val _intent = Intent(Intent.ACTION_VIEW)
+//                            val _uri = Uri.parse(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).path)
+
+                            _intent.type = "*/*"
+//                            _intent.setDataAndType(Uri.parse("file://"), "*/*")
+                            _intent.addCategory(Intent.CATEGORY_DEFAULT)
+                            startActivity(_intent)
+                        } catch (e: Exception) {
+                            Log.e("Err", "error open intent downloads file manager: ${e.message}")
+                            Toast.makeText(this@RequestFormActivity, "error open intent downloads file manager: ${e.message}", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                },
+            )
+        }
+    }
+
 }

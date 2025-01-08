@@ -1,6 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">CBM-calculator</string>
 
+    <string name="loading_info">Please wait …</string>
+    <string name="dialog_default_title">Message</string>
+    <string name="dialog_default_message">If you use this site regularly and would like to help keep the site on the Internet, please consider donating a small sum to help pay for the hosting and bandwidth bill.</string>
+
+
     <!--    SIGN IN-->
     <string name="signin_title">CBM Calculator</string>
     <string name="signin_desc">Please sign-in using your email account</string>
@@ -127,6 +132,7 @@
     <string name="form_engineer_momen_relatif_m">Momen relatif</string>
     <string name="form_engineer_mechanical_reinforcement">Mechanical Reinforcement</string>
     <string name="form_engineer_kebutuhan_tulangan_negatif">Kebutuhan tulangan negatif </string>
+    <string name="form_engineer_butuh_tulangan" tools:ignore="ExtraTranslation">Butuh tulangan Ø</string>
     <string name="form_engineer_tegangan_leleh_tulangan_tambahan">Tegangan leleh tulangan tambahan</string>
     <string name="form_engineer_konversi_lias_tulangan_tambahan_ke">Konversi luas tulangan tambahan ke</string>
     <string name="form_engineer_maka_luas_tulangan_tambahan">Maka luas tulangan tambahan</string>

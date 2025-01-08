@@ -112,5 +112,24 @@
 
     </LinearLayout>
 
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etKebutuhanTulanganNegatif"
+        app:titleSection="@string/form_engineer_kebutuhan_tulangan_negatif"
+        app:valueTextAligment="right"
+        app:addFormulaInfo="true"
+        app:unit="@string/unit_mm2"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etButuhTulangan"
+        app:titleSection="@string/form_engineer_butuh_tulangan"
+        app:valueTextAligment="right"
+        app:unit="@string/unit_mm"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 
 </LinearLayout>
