@@ -74,30 +74,30 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>() {
                 return
             }
 
-            PermissionHelper.checkGrantedPermission(
-                context = this@SignInActivity,
-                perms = listOf(PermissionHelper.permissionMediaAccess()),
-                requestCode = Constants.PERMISSION_MEDIA_STORAGE_ACCESS,
-                listener = object : IPermissionListener {
-                    override fun onPermissionGranted() {
-                        Log.w(SignInActivity::class.simpleName, "singIn() permission media access state granted")
-                        signIn()
-                    }
-
-                    override fun onFailed(requestCode: Int, perms: MutableList<String>) {
-                        Toast.makeText(this@SignInActivity, "Granted Permission MEDIA_ACCESS failed - ${requestCode}", Toast.LENGTH_SHORT).show()
-                    }
-                }
-            )
+            signIn()
         }
     }
 
     @AfterPermissionGranted(Constants.PERMISSION_MEDIA_STORAGE_ACCESS)
     fun signIn() {
-        Toast.makeText(this@SignInActivity, "Success", Toast.LENGTH_SHORT).show()
-        startActivity(
-            Intent(this@SignInActivity, MainEngineerActivity::class.java),
+        PermissionHelper.checkGrantedPermission(
+            context = this@SignInActivity,
+            perms = listOf(PermissionHelper.permissionMediaAccess()),
+            requestCode = Constants.PERMISSION_MEDIA_STORAGE_ACCESS,
+            listener = object : IPermissionListener {
+                override fun onPermissionGranted() {
+                    Log.w(SignInActivity::class.simpleName, "singIn() permission media access state granted")
+                    Toast.makeText(this@SignInActivity, "Success", Toast.LENGTH_SHORT).show()
+                    startActivity(
+                        Intent(this@SignInActivity, MainEngineerActivity::class.java),
+                    )
+                    finishAffinity()
+                }
+
+                override fun onFailed(requestCode: Int, perms: MutableList<String>) {
+                    Toast.makeText(this@SignInActivity, "Granted Permission MEDIA_ACCESS failed - ${requestCode}", Toast.LENGTH_SHORT).show()
+                }
+            }
         )
-        finishAffinity()
     }
 }

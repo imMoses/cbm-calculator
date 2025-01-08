@@ -3,49 +3,19 @@ package id.cbm.main.cbm_calculator.utils
 import android.app.DownloadManager
 import android.content.ContentValues
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import android.widget.Toast
+import androidx.core.content.FileProvider
+import id.cbm.main.cbm_calculator.ui.engineer.form.RequestFormActivity
 import java.io.File
 import java.io.FileInputStream
+import java.lang.Exception
 
 object SavingFileHelper {
-
-    fun savePdfToDownloads(
-        context: Context,
-        sourceFile: File,
-        fileName: String,
-    ): Boolean {
-
-        val resolver = context.contentResolver
-
-        val contentValues = ContentValues().apply {
-            put(MediaStore.MediaColumns.DISPLAY_NAME, fileName) // File name
-            put(MediaStore.MediaColumns.MIME_TYPE, "application/pdf") // MIME type
-            put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS) // Directory
-        }
-
-        val uri = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, contentValues)
-
-        return if (uri != null) {
-            resolver.openOutputStream(uri)?.use { outputStream ->
-                try {
-//                    outputStream.write(fileContent)
-                    FileInputStream(sourceFile).use { inputStream ->
-                        inputStream.copyTo(outputStream)
-                        Log.w("savePdfToDownlods", "file successfully saved into Download path! | ${fileName}")
-                    }
-                    true // Successfully saved
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                    false // Failed to save
-                }
-            } ?: false // Failed to open output stream
-        } else {
-            false // Failed to create URI
-        }
-    }
 
     fun downloadManagerAndSaveFile(context: Context, fileUrl: String, fileName: String, doAction: (Long, DownloadManager) -> Unit) {
         val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
@@ -55,7 +25,7 @@ object SavingFileHelper {
             setTitle("Downloading $fileName")
             setDescription("Please wait while the file is being downloaded.")
             setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-            setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "$fileName.pdf")
+            setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName)
         }
 
         // Enqueue th edownload request
@@ -63,5 +33,39 @@ object SavingFileHelper {
 
         // Listen for completion and wait for download completion
         doAction(downloadID, downloadManager)
+    }
+
+    fun openChooserPdf(context: Context, filePdf: File) {
+        if (!filePdf.exists()) {
+            Toast.makeText(context, "File Pdf not exist!", Toast.LENGTH_SHORT).show()
+            Log.e(RequestFormActivity::class.simpleName, "moses_check File Pdf not exist! ${filePdf.path}")
+            return
+        }
+
+        val uri: Uri = FileProvider.getUriForFile(
+            context,
+            "${context.packageName}.provider",
+            filePdf,
+        )
+
+        val intent = Intent(Intent.ACTION_VIEW).apply {
+            setDataAndType(uri, "application/pdf")
+            addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION) // Grant read permission
+        }
+
+        val chooserIntent = Intent.createChooser(intent, "Open PDF with")
+
+        try {
+            context.startActivity(chooserIntent)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Toast.makeText(context, "intent chooser err: ${e.message}", Toast.LENGTH_SHORT).show()
+
+            // Optionally, redirect the user to the Play Store
+            val storeIntent = Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=pdf+viewer"))
+            if (storeIntent.resolveActivity(context.packageManager) != null) {
+                context.startActivity(storeIntent)
+            }
+        }
     }
 }
