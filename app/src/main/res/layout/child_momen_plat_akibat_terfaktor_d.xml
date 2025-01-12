@@ -131,5 +131,108 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etJarak"
+        app:valueTextAligment="right"
+        app:titleSection="Jarak"
+        app:unit="@string/unit_mm"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etAst"
+        app:valueTextAligment="right"
+        app:unit="@string/unit_mm2"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etTeganganLelehTulanganBaja"
+        app:valueTextAligment="right"
+        app:titleSection="@string/form_engineer_tegangan_leleh_tulangan_tambahan"
+        app:leftSymbol="fst add"
+        app:unit="@string/unit_mpa"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etButuhTulangan2"
+        app:titleSection="@string/form_engineer_butuh_tulangan"
+        app:valueTextAligment="right"
+        app:unit="@string/unit_mm"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etJarak2"
+        app:valueTextAligment="right"
+        app:titleSection="Jarak"
+        app:unit="@string/unit_mm"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etAstadd"
+        app:valueTextAligment="right"
+        app:unit="@string/unit_mm2"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etKonversiLuasTulanganTambahanKe"
+        app:titleSection="@string/form_engineer_konversi_luas_tulangan_tambahan_ke"
+        app:unit="@string/unit_mpa"
+        app:valueTextAligment="right"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etMakaLuasTulanganTambahan"
+        app:titleSection="@string/form_engineer_maka_luas_tulangan_tambahan"
+        app:unit="@string/unit_mm2"
+        app:valueTextAligment="right"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_line_corner_rounded"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:padding="@dimen/_12sdp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvSyaratFormula2"
+            android:textSize="@dimen/_12ssp"
+            android:paddingTop="@dimen/_4sdp"
+            android:paddingBottom="@dimen/_4sdp"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Syarat: X > Y"/>
+
+        <TextView
+            android:text="Hasil perhitungan: "
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tvResult2"
+            android:text="OK"
+            android:textStyle="bold|italic"
+            android:textSize="@dimen/_14ssp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="OK, hoooraaayy"/>
+
+    </LinearLayout>
 
 </LinearLayout>

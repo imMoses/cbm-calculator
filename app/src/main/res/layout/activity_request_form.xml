@@ -349,13 +349,41 @@
                 android:layout_marginEnd="@dimen/_14sdp" />
 
             <include
-                android:id="@+id/lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus"
+                android:id="@+id/lyKapasitasMomenNegatifMetalDeckrencanaPelatMenerus"
                 layout="@layout/child_momen_plat_akibat_terfaktor_d"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_14sdp"
                 android:layout_marginEnd="@dimen/_14sdp" />
+
+            <include
+                android:id="@+id/lyGayaGeserPlat"
+                layout="@layout/child_gaya_geser_plat"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_14sdp"
+                android:layout_marginEnd="@dimen/_14sdp" />
+
+            <include
+                android:id="@+id/lyDefleksiV1"
+                layout="@layout/child_defleksi_vii_kondisi_saat_pengecoran"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_14sdp"
+                android:layout_marginEnd="@dimen/_14sdp" />
+
+            <include
+                android:id="@+id/lyDefleksiV1A"
+                layout="@layout/child_defleksi_vii_2_kondisi_simple_plan"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_14sdp"
+                android:layout_marginEnd="@dimen/_14sdp" />
+
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnSave"

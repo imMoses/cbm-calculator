@@ -36,4 +36,16 @@
         <attr name="enableQ" format="boolean" />
     </declare-styleable>
 
+    <declare-styleable name="FormulaSetupEditText">
+        <attr name="leftTextMainFormula" format="string" />
+        <attr name="upperFormulaText" format="string" />
+        <attr name="bottomFormulaText" format="string" />
+        <attr name="unitFormula" format="string" />
+        <attr name="alignmentText" format="enum">
+            <enum name="leftText" value="0" />
+            <enum name="rightText" value="1" />
+        </attr>
+        <attr name="disabledInputEditText" format="boolean" />
+    </declare-styleable>
+
 </resources>

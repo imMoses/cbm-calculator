@@ -134,7 +134,7 @@
     <string name="form_engineer_kebutuhan_tulangan_negatif">Kebutuhan tulangan negatif </string>
     <string name="form_engineer_butuh_tulangan" tools:ignore="ExtraTranslation">Butuh tulangan Ø</string>
     <string name="form_engineer_tegangan_leleh_tulangan_tambahan">Tegangan leleh tulangan tambahan</string>
-    <string name="form_engineer_konversi_lias_tulangan_tambahan_ke">Konversi luas tulangan tambahan ke</string>
+    <string name="form_engineer_konversi_luas_tulangan_tambahan_ke">Konversi luas tulangan tambahan ke</string>
     <string name="form_engineer_maka_luas_tulangan_tambahan">Maka luas tulangan tambahan</string>
 
     <string name="form_engineer_title_gaya_geser_plat_akibat_beban_terfaktor">VI. GAYA GESER PLAT AKIBAT BEBAN TERFAKTOR</string>
@@ -146,7 +146,7 @@
     <string name="form_engineer_berat_lantai">Berat lantai</string>
     <string name="form_engineer_sub_title_kondisi_simple_span">a. Kondisi Simple Span</string>
     <string name="form_engineer_bentang_pelat_arah_x">Bentang pelat arah - X</string>
-    <string name="form_engineer_syarat_defleksi">Syarat defleksi</string>
+    <string name="form_engineer_syarat_defleksi">Syarat defleksi = L/240</string>
     <string name="form_engineer_jumlah_tumpuan_sementara">Jumlah Tumpuan Sementara</string>
     <string name="form_engineer_jarak_bentang_pertumpuan_sementara">Jarak Bentang Pertumpuan Sementara</string>
     <string name="form_engineer_title_deflesi_kondisi_beton_sudah_komposit">VII.2 Defleksi Kondisi Beton Sudah Komposit</string>

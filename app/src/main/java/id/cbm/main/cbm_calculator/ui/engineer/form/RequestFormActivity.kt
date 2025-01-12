@@ -188,6 +188,9 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
         init_V_c_KapasitasMomenLapanganMetalDeckRencana()
         init_V_d_KapasitasMomenNegatifMetalDeckrencanaUntukPelatMenerus()
         init_V_d_2_KapasitasMomenNegatifMetalDeckrencanaUntukPelatMenerus()
+        init_VI_gayaGeserPlatAkibatBebanTerfaktor()
+        init_VII_1_defleksiKondisisaatPengecoranBeton()
+        init_VII_1_a_kondisiSimpleSpan()
     }
 
     private fun init_IV_BebanPelatLantai() {
@@ -1172,7 +1175,7 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
 
     private fun init_V_d_KapasitasMomenNegatifMetalDeckrencanaUntukPelatMenerus() {
         binding.apply {
-            lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus.etMomenNegatifUltimate.setFormulaTextInfoSpannable(
+            lyKapasitasMomenNegatifMetalDeckrencanaPelatMenerus.etMomenNegatifUltimate.setFormulaTextInfoSpannable(
                 HelperTextSpannable.combineSubscriptSuperscriptLetter(
                     rawText = "M-act = Qu*Lx2/10",
                     listLetter = listOf(
@@ -1206,7 +1209,7 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                     ),
                 ),
             )
-            lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus.etMomenNegatifUltimate.setSymbolTextSpanneble(
+            lyKapasitasMomenNegatifMetalDeckrencanaPelatMenerus.etMomenNegatifUltimate.setSymbolTextSpanneble(
                 HelperTextSpannable.combineSubscriptSuperscriptLetter(
                     rawText = "M-act",
                     listLetter = listOf(
@@ -1225,7 +1228,7 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                 ),
             )
 
-            lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus.etLebarFiktif.setFormulaTextInfoSpannable(
+            lyKapasitasMomenNegatifMetalDeckrencanaPelatMenerus.etLebarFiktif.setFormulaTextInfoSpannable(
                 HelperTextSpannable.subscriptMultipleTextSingleLine(
                     rawText = "bfict = (bu/bd)*1000",
                     listLetter = listOf(
@@ -1247,7 +1250,7 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                     ),
                 ),
             )
-            lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus.etLebarFiktif.setSymbolTextSpanneble(
+            lyKapasitasMomenNegatifMetalDeckrencanaPelatMenerus.etLebarFiktif.setSymbolTextSpanneble(
                 HelperTextSpannable.subscriptMultipleTextSingleLine(
                     rawText = "bfict",
                     listLetter = listOf(
@@ -1260,7 +1263,7 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                 ),
             )
 
-            lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus.etLenganMomenGayaTarikTulangan.setSymbolTextSpanneble(
+            lyKapasitasMomenNegatifMetalDeckrencanaPelatMenerus.etLenganMomenGayaTarikTulangan.setSymbolTextSpanneble(
                 HelperTextSpannable.subscriptText(
                     rawText = "dmd",
                     startIndex = 1,
@@ -1268,7 +1271,7 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                 ),
             )
 
-            lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus.etMomenRelatifM.setFormulaTextInfoSpannable(
+            lyKapasitasMomenNegatifMetalDeckrencanaPelatMenerus.etMomenRelatifM.setFormulaTextInfoSpannable(
                 HelperTextSpannable.combineSubscriptSuperscriptLetter(
                     rawText = "m = M-act/(bfict*d2*fcc)",
                     listLetter = listOf(
@@ -1303,14 +1306,14 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                 ),
             )
 
-            lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus.etMechanicalReinforcement.setFormulaTextInfoSpannable(
+            lyKapasitasMomenNegatifMetalDeckrencanaPelatMenerus.etMechanicalReinforcement.setFormulaTextInfoSpannable(
                 HelperTextSpannable.subscriptMultipleTextSingleLine(
                     rawText = "ω = 1-√(1-2*m)",
                     null,
                 ),
             )
 
-            lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus.etMechanicalReinforcement2.setTitleText(
+            lyKapasitasMomenNegatifMetalDeckrencanaPelatMenerus.etMechanicalReinforcement2.setTitleText(
                 HelperTextSpannable.subscriptMultipleTextSingleLine(
                     rawText = "0.8X < hw",
                     listOf(
@@ -1321,14 +1324,14 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                     ),
                 ),
             )
-            lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus.etMechanicalReinforcement2.setFormulaTextInfoSpannable(
+            lyKapasitasMomenNegatifMetalDeckrencanaPelatMenerus.etMechanicalReinforcement2.setFormulaTextInfoSpannable(
                 HelperTextSpannable.subscriptMultipleTextSingleLine(
                     rawText = "0.8X=ω*d",
                     listLetter = null,
                 ),
             )
 
-            lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus.etMechanicalReinforcement3.setTitleText(
+            lyKapasitasMomenNegatifMetalDeckrencanaPelatMenerus.etMechanicalReinforcement3.setTitleText(
                 HelperTextSpannable.combineSubscriptSuperscriptLetter(
                     rawText = "ωbd = 0.8/(fy/733.3+1)",
                     listLetter = listOf(
@@ -1345,7 +1348,7 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                     ),
                 ),
             )
-            lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus.etMechanicalReinforcement3.setSymbolTextSpanneble(
+            lyKapasitasMomenNegatifMetalDeckrencanaPelatMenerus.etMechanicalReinforcement3.setSymbolTextSpanneble(
                 HelperTextSpannable.subscriptText(
                     rawText = "ωbd",
                     startIndex = 1,
@@ -1353,7 +1356,7 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                 ),
             )
 
-            lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus.tvSyaratFormula.text = HelperTextSpannable.subscriptMultipleTextSingleLine(
+            lyKapasitasMomenNegatifMetalDeckrencanaPelatMenerus.tvSyaratFormula.text = HelperTextSpannable.subscriptMultipleTextSingleLine(
                 rawText = "ωbd > ω",
                 listLetter = listOf(
                     LetterModel(
@@ -1367,7 +1370,7 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
 
     private fun init_V_d_2_KapasitasMomenNegatifMetalDeckrencanaUntukPelatMenerus() {
         binding.apply {
-            lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus.etKebutuhanTulanganNegatif.setFormulaTextInfoSpannable(
+            lyKapasitasMomenNegatifMetalDeckrencanaPelatMenerus.etKebutuhanTulanganNegatif.setFormulaTextInfoSpannable(
                 HelperTextSpannable.combineSubscriptSuperscriptLetter(
                     rawText = "As- = ω*bfict*dmd*fcc/fst",
                     listLetter = listOf(
@@ -1400,8 +1403,350 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                 ),
             )
 
-            lyKapasitasMoementNegatifMetalDeckrencanaPelatMenerus.etButuhTulangan.setSymbolTextSpanneble(
+            lyKapasitasMomenNegatifMetalDeckrencanaPelatMenerus.etButuhTulangan.setSymbolTextSpanneble(
                 SpannableString("Ø"),
+            )
+
+            lyKapasitasMomenNegatifMetalDeckrencanaPelatMenerus.etAst.setSymbolTextSpanneble(
+                HelperTextSpannable.combineSubscriptSuperscriptLetter(
+                    rawText = "Ast-",
+                    listLetter = listOf(
+                        LetterModel(
+                            startIndex = 1,
+                            endIndex = 3,
+                        ),
+                        LetterModel(
+                            startIndex = 3,
+                            endIndex = 4,
+                            type = Constants.SUPERSCRIPT_LETTER,
+                        ),
+                    ),
+                ),
+            )
+
+            val fstadd = "fst add"
+            lyKapasitasMomenNegatifMetalDeckrencanaPelatMenerus.etTeganganLelehTulanganBaja.setSymbolTextSpanneble(
+                HelperTextSpannable.combineSubscriptSuperscriptLetter(
+                    rawText = fstadd,
+                    listLetter = listOf(
+                        // st add
+                        LetterModel(
+                            startIndex = 1,
+                            endIndex = fstadd.length,
+                        ),
+                    ),
+                ),
+            )
+
+            lyKapasitasMomenNegatifMetalDeckrencanaPelatMenerus.etButuhTulangan2.setSymbolTextSpanneble(
+                SpannableString("Ø"),
+            )
+
+            val fastadd = "Ast add-"
+            lyKapasitasMomenNegatifMetalDeckrencanaPelatMenerus.etAstadd.setSymbolTextSpanneble(
+                HelperTextSpannable.combineSubscriptSuperscriptLetter(
+                    rawText = fastadd,
+                    listLetter = listOf(
+                        // st add
+                        LetterModel(
+                            startIndex = 1,
+                            endIndex = fastadd.length - 1,
+                        ),
+                        // -
+                        LetterModel(
+                            startIndex = fastadd.length - 1,
+                            endIndex = fastadd.length,
+                        ),
+                    ),
+                ),
+            )
+
+            lyKapasitasMomenNegatifMetalDeckrencanaPelatMenerus.etKonversiLuasTulanganTambahanKe.setSymbolTextSpanneble(
+                HelperTextSpannable.subscriptText(
+                    rawText = "fst",
+                    startIndex = 1,
+                    endIndex = 3,
+                ),
+            )
+
+            lyKapasitasMomenNegatifMetalDeckrencanaPelatMenerus.etMakaLuasTulanganTambahan.setSymbolTextSpanneble(
+                HelperTextSpannable.combineSubscriptSuperscriptLetter(
+                    rawText = fastadd,
+                    listLetter = listOf(
+                        // st add
+                        LetterModel(
+                            startIndex = 1,
+                            endIndex = fastadd.length - 1,
+                        ),
+                        // -
+                        LetterModel(
+                            startIndex = fastadd.length - 1,
+                            endIndex = fastadd.length,
+                        ),
+                    ),
+                ),
+            )
+        }
+    }
+
+    private fun init_VI_gayaGeserPlatAkibatBebanTerfaktor() {
+        binding.apply {
+            lyGayaGeserPlat.etLebarRatarataProfil.setSymbolTextSpanneble(
+                HelperTextSpannable.subscriptText(
+                    rawText = "bm",
+                    startIndex = 1,
+                    endIndex = 2,
+                ),
+            )
+            lyGayaGeserPlat.etLebarRatarataProfil.setFormulaTextInfoSpannable(
+                HelperTextSpannable.subscriptMultipleTextSingleLine(
+                    rawText = "bm=b*bv/bd",
+                    listLetter = listOf(
+                        // bm
+                        LetterModel(
+                            startIndex = 1,
+                            endIndex = 2,
+                        ),
+                        // bv
+                        LetterModel(
+                            startIndex = 6,
+                            endIndex = 7,
+                        ),
+                        // bd
+                        LetterModel(
+                            startIndex = 9,
+                            endIndex = 10,
+                        ),
+                    ),
+                ),
+            )
+
+            lyGayaGeserPlat.etSectionFormula1.setSymbolTextSpanneble(
+                HelperTextSpannable.subscriptText(
+                    rawText = "fv",
+                    startIndex = 1,
+                    endIndex = 2,
+                ),
+            )
+            lyGayaGeserPlat.etSectionFormula1.setFormulaTextInfoSpannable(
+                HelperTextSpannable.subscriptMultipleTextSingleLine(
+                    rawText = "fv = ή*(1+50*ρ)*0.30*fct",
+                    listLetter = listOf(
+                        // fv
+                        LetterModel(
+                            startIndex = 1,
+                            endIndex = 2,
+                        ),
+                        // fct
+                        LetterModel(
+                            startIndex = 22,
+                            endIndex = 23,
+                        ),
+                    ),
+                ),
+            )
+
+            lyGayaGeserPlat.etSectionFormula2.setSymbolTextSpanneble(SpannableString(("ρ")))
+            lyGayaGeserPlat.etSectionFormula2.setFormulaTextInfoSpannable(
+                HelperTextSpannable.subscriptText(
+                    rawText = "ρ = As/(b*d)",
+                    startIndex = 5,
+                    endIndex = 6,
+                ),
+            )
+
+            lyGayaGeserPlat.etSectionFormula3.setSymbolTextSpanneble(SpannableString(("ή")))
+            lyGayaGeserPlat.etSectionFormula3.setFormulaTextInfoSpannable(SpannableString("ή = 1.6-d"))
+
+            lyGayaGeserPlat.etSectionFormula4AndSyarat.setSymbolTextSpanneble(
+                HelperTextSpannable.combineSubscriptSuperscriptLetter(
+                    rawText = "Syarat Vact ≤ Vcu",
+                    listLetter = listOf(
+                        // Vact
+                        LetterModel(
+                            startIndex = 8,
+                            endIndex = 11,
+                        ),
+
+                        // Vcu
+                        LetterModel(
+                            startIndex = 15,
+                            endIndex = 16,
+                        ),
+                    ),
+                ),
+            )
+            lyGayaGeserPlat.etSectionFormula4AndSyarat.setFormulaTextInfoSpannable(
+                HelperTextSpannable.combineSubscriptSuperscriptLetter(
+                    rawText = "Vact = (Qu*Lx)/2",
+                    listLetter = listOf(
+                        // Vact
+                        LetterModel(
+                            startIndex = 1,
+                            endIndex = 4,
+                        ),
+                        // Qu
+                        LetterModel(
+                            startIndex = 9,
+                            endIndex = 10,
+                        ),
+                        // Lx
+                        LetterModel(
+                            startIndex = 12,
+                            endIndex = 13,
+                        ),
+                    ),
+                ),
+            )
+
+            lyGayaGeserPlat.etSectionFormula5.setSymbolTextSpanneble(
+                HelperTextSpannable.subscriptText(
+                    rawText = "Vcu",
+                    startIndex = 1,
+                    endIndex = 3,
+                ),
+            )
+            lyGayaGeserPlat.etSectionFormula5.setFormulaTextInfoSpannable(
+                HelperTextSpannable.combineSubscriptSuperscriptLetter(
+                    rawText = "Vcu = bm*d*fv",
+                    listLetter = listOf(
+                        // Vcu
+                        LetterModel(
+                            startIndex = 1,
+                            endIndex = 3,
+                        ),
+                        // bm
+                        LetterModel(
+                            startIndex = 7,
+                            endIndex = 8,
+                        ),
+                        // fv
+                        LetterModel(
+                            startIndex = 12,
+                            endIndex = 13,
+                        ),
+                    ),
+                ),
+            )
+
+            lyGayaGeserPlat.tvResult.text = HelperTextSpannable.combineSubscriptSuperscriptLetter(
+                rawText = "Syarat Vact ≤ Vcu",
+                listLetter = listOf(
+                    // Vact
+                    LetterModel(
+                        startIndex = 8,
+                        endIndex = 11,
+                    ),
+
+                    // Vcu
+                    LetterModel(
+                        startIndex = 15,
+                        endIndex = 16,
+                    ),
+                ),
+            )
+        }
+    }
+
+    private fun init_VII_1_defleksiKondisisaatPengecoranBeton() {
+        binding.apply {
+            lyDefleksiV1.etMassaJenisBeton.setSymbolTextSpanneble(
+                HelperTextSpannable.subscriptText(
+                    rawText = "Wc",
+                    startIndex = 1,
+                    endIndex = 2,
+                ),
+            )
+
+            lyDefleksiV1.etTebalPelatLantai.setSymbolTextSpanneble(
+                HelperTextSpannable.subscriptText(
+                    rawText = "ts",
+                    startIndex = 1,
+                    endIndex = 2,
+                ),
+            )
+
+            lyDefleksiV1.etGarisNetralFloordeck.setSymbolTextSpanneble(
+                HelperTextSpannable.subscriptText(
+                    rawText = "tn",
+                    startIndex = 1,
+                    endIndex = 2,
+                ),
+            )
+
+            val formulaBeratLantai = "Qw = (ts-tn)*Wc"
+            lyDefleksiV1.etBeratLantai.setFormulaTextInfoSpannable(
+                HelperTextSpannable.subscriptMultipleTextSingleLine(
+                    rawText = formulaBeratLantai,
+                    listOf(
+                        // Qw
+                        LetterModel(
+                            startIndex = 1,
+                            endIndex = 2,
+                        ),
+                        // ts
+                        LetterModel(
+                            startIndex = 7,
+                            endIndex = 8,
+                        ),
+                        // tn
+                        LetterModel(
+                            startIndex = 10,
+                            endIndex = 11,
+                        ),
+                        // Wc
+                        LetterModel(
+                            startIndex = 14,
+                            endIndex = formulaBeratLantai.length,
+                        ),
+
+                    ),
+                ),
+            )
+        }
+    }
+
+    private fun init_VII_1_a_kondisiSimpleSpan() {
+        binding.apply {
+            lyDefleksiV1A.etBentangPelatArahX.setSymbolTextSpanneble(
+                HelperTextSpannable.subscriptText(
+                    rawText = "Lx",
+                    startIndex = 1,
+                    endIndex = 2,
+                ),
+            )
+
+            lyDefleksiV1A.etFormula1.setUpperFormulaText(
+                HelperTextSpannable.combineSubscriptSuperscriptLetter(
+                    rawText = "5 * Qw * L4",
+                    listLetter = listOf(
+                        // Qw
+                        LetterModel(
+                            startIndex = 5,
+                            endIndex = 6,
+                        ),
+                        // L4
+                        LetterModel(
+                            startIndex = 10,
+                            endIndex = 11,
+                            type = Constants.SUPERSCRIPT_LETTER,
+                        ),
+
+                    ),
+                ),
+            )
+
+            lyDefleksiV1A.etFormula1.setBottomFormulaText(
+                HelperTextSpannable.subscriptMultipleTextSingleLine(
+                    rawText = "384 * E * Ix",
+                    listLetter = listOf(
+                        // Ix
+                        LetterModel(
+                            startIndex = 11,
+                            endIndex = 12,
+                        ),
+                    ),
+                ),
             )
         }
     }

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:text="@string/form_engineer_title_gaya_geser_plat_akibat_beban_terfaktor"
+        android:textStyle="bold"
+        android:textSize="@dimen/_14ssp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etLebarRatarataProfil"
+        app:unit="@string/unit_mm"
+        app:titleSection="@string/form_engineer_lebar_rata_rata_dari_profil"
+        app:valueTextAligment="right"
+        app:addFormulaInfo="true"
+        app:disabledInputText="true"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etSectionFormula1"
+        app:unit="@string/unit_mpa"
+        app:addFormulaInfo="true"
+        app:valueTextAligment="right"
+        app:disabledInputText="true"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etSectionFormula2"
+        app:addFormulaInfo="true"
+        app:valueTextAligment="right"
+        app:disabledInputText="true"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etSectionFormula3"
+        app:valueTextAligment="right"
+        app:addFormulaInfo="true"
+        app:disabledInputText="true"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etSectionFormula4AndSyarat"
+        app:valueTextAligment="right"
+        app:addFormulaInfo="true"
+        app:disabledInputText="true"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etSectionFormula5"
+        app:valueTextAligment="right"
+        app:addFormulaInfo="true"
+        app:disabledInputText="true"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_line_corner_rounded"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:padding="@dimen/_12sdp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvSyaratFormula"
+            android:textSize="@dimen/_12ssp"
+            android:paddingTop="@dimen/_4sdp"
+            android:paddingBottom="@dimen/_4sdp"
+            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Syarat: X > Y"/>
+
+        <TextView
+            android:text="Hasil perhitungan: "
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tvResult"
+            android:text="OK"
+            android:textStyle="bold|italic"
+            android:textSize="@dimen/_14ssp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="OK, hoooraaayy"/>
+
+    </LinearLayout>
+
+</LinearLayout>

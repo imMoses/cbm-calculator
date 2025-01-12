@@ -13,7 +13,7 @@ import id.cbm.main.cbm_calculator.databinding.CustomEdittextThreeColumnsBinding
 import org.w3c.dom.Text
 import java.lang.Exception
 
-class CustomEditTextThreeColumns@JvmOverloads constructor(
+class CustomEditTextThreeColumns @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0,
