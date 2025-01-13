@@ -10,6 +10,7 @@ import android.text.style.RelativeSizeSpan
 import android.text.style.SubscriptSpan
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.widget.ThemedSpinnerAdapter.Helper
 import androidx.lifecycle.lifecycleScope
 import com.google.gson.Gson
 import id.cbm.main.cbm_calculator.R
@@ -193,6 +194,7 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
         init_VII_1_a_kondisiSimpleSpan()
         init_VII_2_a_momentInersiaKomposit()
         init_VII_2_b_momentInersiaPenampangUncrack()
+        init_VII_2_c_s_momentInersiaPenampang()
     }
 
     private fun init_IV_BebanPelatLantai() {
@@ -2163,6 +2165,141 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                         ),
 
                     )
+                )
+            )
+        }
+    }
+
+    private fun init_VII_2_c_s_momentInersiaPenampang() {
+        binding.apply {
+            lyDefleksiVII2CD.etMomenInersiaPenampang1.setTitleText(
+                HelperTextSpannable.subscriptText(
+                    rawText = "x2 = d*ρ*α((√(1+2/ρ*α)-1)",
+                    startIndex = 1,
+                    endIndex = 2,
+                ),
+            )
+
+            lyDefleksiVII2CD.etMomenInersiaPenampang1.setSymbolTextSpanneble(
+                HelperTextSpannable.subscriptText(
+                    rawText = "x2",
+                    startIndex = 1,
+                    endIndex = 2,
+                ),
+            )
+
+            lyDefleksiVII2CD.etMomenInersiaPenampang2.setSymbolTextSpanneble(
+                HelperTextSpannable.subscriptText(
+                    rawText = "I2",
+                    startIndex = 1,
+                    endIndex = 2,
+                )
+            )
+            lyDefleksiVII2CD.etMomenInersiaPenampang2.setTitleText(
+                HelperTextSpannable.combineSubscriptSuperscriptLetter(
+                    rawText = "I2 = b*x23/3+α(Is+As(d-x2)2)",
+                    listLetter = listOf(
+                        // I2
+                        LetterModel(
+                            startIndex = 1,
+                            endIndex = 2,
+                        ),
+                        // x2
+                        LetterModel(
+                            startIndex = 8,
+                            endIndex = 9,
+                        ),
+                        // 3
+                        LetterModel(
+                            startIndex = 9,
+                            endIndex = 10,
+                            type = Constants.SUPERSCRIPT_LETTER,
+                        ),
+                        // Is
+                        LetterModel(
+                            startIndex = 16,
+                            endIndex = 17,
+                        ),
+                        // As
+                        LetterModel(
+                            startIndex = 19,
+                            endIndex = 20,
+                        ),
+                        // x2
+                        LetterModel(
+                            startIndex = 24,
+                            endIndex = 25,
+                        ),
+                        // 2
+                        LetterModel(
+                            startIndex = 26,
+                            endIndex = 27,
+                            type = Constants.SUPERSCRIPT_LETTER,
+                        ),
+                    )
+                )
+            )
+
+            lyDefleksiVII2CD.etBebanKerjaLayan.setTitleText(
+                HelperTextSpannable.subscriptMultipleTextSingleLine(
+                    rawText = "Beban kerja layan, Qs",
+                    listLetter = listOf(
+                        LetterModel(
+                            startIndex = 20,
+                            endIndex = 21,
+                        ),
+                    )
+                )
+            )
+            lyDefleksiVII2CD.etBebanKerjaLayan.setFormulaTextInfoSpannable(
+                HelperTextSpannable.subscriptMultipleTextSingleLine(
+                    rawText = "Qs = Qw+Qll+Qfinish",
+                    listLetter = listOf(
+                        // Qs
+                        LetterModel(
+                            startIndex = 1,
+                            endIndex = 2,
+                        ),
+                        // Qw
+                        LetterModel(
+                            startIndex = 6,
+                            endIndex = 7,
+                        ),
+                        // Qll
+                        LetterModel(
+                            startIndex = 9,
+                            endIndex = 11,
+                        ),
+                        // Qfinish
+                        LetterModel(
+                            startIndex = 13,
+                            endIndex = 19,
+                        ),
+                    )
+                )
+            )
+
+            lyDefleksiVII2CD.tvSyaratFormula.text = "Syarat: δ ≤ 1/360"
+            lyDefleksiVII2CD.tvSyaratFormulaFormat.text = HelperTextSpannable.combineSubscriptSuperscriptLetter(
+                rawText = "δ = 3*Qs*Lx3/384*EI  ≤  1/360",
+                listLetter = listOf(
+                    // Qs
+                    LetterModel(
+                        startIndex = 7,
+                        endIndex = 8,
+                    ),
+                    // Lx
+                    LetterModel(
+                        startIndex = 10,
+                        endIndex = 11,
+                    ),
+                    // 3
+                    LetterModel(
+                        startIndex = 11,
+                        endIndex = 12,
+                        type = Constants.SUPERSCRIPT_LETTER,
+                    ),
+
                 )
             )
         }
