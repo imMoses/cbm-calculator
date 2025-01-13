@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:text="@string/form_engineer_momen_inersia_penampang_uncrack"
+        android:textStyle="bold"
+        android:textSize="@dimen/_12ssp"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etMomenInersiaUncrackFormula_1"
+        app:unit="@string/unit_mm2"
+        app:disabledInputText="true"
+        app:valueTextAligment="right"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etMomenInersiaUncrackFormula_2"
+        app:unit="@string/unit_mm"
+        app:titleSection="Lebar penampang pelat lantai"
+        app:leftSymbol="b ="
+        app:disabledInputText="true"
+        app:valueTextAligment="right"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etMomenInersiaUncrackFormula_3"
+        app:unit="@string/unit_mm"
+        app:titleSection="Tebal pelat lantai"
+        app:leftSymbol="h ="
+        app:disabledInputText="true"
+        app:valueTextAligment="right"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etMomenInersiaUncrackFormula_4"
+        app:unit="@string/unit_mm2_m"
+        app:titleSection="Luas penampang efektif metal deck"
+        app:disabledInputText="true"
+        app:valueTextAligment="right"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etMomenInersiaUncrackFormula_5"
+        app:unit="@string/unit_mm"
+        app:titleSection="Tinggi profil floorder"
+        app:disabledInputText="true"
+        app:valueTextAligment="right"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etMomenInersiaUncrackFormula_6"
+        app:unit="@string/unit_mm"
+        app:leftSymbol="d"
+        app:disabledInputText="true"
+        app:valueTextAligment="right"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etMomenInersiaUncrackFormula_7"
+        app:unit="@string/unit_mm"
+        app:disabledInputText="true"
+        app:valueTextAligment="right"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etMomenInersiaUncrackFormula_8"
+        app:unit="@string/unit_mm"
+        app:disabledInputText="true"
+        app:valueTextAligment="right"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etMomenInersiaUncrackFormula_9"
+        app:disabledInputText="true"
+        app:valueTextAligment="right"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etMomenInersiaUncrackFormula_10"
+        app:unit="@string/unit_mm4m"
+        app:disabledInputText="true"
+        app:valueTextAligment="right"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etMomenInersiaUncrackFormula_11"
+        app:disabledInputText="true"
+        app:valueTextAligment="right"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etMomenInersiaUncrackFormula_12"
+        app:unit="@string/unit_mm"
+        app:leftSymbol="X1"
+        app:disabledInputText="true"
+        app:valueTextAligment="right"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <id.cbm.main.cbm_calculator.core.custom.CustomEditTextCalculation
+        android:id="@+id/etMomenInersiaUncrackFormula_13"
+        app:unit="@string/unit_mm4m"
+        app:leftSymbol="X1"
+        app:disabledInputText="true"
+        app:valueTextAligment="right"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

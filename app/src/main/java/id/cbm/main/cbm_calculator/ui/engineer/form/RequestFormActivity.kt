@@ -191,6 +191,8 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
         init_VI_gayaGeserPlatAkibatBebanTerfaktor()
         init_VII_1_defleksiKondisisaatPengecoranBeton()
         init_VII_1_a_kondisiSimpleSpan()
+        init_VII_2_a_momentInersiaKomposit()
+        init_VII_2_b_momentInersiaPenampangUncrack()
     }
 
     private fun init_IV_BebanPelatLantai() {
@@ -1747,6 +1749,421 @@ class RequestFormActivity : BaseActivity<ActivityRequestFormBinding>() {
                         ),
                     ),
                 ),
+            )
+
+            lyDefleksiV1A.etFormula2.setUpperFormulaText(
+                HelperTextSpannable.combineSubscriptSuperscriptLetter(
+                    rawText = "5 * Qw * L4",
+                    listLetter = listOf(
+                        // Qw
+                        LetterModel(
+                            startIndex = 5,
+                            endIndex = 6,
+                        ),
+                        // L4
+                        LetterModel(
+                            startIndex = 10,
+                            endIndex = 11,
+                            type = Constants.SUPERSCRIPT_LETTER,
+                        ),
+                    ),
+                ),
+            )
+            lyDefleksiV1A.etFormula2.setBottomFormulaText(
+                HelperTextSpannable.subscriptMultipleTextSingleLine(
+                    rawText = "384 * E * Ix",
+                    listLetter = listOf(
+                        // Ix
+                        LetterModel(
+                            startIndex = 11,
+                            endIndex = 12,
+                        ),
+                    ),
+                ),
+            )
+        }
+    }
+
+    private fun init_VII_2_a_momentInersiaKomposit() {
+        binding.apply {
+            lyDefleksiVII2A.etMomenInersiaKompositFormula1.setTitleText(
+                HelperTextSpannable.subscriptMultipleTextSingleLine(
+                    rawText = "EI = EcIc/(1+Φe)",
+                    listLetter = listOf(
+                        // Ec
+                        LetterModel(
+                            startIndex = 6,
+                            endIndex = 7,
+                        ),
+                        // Ic
+                        LetterModel(
+                            startIndex = 8,
+                            endIndex = 9,
+                        ),
+                        // Φe
+                        LetterModel(
+                            startIndex = 14,
+                            endIndex = 15,
+                        ),
+                    ),
+                ),
+            )
+            lyDefleksiVII2A.etMomenInersiaKompositFormula1.setSymbolTextSpanneble(
+                SpannableString("EI ="),
+            )
+
+            lyDefleksiVII2A.etMomenInersiaKompositFormula2.setTitleText(
+                HelperTextSpannable.subscriptMultipleTextSingleLine(
+                    rawText = "Ic = (I1+I2)/2",
+                    listLetter = listOf(
+                        // Ic
+                        LetterModel(
+                            startIndex = 1,
+                            endIndex = 2,
+                        ),
+                        // I1
+                        LetterModel(
+                            startIndex = 7,
+                            endIndex = 8,
+                        ),
+                        // 12
+                        LetterModel(
+                            startIndex = 10,
+                            endIndex = 11,
+                        ),
+                    ),
+                ),
+            )
+            lyDefleksiVII2A.etMomenInersiaKompositFormula2.setSymbolTextSpanneble(
+                HelperTextSpannable.subscriptText(
+                    rawText = "Ic =",
+                    startIndex = 1,
+                    endIndex = 2,
+                ),
+            )
+
+            lyDefleksiVII2A.etMomenInersiaKompositFormula3.setTitleText(
+                HelperTextSpannable.subscriptMultipleTextSingleLine(
+                    rawText = "Φe = MccΦ/M",
+                    listLetter = listOf(
+                        // Φe
+                        LetterModel(
+                            startIndex = 1,
+                            endIndex = 2,
+                        ),
+                        // Mcc
+                        LetterModel(
+                            startIndex = 6,
+                            endIndex = 8,
+                        ),
+                    ),
+                ),
+            )
+            lyDefleksiVII2A.etMomenInersiaKompositFormula3.setSymbolTextSpanneble(
+                HelperTextSpannable.subscriptText(
+                    rawText = "Φe ≈",
+                    startIndex = 1,
+                    endIndex = 2,
+                ),
+            )
+        }
+    }
+
+    private fun init_VII_2_b_momentInersiaPenampangUncrack() {
+        binding.apply {
+            lyDefleksiVII2B.etMomenInersiaUncrackFormula1.setTitleText(
+                HelperTextSpannable.subscriptMultipleTextSingleLine(
+                    rawText = "Ac = (b*h)+(α*As)-(hw(bd-b2)b/bd)",
+                    listLetter = listOf(
+                        // Ac
+                        LetterModel(
+                            startIndex = 1,
+                            endIndex = 2,
+                        ),
+                        // As
+                        LetterModel(
+                            startIndex = 15,
+                            endIndex = 16,
+                        ),
+                        // hw
+                        LetterModel(
+                            startIndex = 20,
+                            endIndex = 21,
+                        ),
+                        // bd
+                        LetterModel(
+                            startIndex = 23,
+                            endIndex = 24,
+                        ),
+                        // b2
+                        LetterModel(
+                            startIndex = 26,
+                            endIndex = 27,
+                        ),
+                        // bd
+                        LetterModel(
+                            startIndex = 31,
+                            endIndex = 32,
+                        ),
+                    )
+                )
+            )
+            lyDefleksiVII2B.etMomenInersiaUncrackFormula1.setSymbolTextSpanneble(
+                HelperTextSpannable.subscriptText(
+                    rawText = "Ac =",
+                    startIndex = 1,
+                    endIndex = 2,
+                ),
+            )
+
+            lyDefleksiVII2B.etMomenInersiaUncrackFormula4.setSymbolTextSpanneble(
+                HelperTextSpannable.subscriptText(
+                    rawText = "As =",
+                    startIndex = 1,
+                    endIndex = 2,
+                )
+            )
+
+            lyDefleksiVII2B.etMomenInersiaUncrackFormula5.setSymbolTextSpanneble(
+                HelperTextSpannable.subscriptText(
+                    rawText = "hw =",
+                    startIndex = 1,
+                    endIndex = 2,
+                ),
+            )
+
+            lyDefleksiVII2B.etMomenInersiaUncrackFormula7.setSymbolTextSpanneble(
+                HelperTextSpannable.subscriptText(
+                    rawText = "bd =",
+                    startIndex = 1,
+                    endIndex = 2,
+                ),
+            )
+
+            lyDefleksiVII2B.etMomenInersiaUncrackFormula8.setSymbolTextSpanneble(
+                HelperTextSpannable.subscriptText(
+                    rawText = "b2",
+                    startIndex = 1,
+                    endIndex = 2,
+                ),
+            )
+
+            lyDefleksiVII2B.etMomenInersiaUncrackFormula9.setSymbolTextSpanneble(
+                SpannableString("α =")
+            )
+            lyDefleksiVII2B.etMomenInersiaUncrackFormula9.setTitleText(
+                HelperTextSpannable.subscriptMultipleTextSingleLine(
+                    rawText = "α = Es(1+Φe)/Ec",
+                    listLetter = listOf(
+                        LetterModel(
+                            startIndex = 5,
+                            endIndex = 6,
+                        ),
+                        LetterModel(
+                            startIndex = 10,
+                            endIndex = 11,
+                        ),
+                        LetterModel(
+                            startIndex = 14,
+                            endIndex = 15,
+                        ),
+                    )
+                )
+            )
+
+            lyDefleksiVII2B.etMomenInersiaUncrackFormula10.setSymbolTextSpanneble(
+                HelperTextSpannable.subscriptText(
+                    rawText = "Is =",
+                    startIndex = 1,
+                    endIndex = 2,
+                )
+            )
+
+            lyDefleksiVII2B.etMomenInersiaUncrackFormula11.setSymbolTextSpanneble(
+                SpannableString("ρ =")
+            )
+            lyDefleksiVII2B.etMomenInersiaUncrackFormula11.setTitleText(
+                HelperTextSpannable.subscriptText(
+                    rawText = "ρ = As/bd",
+                    startIndex = 5,
+                    endIndex = 6,
+                ),
+            )
+
+            lyDefleksiVII2B.etMomenInersiaUncrackFormula12.setSymbolTextSpanneble(
+                HelperTextSpannable.subscriptText(
+                    rawText = "x1 =",
+                    startIndex = 1,
+                    endIndex = 2,
+                ),
+            )
+
+            val x1Formula = "x1 = [b*h2/2+α*As*d-hw(bd-b2)(h-(hw/2)b/bd)]/Ac"
+            lyDefleksiVII2B.etMomenInersiaUncrackFormula12.setTitleText(
+                HelperTextSpannable.combineSubscriptSuperscriptLetter(
+                    rawText = x1Formula,
+                    listLetter = listOf(
+                        // x1
+                        LetterModel(
+                            startIndex = 1,
+                            endIndex = 2,
+                        ),
+                        // h2
+                        LetterModel(
+                            startIndex = 9,
+                            endIndex = 10,
+                            type = Constants.SUPERSCRIPT_LETTER
+                        ),
+                        // As
+                        LetterModel(
+                            startIndex = 16,
+                            endIndex = 17,
+                        ),
+                        // hw
+                        LetterModel(
+                            startIndex = 21,
+                            endIndex = 22,
+                        ),
+                        // bd
+                        LetterModel(
+                            startIndex = 24,
+                            endIndex = 25,
+                        ),
+                        // b2
+                        LetterModel(
+                            startIndex = 27,
+                            endIndex = 28,
+                        ),
+                        // hw
+                        LetterModel(
+                            startIndex = 34,
+                            endIndex = 35,
+                        ),
+                        // bd
+                        LetterModel(
+                            startIndex = 41,
+                            endIndex = 42,
+                        ),
+                        // Ac
+                        LetterModel(
+                            startIndex = 46,
+                            endIndex = 47,
+                        ),
+
+                    )
+                )
+            )
+
+            lyDefleksiVII2B.etMomenInersiaUncrackFormula13.setSymbolTextSpanneble(
+                HelperTextSpannable.subscriptText(
+                    rawText = "I1",
+                    startIndex = 1,
+                    endIndex = 2,
+                )
+            )
+
+            val I1Formula = "I1 = b(h-hw)3/12+b(h-hw)(x1-(h-hw)/2)2+α*Is+α*As(d-x1)2+b2*b*hw(hw2/12+(h-x1-hw/2)2)/bd"
+            lyDefleksiVII2B.etMomenInersiaUncrackFormula13.setTitleText(
+                HelperTextSpannable.combineSubscriptSuperscriptLetter(
+                    rawText = I1Formula,
+                    listLetter = listOf(
+                        // I1
+                        LetterModel(
+                            startIndex = 1,
+                            endIndex = 2,
+                        ),
+                        // hw
+                        LetterModel(
+                            startIndex = 10,
+                            endIndex = 11,
+                        ),
+                        // 3
+                        LetterModel(
+                            startIndex = 12,
+                            endIndex = 13,
+                            type = Constants.SUPERSCRIPT_LETTER,
+                        ),
+                        // hw
+                        LetterModel(
+                            startIndex = 22,
+                            endIndex = 23,
+                        ),
+                        // x1
+                        LetterModel(
+                            startIndex = 26,
+                            endIndex = 27,
+                        ),
+                        // hw
+                        LetterModel(
+                            startIndex = 32,
+                            endIndex = 33,
+                        ),
+                        // Is
+                        LetterModel(
+                            startIndex = 42,
+                            endIndex = 43,
+                        ),
+                        // As
+                        LetterModel(
+                            startIndex = 47,
+                            endIndex = 48,
+                        ),
+                        // x1
+                        LetterModel(
+                            startIndex = 52,
+                            endIndex = 53,
+                        ),
+                        // 2
+                        LetterModel(
+                            startIndex = 54,
+                            endIndex = 55,
+                            type = Constants.SUPERSCRIPT_LETTER,
+                        ),
+                        // b2
+                        LetterModel(
+                            startIndex = 57,
+                            endIndex = 58,
+                        ),
+                        // hw
+                        LetterModel(
+                            startIndex = 62,
+                            endIndex = 63,
+                        ),
+                        // hw
+                        LetterModel(
+                            startIndex = 65,
+                            endIndex = 66,
+                        ),
+                        // 2
+                        LetterModel(
+                            startIndex = 66,
+                            endIndex = 67,
+                            type = Constants.SUPERSCRIPT_LETTER,
+                        ),
+                        // x1
+                        LetterModel(
+                            startIndex = 75,
+                            endIndex = 76,
+                        ),
+                        // hw
+                        LetterModel(
+                            startIndex = 78,
+                            endIndex = 79,
+                        ),
+                        // 2
+                        LetterModel(
+                            startIndex = 82,
+                            endIndex = 83,
+                            type = Constants.SUPERSCRIPT_LETTER,
+                        ),
+                        // bd
+                        LetterModel(
+                            startIndex = 86,
+                            endIndex = I1Formula.length,
+                        ),
+
+                    )
+                )
             )
         }
     }
