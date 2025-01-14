@@ -5,7 +5,13 @@ import id.cbm.main.cbm_calculator.data.remote.dto.request.RequestEngineerParam
 // ktlint-disable package-name
 
 class RemoteDataSource(private val apiService: ApiService) {
-    suspend fun postSignIn() = apiService.postSignIn()
+    suspend fun postSignIn(
+        email: String?,
+        password: String?,
+    ) = apiService.postSignIn(
+        email = email ?: "",
+        password = password ?: "",
+    )
     suspend fun postDownloadPdf(
         param: RequestEngineerParam?,
     ) = apiService.postDownloadPDF(
@@ -15,6 +21,4 @@ class RemoteDataSource(private val apiService: ApiService) {
         sales = param?.sales,
         asName = param?.asName,
     )
-
-    suspend fun downloadingFilePDF(url: String) = apiService.downloadFile(url)
 }

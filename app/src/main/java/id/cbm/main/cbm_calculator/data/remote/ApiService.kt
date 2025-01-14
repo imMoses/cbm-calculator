@@ -2,6 +2,7 @@ package id.cbm.main.cbm_calculator.data.remote
 
 import id.cbm.main.cbm_calculator.data.remote.dto.BaseApiResponse
 import id.cbm.main.cbm_calculator.data.remote.dto.LinkPDFResponse
+import id.cbm.main.cbm_calculator.data.remote.dto.SignInResponse
 import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.Field
@@ -16,8 +17,11 @@ import retrofit2.http.Url
 interface ApiService {
 
     @FormUrlEncoded
-    @POST("siginin")
-    suspend fun postSignIn(): Response<Void>
+    @POST("member/login")
+    suspend fun postSignIn(
+        @Field("email") email: String,
+        @Field("pass") password: String,
+    ): Response<BaseApiResponse<SignInResponse>>
 
     @FormUrlEncoded
     @POST("pdf/engineer")
@@ -28,8 +32,4 @@ interface ApiService {
         @Field("sales") sales: String?,
         @Field("as_name") asName: String?,
     ): Response<BaseApiResponse<LinkPDFResponse>>
-
-    @Streaming
-    @GET
-    suspend fun downloadFile(@Url url: String): Response<ResponseBody>
 }

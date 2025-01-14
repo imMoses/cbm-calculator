@@ -15,7 +15,7 @@ class ApiResultHandler<T>(
     fun handleApiResult(result: NetworkSealedResult<T>) {
         when (result.status) {
             ApiStatus.LOADING -> {
-                onLoading
+                onLoading()
             }
             ApiStatus.SUCCESS -> {
                 onSuccess(result.data)
