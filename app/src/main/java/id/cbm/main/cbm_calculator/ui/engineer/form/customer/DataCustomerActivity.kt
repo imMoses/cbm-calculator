@@ -24,14 +24,14 @@ class DataCustomerActivity : BaseActivity<ActivityDataCustomerBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (BuildConfig.DEBUG) {
-            binding.apply {
-                etPerhitunganNo.setText("222093")
-                etCustomer.setText("Customer A")
-                etProyek.setText("Project Asgard")
-                etAsas.setText("Test asas")
-            }
-        }
+//        if (BuildConfig.DEBUG) {
+//            binding.apply {
+//                etPerhitunganNo.setText("222093")
+//                etCustomer.setText("Customer A")
+//                etProyek.setText("Project Asgard")
+//                etAsas.setText("Test asas")
+//            }
+//        }
         initUI()
         initListener()
     }

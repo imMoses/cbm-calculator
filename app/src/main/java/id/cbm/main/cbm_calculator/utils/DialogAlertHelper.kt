@@ -12,7 +12,7 @@ class DialogAlertHelper {
 
     companion object {
 
-        fun showDialogMessage(context: Context?, message: String, title: String?, listener: DialogInfoListener?) {
+        fun showDialogMessage(context: Context?, message: String, title: String?, listener: DialogInfoListener?, isCancelable: Boolean = false) {
             val dialog = Dialog(context!!)
             val view = View.inflate(context, R.layout.dialog_alert_info, null)
             val textTitle = view.findViewById<TextView>(R.id.textTitle)
@@ -28,7 +28,7 @@ class DialogAlertHelper {
 
             dialog.setContentView(view)
             dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-            dialog.setCancelable(false)
+            dialog.setCancelable(isCancelable)
             dialog.create()
             dialog.show()
         }
