@@ -13,7 +13,7 @@ import id.cbm.main.cbm_calculator.data.remote.ApiResultHandler
 import id.cbm.main.cbm_calculator.data.remote.dto.BaseApiResponse
 import id.cbm.main.cbm_calculator.data.remote.dto.SignInResponse
 import id.cbm.main.cbm_calculator.databinding.ActivitySignInBinding
-import id.cbm.main.cbm_calculator.ui.mainengineer.MainEngineerActivity
+import id.cbm.main.cbm_calculator.ui.mainmenu.MainMenuActivity
 import id.cbm.main.cbm_calculator.utils.Constants
 import id.cbm.main.cbm_calculator.utils.DialogAlertHelper
 import id.cbm.main.cbm_calculator.utils.LocalData
@@ -156,7 +156,7 @@ class SignInActivity : BaseActivity<ActivitySignInBinding>() {
 
                                         Toast.makeText(this@SignInActivity, "Hi, ${safeData.name}", Toast.LENGTH_SHORT).show()
                                         startActivity(
-                                            Intent(this@SignInActivity, MainEngineerActivity::class.java),
+                                            Intent(this@SignInActivity, MainMenuActivity::class.java),
                                         )
                                         finishAffinity()
                                     }
