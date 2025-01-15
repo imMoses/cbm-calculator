@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvTopInfo"
+        android:textSize="@dimen/_12ssp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:padding="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="This is the text you wanted to show information to user on the top of image"/>
+
+    <ImageView
+        android:id="@+id/ivImage"
+        android:scaleType="centerInside"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_60sdp"
+        tools:src="@drawable/unavailable"/>
+
+    <TextView
+        android:id="@+id/tvBottomInfo"
+        android:textSize="@dimen/_12ssp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:padding="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="This is the text you wanted to show information to user on the top of image"/>
+
+
+</LinearLayout>

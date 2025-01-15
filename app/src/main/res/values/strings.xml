@@ -4,7 +4,7 @@
     <string name="loading_info">Please wait …</string>
     <string name="dialog_default_title">Message</string>
     <string name="dialog_default_message">If you use this site regularly and would like to help keep the site on the Internet, please consider donating a small sum to help pay for the hosting and bandwidth bill.</string>
-
+    <string name="no_menus_available">No Menu Available</string>
 
     <!--    SIGN IN-->
     <string name="signin_title">CBM Calculator</string>
@@ -155,5 +155,12 @@
     <string name="form_engineer_momen_inersia_penampang_crack">c. Momen Inersia Penampang Crack</string>
     <string name="form_engineer_defleksi">d. Defleksi</string>
 
+    <!--    REQUEST FORM SALES HITUNG CEPAT-->
+    <string name="form_sales_title_input_customer_data">Mohon input data customer berikut</string>
+    <string name="form_sales_nama_proyek">Nama Proyek</string>
+    <string name="form_sales_alamat">Alamat</string>
+    <string name="form_sales_nama_pelanggan">Nama Pelanggan</string>
+    <string name="form_sales_sales">Sales</string>
+    <string name="form_sales_kode_estimasi">Kode Estimasi</string>
 
 </resources>

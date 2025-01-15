@@ -7,7 +7,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import id.cbm.main.cbm_calculator.data.local.LocalDataController
 import id.cbm.main.cbm_calculator.data.remote.dto.SignInResponse
 import id.cbm.main.cbm_calculator.databinding.ActivitySplashScreenBinding
-import id.cbm.main.cbm_calculator.ui.mainengineer.MainEngineerActivity
+import id.cbm.main.cbm_calculator.ui.mainmenu.MainMenuActivity
 import id.cbm.main.cbm_calculator.ui.signin.SignInActivity
 import id.cbm.main.cbm_calculator.utils.LocalData
 
@@ -53,7 +53,7 @@ class SplashScreenActivity : AppCompatActivity() {
         startActivity(
             Intent(
                 this,
-                MainEngineerActivity::class.java,
+                MainMenuActivity::class.java,
             ),
         )
     }

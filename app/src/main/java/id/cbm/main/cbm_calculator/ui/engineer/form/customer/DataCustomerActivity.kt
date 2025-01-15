@@ -6,8 +6,11 @@ import android.os.Bundle
 import android.view.View
 import id.cbm.main.cbm_calculator.BuildConfig
 import id.cbm.main.cbm_calculator.core.base_ui.BaseActivity
+import id.cbm.main.cbm_calculator.data.local.LocalDataController
+import id.cbm.main.cbm_calculator.data.remote.dto.SignInResponse
 import id.cbm.main.cbm_calculator.databinding.ActivityDataCustomerBinding
 import id.cbm.main.cbm_calculator.ui.engineer.form.RequestFormActivity
+import id.cbm.main.cbm_calculator.utils.LocalData
 import id.cbm.main.cbm_calculator.utils.setSafeOnClickListener
 
 class DataCustomerActivity : BaseActivity<ActivityDataCustomerBinding>() {
@@ -38,7 +41,13 @@ class DataCustomerActivity : BaseActivity<ActivityDataCustomerBinding>() {
 
     private fun initUI() {
         binding.apply {
-            etSales.setText("John Doe")
+            val userData = LocalDataController.General().getModel(
+                context = this@DataCustomerActivity,
+                key = LocalData.Key.USER_PERSONAL_DATA,
+                objType = SignInResponse::class.java,
+                sharedPref = LocalData.DB.ADDITIONAL_DATA_USER,
+            )
+            etSales.setText(userData?.name ?: "")
         }
     }
 

@@ -49,4 +49,13 @@
         <attr name="disabledInputEditText" format="boolean" />
     </declare-styleable>
 
+    <declare-styleable name="CustomIconWithTextInfo">
+        <attr name="textInfoPosition" format="enum">
+            <enum name="top" value="0" />
+            <enum name="bottom" value="1" />
+        </attr>
+        <attr name="textInfo" format="string" />
+        <attr name="iconSrc" format="reference" />
+    </declare-styleable>
+
 </resources>
