@@ -23,6 +23,7 @@ class CustomToolbarTextAlign @JvmOverloads constructor(
         val toolbarTitleText = typeArray.getString(R.styleable.CustomToolbarTextAlign_text)
         val drawable = typeArray.getDrawable(R.styleable.CustomToolbarTextAlign_navigationIcon)
         val isHideNavBarBackButton = typeArray.getBoolean(R.styleable.CustomToolbarTextAlign_hideNavBackButton, false)
+        val showButtonLogout = typeArray.getBoolean(R.styleable.CustomToolbarTextAlign_showButtonLogout, false)
 
         binding.tvTitleAppBar.text = toolbarTitleText
         if (drawable != null) {
@@ -36,6 +37,12 @@ class CustomToolbarTextAlign @JvmOverloads constructor(
             View.VISIBLE
         }
 
+        binding.ivLogout.visibility = if (showButtonLogout) {
+            View.VISIBLE
+        } else {
+            View.GONE
+        }
+
         typeArray.recycle()
     }
 
@@ -47,5 +54,8 @@ class CustomToolbarTextAlign @JvmOverloads constructor(
         binding.ivBack.setOnClickListener(listener)
     }
 
+    fun setLogoutButtonListener(listener: OnClickListener) {
+        binding.ivLogout.setOnClickListener(listener)
+    }
 
 }
