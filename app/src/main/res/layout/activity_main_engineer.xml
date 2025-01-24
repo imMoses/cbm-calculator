@@ -8,7 +8,7 @@
 
     <id.cbm.main.cbm_calculator.core.custom.CustomToolbarTextAlign
         android:id="@+id/appBarMainEngineer"
-        app:text="Menu Engineer"
+        app:text="Main Menu"
         app:hideNavBackButton="true"
         app:showButtonLogout="true"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/_10sdp"
-        android:textStyle="bold"
+        android:textFontWeight="600"
         android:textSize="@dimen/_16ssp"
         app:layout_constraintTop_toBottomOf="@+id/appBarMainEngineer"
         app:layout_constraintStart_toStartOf="parent"
