@@ -18,8 +18,9 @@
         android:id="@+id/tvLoadingMessage"
         android:text="@string/loading_info"
         android:textAlignment="center"
+        android:textFontWeight="600"
         android:textSize="@dimen/_13ssp"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_14sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

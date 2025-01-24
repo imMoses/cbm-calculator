@@ -120,7 +120,7 @@ class MainMenuActivity : BaseActivity<ActivityMainEngineerBinding>() {
                     }
                 },
             )
-            val gridLayoutManager = GridLayoutManager(this, 3)
+            val gridLayoutManager = GridLayoutManager(this, 2)
             binding.rvMainMenuEngineer.layoutManager = gridLayoutManager
             binding.rvMainMenuEngineer.adapter = adapterMainMenu
         } else {

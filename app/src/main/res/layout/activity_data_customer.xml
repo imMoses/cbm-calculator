@@ -33,7 +33,7 @@
                 android:drawableStart="@drawable/ic_info"
                 android:gravity="top"
                 android:textColor="@color/black"
-                android:textStyle="bold"
+                android:textFontWeight="600"
                 android:drawablePadding="@dimen/_6sdp"
                 android:layout_marginBottom="@dimen/_20sdp"
                 android:text="@string/form_engineer_info"
