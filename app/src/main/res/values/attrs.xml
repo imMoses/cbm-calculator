@@ -58,4 +58,19 @@
         <attr name="iconSrc" format="reference" />
     </declare-styleable>
 
+    <declare-styleable name="CBMEditText">
+        <attr name="labelName" format="string" />
+        <attr name="isInfoNeeded" format="boolean" />
+        <attr name="inputTypeEditText" format="enum">
+            <enum name="text" value="101" />
+            <enum name="number" value="102" />
+            <enum name="decimalNumber" value="103" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="CBMSpinnerText">
+        <attr name="labelNameSpinner" format="string" />
+        <attr name="isInfoSpinnerNeeded" format="boolean" />
+    </declare-styleable>
+
 </resources>

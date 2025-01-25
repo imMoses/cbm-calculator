@@ -5,6 +5,9 @@
     <string name="dialog_default_title">Message</string>
     <string name="dialog_default_message">If you use this site regularly and would like to help keep the site on the Internet, please consider donating a small sum to help pay for the hosting and bandwidth bill.</string>
     <string name="no_menus_available">No Menu Available</string>
+    <string name="spinner_default_text"> - Select</string>
+    <string name="button_selanjutnya">Selanjutnya</string>
+    <string name="button_ok">Ok</string>
 
     <!--    SIGN IN-->
     <string name="signin_title">CBM Calculator</string>

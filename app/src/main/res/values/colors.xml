@@ -14,4 +14,6 @@
     <color name="blue_grey_300">#90A4AE</color>
     <color name="yellowTurbo">#f9ca24</color>
     <color name="yellowTurboDarker">#A17F09</color>
+
+    <color name="button_blue">#4894FE</color>
 </resources>
