@@ -7,7 +7,7 @@
 
     <id.cbm.main.cbm_calculator.core.custom.CustomToolbarTextAlign
         android:id="@+id/appBarSales"
-        app:text="Input Data Customer"
+        app:text="@string/form_sales_appbar"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,166 +29,35 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:textSize="@dimen/_12sdp"
-                android:drawableStart="@drawable/ic_info"
-                android:gravity="top"
-                android:textColor="@color/black"
-                android:textFontWeight="600"
-                android:drawablePadding="@dimen/_6sdp"
-                android:layout_marginBottom="@dimen/_20sdp"
-                android:text="@string/form_sales_title_input_customer_data"
+            <id.cbm.main.cbm_calculator.core.custom.CBMEditText
+                android:id="@+id/etNamaProyek"
+                app:labelName="@string/form_sales_nama_proyek"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <LinearLayout
+            <id.cbm.main.cbm_calculator.core.custom.CBMEditText
+                android:id="@+id/etAlamat"
+                app:labelName="@string/form_sales_alamat"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="wrap_content" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:text="@string/form_sales_nama_proyek"
-                        android:textSize="@dimen/_12ssp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                    <EditText
-                        android:id="@+id/etNamaProyek"
-                        android:inputType="text"
-                        android:maxLength="40"
-                        android:imeOptions="actionNext"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_marginTop="@dimen/_10sdp"
+            <id.cbm.main.cbm_calculator.core.custom.CBMEditText
+                android:id="@+id/etNamaPelanggan"
+                app:labelName="@string/form_sales_nama_pelanggan"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="wrap_content" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:text="@string/form_sales_alamat"
-                        android:textSize="@dimen/_12ssp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                    <EditText
-                        android:id="@+id/etAlamat"
-                        android:inputType="text"
-                        android:maxLength="150"
-                        android:imeOptions="actionNext"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_marginTop="@dimen/_10sdp"
+            <id.cbm.main.cbm_calculator.core.custom.CBMEditText
+                android:id="@+id/etSales"
+                app:labelName="@string/form_sales_sales"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="wrap_content" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:text="@string/form_sales_nama_pelanggan"
-                        android:textSize="@dimen/_12ssp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                    <EditText
-                        android:id="@+id/etNamaPelanggan"
-                        android:inputType="text"
-                        android:maxLength="65"
-                        android:imeOptions="actionDone"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_marginTop="@dimen/_10sdp"
+            <id.cbm.main.cbm_calculator.core.custom.CBMEditText
+                android:id="@+id/etKodeEstimasi"
+                app:labelName="@string/form_sales_kode_estimasi"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:text="@string/form_sales_sales"
-                        android:textSize="@dimen/_12ssp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                    <EditText
-                        android:id="@+id/etSales"
-                        android:inputType="text"
-                        android:maxLength="65"
-                        android:imeOptions="actionNext"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:text="@string/form_sales_kode_estimasi"
-                        android:textSize="@dimen/_12ssp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                    <EditText
-                        android:id="@+id/etKodeEstimasi"
-                        android:inputType="text"
-                        android:maxLength="75"
-                        android:imeOptions="actionDone"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-
-            </LinearLayout>
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 
@@ -198,8 +67,9 @@
         android:id="@+id/btnNext"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Next"
+        android:text="@string/button_selanjutnya"
         android:layout_margin="@dimen/_12sdp"
+        app:backgroundTint="@color/button_blue"
         app:layout_constraintTop_toBottomOf="@+id/sv"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

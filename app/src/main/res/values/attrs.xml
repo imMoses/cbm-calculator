@@ -64,7 +64,7 @@
         <attr name="inputTypeEditText" format="enum">
             <enum name="text" value="101" />
             <enum name="number" value="102" />
-            <enum name="decimalNumber" value="103" />
+            <enum name="decimalnumber" value="103" />
         </attr>
     </declare-styleable>
 
