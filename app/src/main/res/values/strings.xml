@@ -5,6 +5,12 @@
     <string name="dialog_default_title">Message</string>
     <string name="dialog_default_message">If you use this site regularly and would like to help keep the site on the Internet, please consider donating a small sum to help pay for the hosting and bandwidth bill.</string>
     <string name="no_menus_available">No Menu Available</string>
+    <string name="spinner_default_text"> - Pilih</string>
+    <string name="button_selanjutnya">Selanjutnya</string>
+    <string name="button_ok">Ok</string>
+    <string name="button_simpan">Simpan</string>
+    <string name="button_atap_anak">+ Atap Anak</string>
+    <string name="button_hitung">Hitung</string>
 
     <!--    SIGN IN-->
     <string name="signin_title">CBM Calculator</string>
@@ -156,11 +162,33 @@
     <string name="form_engineer_defleksi">d. Defleksi</string>
 
     <!--    REQUEST FORM SALES HITUNG CEPAT-->
-    <string name="form_sales_title_input_customer_data">Mohon input data customer berikut</string>
+    <string name="form_sales_appbar">Estimasi Cepat</string>
     <string name="form_sales_nama_proyek">Nama Proyek</string>
     <string name="form_sales_alamat">Alamat</string>
     <string name="form_sales_nama_pelanggan">Nama Pelanggan</string>
     <string name="form_sales_sales">Sales</string>
     <string name="form_sales_kode_estimasi">Kode Estimasi</string>
+    
+    <!--    FORM ESTIMASI CEPAT CALCULATION-->
+    <string name="form_est_cepat_title_page">Area</string>
+    <string name="form_est_cepat_bentang_mm">Bentang (mm)</string>
+    <string name="form_est_cepat_panjang_mm">Panjang (mm)</string>
+    <string name="form_est_cepat_oh_kiri">OH Kiri</string>
+    <string name="form_est_cepat_oh_kanan">OH Kanan</string>
+    <string name="form_est_cepat_sudut">Sudut</string>
+    <string name="form_est_cepat_jenis_penutup">Jenis Penutup</string>
+    <string name="form_est_cepat_type_atap">Type Atap</string>
+    <string name="form_est_cepat_sudut_apex">Sudut APEX</string>
+    <string name="form_est_cepat_panjang_tcbc">Panjang TC-BC</string>
+    <string name="form_est_cepat_panjang_web">Panjang WEB</string>
+    <string name="form_est_cepat_reng">RENG</string>
+    <string name="form_est_cepat_jumlah">Jumlah</string>
+    <string name="form_est_cepat_title_hasil_estimasi">Hasil Estimasi</string>
+    <string name="form_est_cepat_list_material">List Material</string>
+    <string name="form_est_cepat_qty">Qty</string>
+    <string name="form_est_cepat_harga">Harga</string>
+    <string name="form_est_cepat_disc">Disc %</string>
+    <string name="form_est_cepat_total_rupiah">Total (Rp)</string>
+    <string name="form_est_cepat_total_keseluruhan">Total Keseluruhan</string>
 
 </resources>

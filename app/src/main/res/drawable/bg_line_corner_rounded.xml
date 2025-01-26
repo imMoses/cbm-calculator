@@ -6,7 +6,7 @@
         android:radius="@dimen/_4sdp" />
     <stroke
         android:width="@dimen/_1sdp"
-        android:color="@android:color/darker_gray" />
+        android:color="@color/grey_outline_border" />
     <padding
         android:top="@dimen/_2sdp"
         android:bottom="@dimen/_2sdp"
