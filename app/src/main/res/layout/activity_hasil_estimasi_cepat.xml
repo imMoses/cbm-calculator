@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <id.cbm.main.cbm_calculator.core.custom.CustomToolbarTextAlign
         android:id="@+id/appBarHasilEstCepat"
@@ -16,10 +17,11 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/_4sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarHasilEstCepat"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toTopOf="@+id/clButtonAndTotal">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,9 +29,125 @@
             android:padding="@dimen/_10sdp"
             android:orientation="vertical">
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:background="@drawable/bg_rounded_blue"
+                android:padding="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_12sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/glInfoCust"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.7" />
+
+                <TextView
+                    android:id="@+id/tvNamaPelanggan"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textFontWeight="600"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/glInfoCust"
+                    tools:text="PT ABC" />
+
+                <TextView
+                    android:id="@+id/tvProyekName"
+                    android:textColor="@color/white"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:paddingEnd="@dimen/_10sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/tvNamaPelanggan"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/glInfoCust"
+                    tools:text="Proyek : Holis"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:text="@string/form_est_cepat_list_material"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="@dimen/_14ssp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvHasilEstimasi"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_list_material"/>
+            
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clButtonAndTotal"
+        android:background="@drawable/bg_top_corner_radius"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_16sdp"
+        android:paddingBottom="@dimen/_16sdp"
+        android:paddingEnd="@dimen/_10sdp"
+        android:paddingStart="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" >
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.65" />
+
+        <TextView
+            android:id="@+id/tvTotalKeseluruhan"
+            android:text="@string/form_est_cepat_total_keseluruhan"
+            android:textStyle="bold"
+            android:textSize="@dimen/_9ssp"
+            android:textColor="@android:color/holo_red_light"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tvValueTotal"
+            app:layout_constraintTop_toBottomOf="@+id/tvTotalKeseluruhan"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/gl"
+            android:textSize="@dimen/_12ssp"
+            android:textFontWeight="600"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:paddingEnd="@dimen/_14sdp"
+            android:ellipsize="end"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Rp 0"
+            tools:text="Rp 100.000.000" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSimpan"
+            android:text="@string/button_simpan"
+            android:layout_width="wrap_content"
+            android:paddingEnd="@dimen/_20sdp"
+            android:paddingStart="@dimen/_20sdp"
+            android:layout_height="@dimen/_45sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/gl"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:backgroundTint="@color/button_blue" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

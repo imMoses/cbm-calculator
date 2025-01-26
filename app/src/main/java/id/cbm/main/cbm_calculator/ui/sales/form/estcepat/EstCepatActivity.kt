@@ -1,5 +1,6 @@
 package id.cbm.main.cbm_calculator.ui.sales.form.estcepat // ktlint-disable package-name
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -14,6 +15,24 @@ import id.cbm.main.cbm_calculator.ui.sales.helper.EstimationCepatHelper
 import id.cbm.main.cbm_calculator.utils.setSafeOnClickListener
 
 class EstCepatActivity : BaseActivity<ActivityEstimasiCepatBinding>() {
+
+    companion object {
+
+        const val NAMA_PROYEK = "nama_proyek"
+        const val ALAMAT = "alamat"
+        const val NAMA_PELANGGAN = "nama_pelanggan"
+        const val SALES = "sales"
+        const val KODE_ESTIMASI = "kode_estimasi"
+        fun intentActivty(context: Context, namaProyek: String, alamat: String, namaPelanggan: String, sales: String, kodeEstimasi: String) : Intent {
+            return Intent(context, EstCepatActivity::class.java).apply {
+                putExtra(NAMA_PROYEK, namaProyek)
+                putExtra(ALAMAT, alamat)
+                putExtra(NAMA_PELANGGAN, namaPelanggan)
+                putExtra(SALES, sales)
+                putExtra(KODE_ESTIMASI, kodeEstimasi)
+            }
+        }
+    }
 
     private lateinit var adapterArea: AreaAdapter
     private lateinit var adapterParentAtapAnak: ParentAtapAnakAdapter
@@ -58,10 +77,11 @@ class EstCepatActivity : BaseActivity<ActivityEstimasiCepatBinding>() {
 
             btnSubmit.setSafeOnClickListener {
                 startActivity(
-                    Intent(
-                        this@EstCepatActivity,
-                        HasilEstimasiCepatActivity::class.java,
-                    ),
+                    HasilEstimasiCepatActivity.intentActivity(
+                        context = this@EstCepatActivity,
+                        namaPelanggan = intent.getStringExtra(NAMA_PELANGGAN) ?: "",
+                        namaProyek = intent.getStringExtra(NAMA_PROYEK) ?: ""
+                    )
                 )
             }
         }
