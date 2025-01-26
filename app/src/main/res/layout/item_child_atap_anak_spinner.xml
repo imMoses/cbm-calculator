@@ -8,7 +8,7 @@
     android:layout_height="wrap_content">
 
     <id.cbm.main.cbm_calculator.core.custom.CBMSpinnerText
-        android:id="@+id/etItemAreaSpinner"
+        android:id="@+id/etItemAreaAtapditText"
         app:labelName="Bentang (mm)"
         app:inputTypeEditText="decimalnumber"
         android:layout_width="match_parent"

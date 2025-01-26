@@ -33,6 +33,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="@dimen/_14ssp"
                 android:text="@string/form_est_cepat_title_page"

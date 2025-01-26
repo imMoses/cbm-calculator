@@ -2,6 +2,7 @@ package id.cbm.main.cbm_calculator.ui.sales.adapter // ktlint-disable package-na
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import id.cbm.main.cbm_calculator.databinding.ItemAdapterEdittextFieldBinding
 import id.cbm.main.cbm_calculator.databinding.ItemAdapterSpinnerFieldBinding
@@ -47,8 +48,12 @@ class AreaAdapter(private val listData: List<AreaModel>) : RecyclerView.Adapter<
 
     inner class VHAdapterAreaItemSpinner(private val binding: ItemAdapterSpinnerFieldBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(param: AreaModel) {
-            binding.etItemAreaSpinner.setLabelName(param.labelName)
-            binding.etItemAreaSpinner.setValueText(param.value)
+            binding.apply {
+                etItemAreaSpinner.setLabelName(param.labelName)
+                etItemAreaSpinner.setOnClickSpinner {
+                    Toast.makeText(itemView.context, "Spinner click - ${param.labelName}", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 

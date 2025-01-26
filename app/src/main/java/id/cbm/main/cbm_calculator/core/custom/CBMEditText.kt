@@ -1,9 +1,8 @@
-package id.cbm.main.cbm_calculator.core.custom
+package id.cbm.main.cbm_calculator.core.custom // ktlint-disable package-name
 
 import android.content.Context
 import android.text.InputType
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.EditText

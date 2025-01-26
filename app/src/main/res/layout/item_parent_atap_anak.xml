@@ -11,6 +11,7 @@
     <TextView
         android:id="@+id/tvTitle"
         android:textStyle="bold"
+        android:textColor="@color/black"
         android:textSize="@dimen/_14ssp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:itemCount="3"
-        tools:listitem="@layout/item_child_atap_anak" />
+        tools:listitem="@layout/item_child_atap_anak_edittext" />
 
     <View
         android:layout_width="match_parent"
