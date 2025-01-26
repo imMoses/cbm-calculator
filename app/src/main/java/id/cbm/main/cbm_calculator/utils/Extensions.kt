@@ -4,6 +4,7 @@ import android.os.SystemClock
 import android.util.Log
 import android.view.View
 import java.lang.Exception
+import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -47,5 +48,15 @@ fun Date.dateToString(dateFormat: String? = null): String {
     } catch (e: Exception) {
         Log.e("Extensions", e.message.toString())
         return "-"
+    }
+}
+
+fun String.toIDR(withCurrency: Boolean = false): String {
+    return try {
+        val amount = this.toLong() // Convert string to long
+        val numberFormat = NumberFormat.getNumberInstance(Locale("id", "ID"))
+        if (withCurrency) "Rp ${numberFormat.format(amount)}" else numberFormat.format(amount)
+    } catch (e: NumberFormatException) {
+        "Invalid Number"
     }
 }

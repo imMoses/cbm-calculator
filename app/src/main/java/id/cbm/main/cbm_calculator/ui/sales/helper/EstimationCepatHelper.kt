@@ -6,6 +6,7 @@ import id.cbm.main.cbm_calculator.ui.sales.adapter.AreaAdapter
 import id.cbm.main.cbm_calculator.ui.sales.adapter.ChildAtapAnakAdapter
 import id.cbm.main.cbm_calculator.ui.sales.model.AreaModel
 import id.cbm.main.cbm_calculator.ui.sales.model.AtapAnakModel
+import id.cbm.main.cbm_calculator.ui.sales.model.HasilEstimasiModel
 import id.cbm.main.cbm_calculator.ui.sales.model.ParentAtapAnakModel
 
 class EstimationCepatHelper(private val context: Context) {
@@ -123,5 +124,34 @@ class EstimationCepatHelper(private val context: Context) {
         )
 
         return parentItem
+    }
+
+    fun addListMaterial(): List<HasilEstimasiModel> {
+
+        val listMaterial = listOf(
+            HasilEstimasiModel(
+                materialName = "TC-BC C_75.35.75",
+                qty = "57",
+                harga = "201000",
+                disc = "0",
+                total = "11457000"
+            ),
+            HasilEstimasiModel(
+                materialName = "Web C_75.35.75",
+                qty = "38",
+                harga = "201000",
+                disc = "0",
+                total = "7638000"
+            ),
+            HasilEstimasiModel(
+                materialName = "Reng 30.15.45",
+                qty = "138",
+                harga = "81000",
+                disc = "0",
+                total = "11178000"
+            ),
+        )
+
+        return listMaterial
     }
 }
