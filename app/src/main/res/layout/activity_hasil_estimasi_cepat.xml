@@ -120,7 +120,7 @@
             android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/tvValueTotal"
+            android:id="@+id/tvValueTotalKeseluruhan"
             app:layout_constraintTop_toBottomOf="@+id/tvTotalKeseluruhan"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/gl"

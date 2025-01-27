@@ -4,6 +4,8 @@ import android.os.SystemClock
 import android.util.Log
 import android.view.View
 import java.lang.Exception
+import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -53,10 +55,27 @@ fun Date.dateToString(dateFormat: String? = null): String {
 
 fun String.toIDR(withCurrency: Boolean = false): String {
     return try {
-        val amount = this.toLong() // Convert string to long
-        val numberFormat = NumberFormat.getNumberInstance(Locale("id", "ID"))
-        if (withCurrency) "Rp ${numberFormat.format(amount)}" else numberFormat.format(amount)
+        val number = this.toDouble()
+
+        // define custom decimal
+        val symbols = DecimalFormatSymbols(Locale.US).apply {
+            groupingSeparator = '.'
+            decimalSeparator = ','
+        }
+
+        // create decimal format with defined symbols
+        val decimalFormat = if (number % 1 == 0.0) {
+            DecimalFormat("#,##0", symbols)
+        } else {
+            DecimalFormat("#,##0.00", symbols)
+        }
+
+        if (withCurrency) "Rp ${decimalFormat.format(number)}" else decimalFormat.format(number)
     } catch (e: NumberFormatException) {
-        "Invalid Number"
+        e.printStackTrace()
+        "0"
+    } catch (e: IllegalArgumentException) {
+        e.printStackTrace()
+        "0"
     }
 }

@@ -2,13 +2,19 @@ package id.cbm.main.cbm_calculator.ui.sales.adapter // ktlint-disable package-na
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import id.cbm.main.cbm_calculator.core.custom.CBMSpinnerText
 import id.cbm.main.cbm_calculator.databinding.ItemChildAtapAnakEdittextBinding
 import id.cbm.main.cbm_calculator.databinding.ItemChildAtapAnakSpinnerBinding
 import id.cbm.main.cbm_calculator.ui.sales.model.AtapAnakModel
 
 class ChildAtapAnakAdapter(private val listItem: List<AtapAnakModel>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    private var listenerSpinner: ChildAtapAnakListener? = null
+
+    fun setOnClickSpinnerChildAtapAnak(listener: ChildAtapAnakListener) {
+        this.listenerSpinner = listener
+    }
 
     override fun getItemViewType(position: Int): Int {
         return listItem[position].fieldType ?: 1
@@ -48,7 +54,10 @@ class ChildAtapAnakAdapter(private val listItem: List<AtapAnakModel>) : Recycler
 
     inner class VHAdapterChildEditText(private val binding: ItemChildAtapAnakEdittextBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(param: AtapAnakModel) {
-            binding.etItemAreaAtapditText.setLabelName(param.itemName)
+            binding.apply {
+                etItemAreaAtapditText.setLabelName(param.itemName)
+                etItemAreaAtapditText.setValueText(param.value)
+            }
         }
     }
 
@@ -57,10 +66,14 @@ class ChildAtapAnakAdapter(private val listItem: List<AtapAnakModel>) : Recycler
             binding.apply {
                 etItemAreaAtapditText.setLabelName(param.itemName)
                 etItemAreaAtapditText.setOnClickSpinner {
-                    Toast.makeText(itemView.context, "Click Child Spinner", Toast.LENGTH_SHORT).show()
+                    listenerSpinner?.onClickSpinner(param, etItemAreaAtapditText)
                 }
             }
         }
+    }
+
+    interface ChildAtapAnakListener {
+        fun onClickSpinner(data: AtapAnakModel, spinner: CBMSpinnerText)
     }
 
     companion object {
