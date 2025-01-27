@@ -2,13 +2,21 @@ package id.cbm.main.cbm_calculator.ui.sales.adapter // ktlint-disable package-na
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import id.cbm.main.cbm_calculator.core.custom.CBMSpinnerText
 import id.cbm.main.cbm_calculator.databinding.ItemAdapterEdittextFieldBinding
 import id.cbm.main.cbm_calculator.databinding.ItemAdapterSpinnerFieldBinding
 import id.cbm.main.cbm_calculator.ui.sales.model.AreaModel
 
-class AreaAdapter(private val listData: List<AreaModel>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class AreaAdapter(
+    private val listData: List<AreaModel>,
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    private var listenerSpinner: AreaAdapterSpinnerListener? = null
+
+    fun setOnClickItemSpinnerClick(listener: AreaAdapterSpinnerListener) {
+        this.listenerSpinner = listener
+    }
 
     override fun getItemViewType(position: Int): Int {
         return listData[position].fieldType ?: 1
@@ -51,10 +59,14 @@ class AreaAdapter(private val listData: List<AreaModel>) : RecyclerView.Adapter<
             binding.apply {
                 etItemAreaSpinner.setLabelName(param.labelName)
                 etItemAreaSpinner.setOnClickSpinner {
-                    Toast.makeText(itemView.context, "Spinner click - ${param.labelName}", Toast.LENGTH_SHORT).show()
+                    listenerSpinner?.onClickSpinner(param, etItemAreaSpinner)
                 }
             }
         }
+    }
+
+    interface AreaAdapterSpinnerListener {
+        fun onClickSpinner(data: AreaModel, cbmSpinner: CBMSpinnerText)
     }
 
     companion object {

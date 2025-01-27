@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import id.cbm.main.cbm_calculator.core.custom.modaldialog.adapter.BottomDialogListAdapter
 import id.cbm.main.cbm_calculator.core.custom.modaldialog.data.GeneralModel
 import id.cbm.main.cbm_calculator.core.custom.modaldialog.interfaces.DialogListClickListener
 
@@ -66,10 +68,33 @@ class DialogList : DialogBase() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        initView()
+        initBottomDialogList(overrideDismissListener)
+        setDataDialog(data ?: listOf())
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    private fun initView() {
+        bindingDialogList.tvTitleDialog.text = title
+        bindingDialogList.rvItems.layoutManager = LinearLayoutManager(requireContext())
+    }
+
+    fun updateData(data: List<GeneralModel>) {
+        if (data.isNotEmpty()) {
+            setDataDialog(data)
+        }
+    }
+
+    private fun setDataDialog(data: List<GeneralModel>, position: Int = -1) {
+        val bottomListAdapter = BottomDialogListAdapter(
+            object : BottomDialogListAdapter.BottomDialogListListener {
+                override fun onClickItem(data: GeneralModel) {
+                    listener?.itemClick(data)
+                    _dialog.dismiss()
+                }
+            }
+        )
+        bottomListAdapter.submitList(data)
+        bindingDialogList.rvItems.adapter = bottomListAdapter
     }
 }

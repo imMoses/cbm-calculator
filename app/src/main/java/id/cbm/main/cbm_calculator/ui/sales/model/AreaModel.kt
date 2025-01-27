@@ -8,5 +8,5 @@ data class AreaModel(
     var labelName: String = "",
     var value: String = "",
     var fieldType: Int? = null,
-    var listItemSpinner: List<GeneralModel>? = null,
+    var listItemSpinner: MutableList<GeneralModel>? = null,
 )

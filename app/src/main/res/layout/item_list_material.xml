@@ -106,7 +106,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:text="@string/form_est_cepat_harga"
+                android:text="@string/form_est_cepat_disc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -115,6 +115,7 @@
                 android:layout_marginTop="@dimen/_6sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLength="4"
                 android:inputType="numberDecimal"
                 android:background="@drawable/bg_line_corner_rounded"
                 android:paddingTop="@dimen/_10sdp"

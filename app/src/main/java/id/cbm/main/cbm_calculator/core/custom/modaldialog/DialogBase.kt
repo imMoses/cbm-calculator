@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import id.cbm.main.cbm_calculator.R
 import id.cbm.main.cbm_calculator.databinding.DialogBottomInfoBinding
@@ -18,16 +19,16 @@ open class DialogBase : DialogFragment() {
     lateinit var _dialog: Dialog
 
     val bindingDialogList: DialogBottomListBinding by lazy {
-        DialogBottomListBinding.inflate(LayoutInflater.from(requireContext()), null, false)
+        DialogBottomListBinding.inflate(layoutInflater, null, false)
     }
 
     val bindingDialogInfo: DialogBottomInfoBinding by lazy {
-        DialogBottomInfoBinding.inflate(LayoutInflater.from(requireContext()), null, false)
+        DialogBottomInfoBinding.inflate(layoutInflater, null, false)
     }
 
     private var overrideDismissListener: OnDismissListener? = null
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        return super.onCreateDialog(savedInstanceState)
         _dialog = Dialog(requireContext(), R.style.FullWidth_Dialog)
         return _dialog
     }
@@ -48,7 +49,7 @@ open class DialogBase : DialogFragment() {
 
         _dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         _dialog.window!!.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-//        _dialog.window!!.setBackgroundDrawable()
+        _dialog.window!!.setBackgroundDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.bg_top_corner_radius))
         _dialog.window!!.setGravity(Gravity.BOTTOM)
 
         if (bindingDialogList.root.parent != null) {
